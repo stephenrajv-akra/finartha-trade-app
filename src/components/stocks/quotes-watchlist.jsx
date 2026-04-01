@@ -55,7 +55,7 @@ const QuotesWatchlist = () => {
 
                         {/* Info Grid */}
                         <div className="flex items-center justify-between gap-40">
-                            <div className="left-block flex flex-col gap-4 w-1/2">
+                            <div className="left-block flex flex-col gap-2.5 w-1/2">
                                 <div className='flex items-center justify-between'>
                                     <p className="text-xs text-gray-500 mb-1">Open</p>
                                     <p className="text-sm font-semibold text-green-600">4,510.95</p>
@@ -74,7 +74,7 @@ const QuotesWatchlist = () => {
                                     <p className="text-sm font-semibold text-red-600">4,510.95</p>
                                 </div>
                             </div>
-                            <div className="right-block flex flex-col gap-4 w-1/2">
+                            <div className="right-block flex flex-col gap-2.5 w-1/2">
                                 <div className='flex items-center justify-between'>
                                     <p className="text-xs text-gray-500 mb-1">52 Wk High</p>
                                     <p className="text-sm font-semibold text-gray-900">4,510.95</p>

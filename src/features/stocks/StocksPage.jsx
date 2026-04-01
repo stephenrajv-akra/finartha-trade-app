@@ -18,7 +18,7 @@ const StocksPage = () => {
   const rightWidth = 100 - leftWidth;
 
   return (
-    <div className="w-full h-screen bg-white overflow-hidden">
+    <div className="w-full h-[150vh] bg-white overflow-hidden">
       <div className="flex gap-2 h-full">
         {/* LEFT BLOCK */}
         <Resizable
@@ -117,7 +117,7 @@ const StocksPage = () => {
             <Resizable
               defaultSize={{
                 width: '100%',
-                height: '50%',
+                height: '30%', 
               }}
               minHeight="15%"
               maxHeight="85%"
@@ -142,7 +142,7 @@ const StocksPage = () => {
               <Resizable
                 defaultSize={{
                   width: '50%',
-                  height: '100%',
+                  height: '70%',
                 }}
                 minWidth="15%"
                 maxWidth="85%"
