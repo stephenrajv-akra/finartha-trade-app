@@ -142,7 +142,7 @@ const StocksPage = () => {
               <Resizable
                 defaultSize={{
                   width: '50%',
-                  height: '70%',
+                  height: '100%',
                 }}
                 minWidth="15%"
                 maxWidth="85%"
