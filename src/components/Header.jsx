@@ -17,7 +17,7 @@ export default function Header() {
         <div className="relative">
           <button
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            className="flex items-center gap-3 hover:bg-opacity-30 rounded-lg px-4 py-2 transition-all duration-300"
+            className="flex items-center gap-3 hover:bg-opacity-30 rounded-lg px-4 transition-all duration-300"
           >
             {/* Profile Avatar */}
             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-pink-400 flex items-center justify-center">
