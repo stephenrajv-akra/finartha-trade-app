@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Resizable } from 're-resizable';
 import { Menu, Star, MoreVertical, RotateCcw, ChevronDown, Clipboard, Bell, BarChart3, TrendingUp, TrendingDown } from 'lucide-react';
-import CandlestickChart from '../../components/candleChart';
+import CandlestickChart from '../../components/CandleChart';
 
 const icons = [
   {
