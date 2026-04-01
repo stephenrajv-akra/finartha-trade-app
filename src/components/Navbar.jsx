@@ -15,7 +15,7 @@ export default function Navbar() {
   const isActive = (path) => location.pathname === path;
 
   return ( 
-    <nav className="fixed left-0 top-0 h-screen pt-20 w-full max-w-20 bg-[#EDE8F2] flex flex-col items-center py-2">
+    <nav className="fixed left-0 top-0 h-screen pt-[52px] w-full max-w-20 bg-[#EDE8F2] flex flex-col items-center py-2">
       {/* Main Navigation */}
       <div className="flex-1 flex flex-col gap-0 w-full"> 
         {mainLinks?.map(({ path, label, icon }) => ( 
