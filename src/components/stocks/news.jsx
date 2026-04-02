@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import TabsComponent from './TabsComponent';
 import { newsData } from '../../utils/placeholder-data';
-import { SquarePlus, Search, Trash2 } from 'lucide-react';
+import { SquarePlus, Search, Trash2 , CircleX} from 'lucide-react';
 import Modal from '../Modal';
 
 const News = () => {
@@ -27,10 +27,10 @@ const News = () => {
                     />
                 </div>
                 <div className="right w-2/5 flex justify-end items-center gap-3">
-                    <div className='bg-[#EDE8F2] rounded p-2 text-xs font-normal w-fit text-[#4F1D81] tracking-wide'>SLV</div>
+                    <div className='bg-[#EDE8F2] p-2 text-sm font-normal w-fit text-[#4F1D81] tracking-wide'>SLV</div>
                     <div>
                         <div className="flex items-center gap-1.5 cursor-pointer" onClick={() => setIsModalOpen(true)}>
-                            <SquarePlus size={24} color="#724A9A" />
+                            <SquarePlus size={24} strokeWidth={1.3} color="#724A9A" />
                             <p className='text-xs text-[#9E5190] font-normal'>Add Symbol</p>
                         </div>
                     </div>
@@ -84,17 +84,27 @@ const News = () => {
             </div>
 
             {/* Add Symbol Modal */}
-            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Add Symbol">
+            <Modal isOpen={isModalOpen}>
+                {/* Header */}
+                <div className="bg-[#EDE8F2] px-6 py-3 flex items-center justify-center relative">
+                    <h2 className="text-lg font-semibold text-[#1A1A1A]">Add Symbol</h2>
+                    <button
+                        className='flex justify-end text-right absolute right-4'
+                        onClick={() => setIsModalOpen(false)} 
+                    >
+                        <CircleX size={24} strokeWidth={1.5} color='#616161' />
+                    </button>
+                </div> 
                 <div className="px-4 pt-4 pb-6">
                     {/* Search Input */}
-                    <div className="flex items-center gap-2 border border-[#C47BBF] rounded-full px-4 py-2.5 mb-5 focus-within:ring-1 focus-within:ring-[#724A9A]">
+                    <div className="flex items-center gap-2 border border-[#C47BBF] bg-[#EDE8F280] rounded-md px-4 py-2.5 mb-5 focus-within:ring-1 focus-within:ring-[#724A9A]">
                         <Search size={16} color="#C47BBF" strokeWidth={2} />
                         <input
                             type="text"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            placeholder="Symbol/Name"
-                            className="flex-1 text-sm text-gray-500 placeholder-gray-400 outline-none bg-transparent"
+                            placeholder="Symbol/Name" 
+                            className="flex-1 text-sm text-gray-500 placeholder-[#C79BBF] outline-none bg-transparent"
                         />
                     </div>
 
