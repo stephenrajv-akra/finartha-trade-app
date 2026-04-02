@@ -12,7 +12,7 @@ import TurboTradeLadder from '../../components/stocks/turbo-trade-ladder';
 const StocksPage = () => {
   const [leftWidth, setLeftWidth] = useState(50); // percentage 
 
-  const handleLeftResize = (e, direction, ref, delta) => {
+  const handleLeftResize = (e, direction, ref) => {
     const containerWidth = ref.parentElement.clientWidth;
     const newWidth = (ref.clientWidth / containerWidth) * 100;
     setLeftWidth(Math.max(20, Math.min(80, newWidth)));
@@ -29,6 +29,7 @@ const StocksPage = () => {
             width: `${leftWidth}%`,
             height: '100%',
           }}
+          onResize={handleLeftResize}
           onResizeStop={handleLeftResize}
           minWidth="20%"
           maxWidth="80%"
