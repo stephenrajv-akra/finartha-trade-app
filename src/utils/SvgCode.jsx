@@ -239,7 +239,7 @@ export const CandlesFilled = ({ color = "#8968AB" }) => {
     )
 }
 
-export const CandlesOutline = ({color = "#8968AB"}) => {
+export const CandlesOutline = ({ color = "#8968AB" }) => {
     return (
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M15.2773 4.66675L15.2773 7.33342" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -281,4 +281,78 @@ export const WaveFilledIcon = ({ color = "#8968AB" }) => {
     )
 }
 
+
+export const GridOne = ({ color = "#8968AB" }) => {
+    return (
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2.75" y="2.75" width="14.5" height="14.5" rx="3.25" stroke={color} stroke-width="1.5" />
+        </svg>
+    )
+}
+
+export const GridTwo = ({ color = "#8968AB" }) => {
+    return (
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2.75" y="2.75" width="5.5" height="14.5" rx="1.25" stroke={color} stroke-width="1.5" />
+            <rect x="11.75" y="2.75" width="5.5" height="14.5" rx="1.25" stroke={color} stroke-width="1.5" />
+        </svg>
+    )
+}
+
+export const GridThree = ({ color = "#8968AB" }) => {
+    return (
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="17.25" y="2.75" width="5.5" height="14.5" rx="1.25" transform="rotate(90 17.25 2.75)" stroke={color} stroke-width="1.5" />
+            <rect x="17.25" y="11.75" width="5.5" height="5.5" rx="1.25" transform="rotate(90 17.25 11.75)" stroke={color} stroke-width="1.5" />
+            <rect x="8.25" y="11.75" width="5.5" height="5.5" rx="1.25" transform="rotate(90 8.25 11.75)" stroke={color} stroke-width="1.5" />
+        </svg>
+    )
+}
+
+export const GridFour = ({ color = "#8968AB" }) => {
+    return (
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="17.25" y="2.75" width="5.5" height="5.5" rx="1.25" transform="rotate(90 17.25 2.75)" stroke={color} stroke-width="1.5" />
+            <rect x="8.25" y="2.75" width="5.5" height="5.5" rx="1.25" transform="rotate(90 8.25 2.75)" stroke={color} stroke-width="1.5" />
+            <rect x="17.25" y="11.75" width="5.5" height="5.5" rx="1.25" transform="rotate(90 17.25 11.75)" stroke={color} stroke-width="1.5" />
+            <rect x="8.25" y="11.75" width="5.5" height="5.5" rx="1.25" transform="rotate(90 8.25 11.75)" stroke={color} stroke-width="1.5" />
+        </svg>
+    )
+}
+
+export const GridH = ({ color = "#8968AB" }) => {
+    return (
+        <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2.75" y="2.75" width="5.5" height="14.5" rx="1.25" stroke={color} stroke-width="1.5" />
+            <rect x="11.75" y="2.75" width="5.5" height="14.5" rx="1.25" stroke={color} stroke-width="1.5" />
+            <rect x="6.69141" y="8.4126" width="12.4258" height="9.85498" rx="2" fill="#EDE8F2" />
+            <path d="M15.5352 13.3403H10.4493" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M10.9954 16.4762C9.26342 16.4762 7.85938 15.0721 7.85938 13.3401C7.85938 11.6081 9.26342 10.2041 10.9954 10.2041" stroke={color} stroke-width="1.5" stroke-linecap="round" />
+            <path d="M14.8171 16.4764C16.5491 16.4764 17.9531 15.0724 17.9531 13.3404C17.9531 11.6084 16.5491 10.2043 14.8171 10.2043" stroke={color} stroke-width="1.5" stroke-linecap="round" />
+        </svg>
+    )
+}
+
+
+export const DeleteIcon = ({ color = "#8968AB" }) => {
+    return (
+        <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 5.55566H16.2222" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M7.33594 9.11133V14.4447" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M10.8906 9.11133V14.4447" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M2.89062 5.55566L3.77951 16.2223C3.77951 16.6938 3.96681 17.146 4.30021 17.4794C4.63361 17.8128 5.0858 18.0001 5.55729 18.0001H12.6684C13.1399 18.0001 13.5921 17.8128 13.9255 17.4794C14.2589 17.146 14.4462 16.6938 14.4462 16.2223L15.3351 5.55566" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M6.44531 5.55556V2.88889C6.44531 2.65314 6.53896 2.42705 6.70566 2.26035C6.87236 2.09365 7.09845 2 7.3342 2H10.8898C11.1255 2 11.3516 2.09365 11.5183 2.26035C11.685 2.42705 11.7786 2.65314 11.7786 2.88889V5.55556" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    )
+}
+
+
+export const UploadIcon = ({color = "#8968AB" }) => {
+    return (
+        <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.332 13.5584L11.7788 10.0052M11.7788 10.0052L8.2255 13.5584M11.7788 10.0052L11.7788 18" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M19.6677 15.415C20.44 14.872 21.0191 14.0969 21.3211 13.2024C21.6231 12.3078 21.6321 11.3404 21.347 10.4403C21.0618 9.54028 20.4973 8.75453 19.7353 8.19709C18.9733 7.63964 18.0535 7.33951 17.1093 7.34025H15.9901C15.7229 6.29903 15.223 5.33199 14.528 4.51192C13.833 3.69186 12.961 3.04014 11.9777 2.60584C10.9944 2.17153 9.92539 1.96596 8.85113 2.00459C7.77688 2.04322 6.72538 2.32506 5.77581 2.82887C4.82623 3.33268 4.00332 4.04535 3.36903 4.91322C2.73474 5.78109 2.3056 6.78154 2.11391 7.83926C1.92222 8.89698 1.97297 9.98441 2.26236 11.0197C2.55175 12.0549 3.07222 13.0111 3.7846 13.8161" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg> 
+    )
+}
 

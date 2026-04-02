@@ -10,7 +10,8 @@ import TimeAnalysis from '../../components/stocks/time-analysis';
 import TurboTradeLadder from '../../components/stocks/turbo-trade-ladder'; 
 
 const StocksPage = () => {
-  const [leftWidth, setLeftWidth] = useState(50); // percentage 
+  const [leftWidth, setLeftWidth] = useState(50); // percentage
+  const [gridLayout, setGridLayout] = useState(1);
 
   const handleLeftResize = (e, direction, ref) => {
     const containerWidth = ref.parentElement.clientWidth;
@@ -65,7 +66,7 @@ const StocksPage = () => {
                 }}
                 className="bg-white border-2 border-gray-200 rounded-lg overflow-hidden flex flex-col"
             >
-              <ChartContainer />
+              <ChartContainer gridLayout={gridLayout} onGridChange={setGridLayout} />
             </Resizable>
             <Resizable
                 defaultSize={{

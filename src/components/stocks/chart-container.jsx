@@ -5,10 +5,9 @@ import ChartControls from './chart-controls';
 
 
 
-const ChartContainer = () => {
+const ChartContainer = ({ gridLayout = 1, onGridChange }) => {
     const [chartType, setChartType] = useState('candles');
     const [showMoreMenu, setShowMoreMenu] = useState(false);
-    const chartTypes = ['candles', 'line', 'bars', 'area', 'baseline', 'histogram'];
 
     return (
         <>
@@ -31,7 +30,7 @@ const ChartContainer = () => {
                 </button>
             </div>
 
-            <ChartControls /> 
+            <ChartControls chartType={chartType} onChartTypeChange={setChartType} gridLayout={gridLayout} onGridChange={onGridChange} />
 
             {/* Stock Info Header */}
             <div className="flex items-center justify-between flex-wrap gap-2 px-2 lg:px-4 py-2 lg:py-3 border-b border-gray-200 bg-white">
@@ -47,27 +46,6 @@ const ChartContainer = () => {
                             className="text-gray-400 hover:text-gray-600 flex-shrink-0 relative"
                         >
                             <MoreVertical size={14} className="lg:size-4" />
-
-                            {showMoreMenu && (
-                                <div className="absolute top-full right-0 mt-1 bg-white border border-gray-200 rounded shadow-lg z-50 min-w-40">
-                                    <div className="p-2 border-b border-gray-100">
-                                        <p className="text-xs font-medium text-gray-500 px-3 py-1">Chart Type</p>
-                                    </div>
-                                    {chartTypes.map((type) => (
-                                        <button
-                                            key={type}
-                                            onClick={() => {
-                                                setChartType(type);
-                                                setShowMoreMenu(false);
-                                            }}
-                                            className={`block w-full text-left px-3 py-2 text-xs hover:bg-gray-100 transition-colors ${chartType === type ? 'bg-purple-100 text-purple-700 font-medium' : 'text-gray-700'
-                                                }`}
-                                        >
-                                            {type.charAt(0).toUpperCase() + type.slice(1)}
-                                        </button>
-                                    ))}
-                                </div>
-                            )}
                         </button>
                     </div>
                 </div>
@@ -93,8 +71,51 @@ const ChartContainer = () => {
             </div>
 
             {/* Chart Area */}
-            <div className="flex-1 overflow-y-auto overflow-x-hidden">
-                <CandlestickChart symbol="XAUUSD" chartType={chartType} onChartTypeChange={setChartType} />
+            <div className="flex-1 overflow-hidden">
+                {gridLayout === 1 && (
+                    <CandlestickChart symbol="XAUUSD" chartType={chartType} onChartTypeChange={setChartType} />
+                )}
+                {gridLayout === 2 && (
+                    <div className="flex h-full">
+                        <div className="flex-1 border-r border-gray-200 overflow-auto">
+                            <CandlestickChart symbol="XAUUSD" chartType={chartType} onChartTypeChange={setChartType} />
+                        </div>
+                        <div className="flex-1 overflow-auto">
+                            <CandlestickChart symbol="XAUUSD" chartType={chartType} onChartTypeChange={setChartType} />
+                        </div>
+                    </div>
+                )}
+                {gridLayout === 3 && (
+                    <div className="flex flex-col h-full">
+                        <div className="flex-1 border-b border-gray-200 overflow-auto">
+                            <CandlestickChart symbol="XAUUSD" chartType={chartType} onChartTypeChange={setChartType} />
+                        </div>
+                        <div className="flex flex-1 overflow-hidden">
+                            <div className="flex-1 border-r border-gray-200 overflow-auto">
+                                <CandlestickChart symbol="XAUUSD" chartType={chartType} onChartTypeChange={setChartType} />
+                            </div>
+                            <div className="flex-1 overflow-auto">
+                                <CandlestickChart symbol="XAUUSD" chartType={chartType} onChartTypeChange={setChartType} />
+                            </div>
+                        </div>
+                    </div>
+                )}
+                {gridLayout === 4 && (
+                    <div className="grid grid-cols-2 grid-rows-2 h-full">
+                        <div className="border-r border-b border-gray-200 overflow-auto">
+                            <CandlestickChart symbol="XAUUSD" chartType={chartType} onChartTypeChange={setChartType} />
+                        </div>
+                        <div className="border-b border-gray-200 overflow-auto">
+                            <CandlestickChart symbol="XAUUSD" chartType={chartType} onChartTypeChange={setChartType} />
+                        </div>
+                        <div className="border-r border-gray-200 overflow-auto">
+                            <CandlestickChart symbol="XAUUSD" chartType={chartType} onChartTypeChange={setChartType} />
+                        </div>
+                        <div className="overflow-auto">
+                            <CandlestickChart symbol="XAUUSD" chartType={chartType} onChartTypeChange={setChartType} />
+                        </div>
+                    </div>
+                )}
             </div>
 
             {/* Bottom Controls */}
