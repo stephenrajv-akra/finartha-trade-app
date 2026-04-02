@@ -35,3 +35,57 @@ export const stockItems = [
   { name: 'Infosys', sub: 'INFY NSE' },
   { name: 'ICICI Bank', sub: 'ICICIBANK NSE' },
 ];
+
+
+export const newsData = [
+  {
+    title: "Gold, other precious metals fall as Trump threatens to hit Iran “Extremely hard”",
+    source: "Seeking Alpha",
+    time: "50m ago"
+  },
+  {
+    title: "Oil prices rise amid supply concerns and geopolitical tensions",
+    source: "Reuters",
+    time: "1h ago"
+  },
+  {
+    title: "US stocks close higher as tech shares lead gains",
+    source: "Bloomberg",
+    time: "2h ago"
+  },
+  {
+    title: "Bitcoin crosses $70,000 mark amid renewed investor interest",
+    source: "CoinDesk",
+    time: "3h ago"
+  },
+  {
+    title: "Asian markets fall as inflation fears weigh on sentiment",
+    source: "CNBC",
+    time: "4h ago"
+  },
+  {
+    title: "Federal Reserve signals potential rate cuts later this year",
+    source: "Wall Street Journal",
+    time: "5h ago"
+  },
+  {
+    title: "Tesla shares dip after quarterly delivery miss",
+    source: "MarketWatch",
+    time: "6h ago"
+  },
+  {
+    title: "Crude oil demand outlook improves as global travel rebounds",
+    source: "Financial Times",
+    time: "7h ago"
+  },
+  {
+    title: "Nvidia hits new all-time high driven by AI demand",
+    source: "Yahoo Finance",
+    time: "8h ago"
+  },
+  {
+    title: "Rupee weakens slightly against dollar in early trade",
+    source: "Economic Times",
+    time: "9h ago"
+  }
+];

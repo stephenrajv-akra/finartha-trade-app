@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Menu } from 'lucide-react';
 import ChartContainer from './chart-container';
 import Note from './note';
+import News from './news';
 
 const TABS = [
     'Chart',
@@ -63,8 +64,8 @@ const MainTabs = ({ gridLayout = 1, onGridChange }) => {
                     </div>
                 )}
                 {activeTab === 'News' && (
-                    <div className="flex items-center justify-center h-full text-gray-400 text-sm">
-                        News — coming soon
+                    <div className='p-2 h-full'> 
+                        <News />
                     </div>
                 )}
                 {activeTab === 'Comments' && (
