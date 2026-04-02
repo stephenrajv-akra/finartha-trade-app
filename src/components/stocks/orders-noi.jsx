@@ -40,7 +40,7 @@ const OrdersNOI = () => {
             {/* Order Book Tabs with Icons */}
             {activeTab === 'orderBook' && (
                 <>
-                    <div className="flex items-center gap-2 px-4 py-3 border-b border-gray-200 bg-gray-50">
+                    <div className="flex items-center gap-2 px-4 py-2 border-b border-gray-200 bg-gray-50">
                         <button
                             onClick={() => setActiveOrderBookTab('all')}
                             className={`p-2 rounded transition-colors ${activeOrderBookTab === 'all'

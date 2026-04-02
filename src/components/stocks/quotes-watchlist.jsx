@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Star, Bell, Clipboard } from 'lucide-react';
+import { Star, Bell, Clipboard, ChevronDown, AlignJustify, ArrowUpDown } from 'lucide-react';
 
 const QuotesWatchlist = () => {
   const [activeRightTopTab, setActiveRightTopTab] = useState('quotes');
@@ -97,11 +97,74 @@ const QuotesWatchlist = () => {
                 )}
 
                 {activeRightTopTab === 'watchlist' && (
-                    <div className="p-6">
-                        <div className="flex flex-col items-center justify-center py-12">
-                            <Clipboard size={48} className="text-gray-300 mb-3" strokeWidth={1} />
-                            <h3 className="text-lg font-semibold text-gray-700 mb-1">Watchlist Empty</h3>
-                            <p className="text-sm text-gray-500">Add symbols to your watchlist</p>
+                    <div className="flex flex-col">
+                        {/* Recently Viewed Dropdown Header */}
+                        <div className="flex items-center justify-between px-4 py-3 bg-gray-100 border-b border-gray-200 cursor-pointer select-none">
+                            <span className="text-sm font-medium text-gray-700">Recently Viewed</span>
+                            <ChevronDown size={18} className="text-gray-500" />
+                        </div>
+
+                        {/* Column Headers */}
+                        <div className="flex items-center justify-between px-4 py-2 border-b border-gray-200">
+                            <div className="flex items-center gap-1.5 text-xs text-gray-500">
+                                <AlignJustify size={13} strokeWidth={1.8} />
+                                <span>Symbol</span>
+                            </div>
+                            <div className="flex items-center gap-1.5 text-xs text-gray-500">
+                                <ArrowUpDown size={13} strokeWidth={1.8} /> 
+                                <span>Price/Change</span>
+                            </div>
+                        </div>
+
+                        {/* Stock Rows */}
+                        <div className="flex flex-col">
+                            {/* XAUUSD — selected */}
+                            <div className="flex items-center justify-between px-4 py-3 bg-[#EDE9F8] border-b border-gray-100">
+                                <div>
+                                    <p className="text-sm font-bold text-gray-900 leading-tight">XAUUSD</p>
+                                    <p className="text-[11px] text-gray-500 mt-0.5">GOLD/USD</p>
+                                </div>
+                                <div className="text-right">
+                                    <p className="text-sm font-semibold text-green-600 leading-tight">4556.18</p>
+                                    <p className="text-[11px] text-green-600 mt-0.5">+0.77 +0.17%</p>
+                                </div>
+                            </div>
+
+                            {/* BCH */}
+                            <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100 hover:bg-gray-50">
+                                <div>
+                                    <p className="text-sm font-bold text-gray-900 leading-tight">BCH</p>
+                                    <p className="text-[11px] text-gray-500 mt-0.5">Bitcoin Cash</p>
+                                </div>
+                                <div className="text-right">
+                                    <p className="text-sm font-semibold text-green-600 leading-tight">467.18</p>
+                                    <p className="text-[11px] text-green-600 mt-0.5">+0.77 +0.17%</p>
+                                </div>
+                            </div>
+
+                            {/* AAPL */}
+                            <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100 hover:bg-gray-50">
+                                <div>
+                                    <p className="text-sm font-bold text-gray-900 leading-tight">AAPL</p>
+                                    <p className="text-[11px] text-gray-500 mt-0.5">Apple Inc</p>
+                                </div>
+                                <div className="text-right">
+                                    <p className="text-sm font-semibold text-red-500 leading-tight">467.18</p>
+                                    <p className="text-[11px] text-red-500 mt-0.5">-0.77 -0.17%</p>
+                                </div>
+                            </div>
+
+                            {/* AAPL 2 */}
+                            <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100 hover:bg-gray-50">
+                                <div>
+                                    <p className="text-sm font-bold text-gray-900 leading-tight">AAPL</p>
+                                    <p className="text-[11px] text-gray-500 mt-0.5">Apple Inc</p>
+                                </div>
+                                <div className="text-right">
+                                    <p className="text-sm font-semibold text-red-500 leading-tight">467.18</p>
+                                    <p className="text-[11px] text-red-500 mt-0.5">-0.77 -0.17%</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 )}

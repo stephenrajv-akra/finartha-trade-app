@@ -15,8 +15,8 @@ export default function Header() {
         </div>
 
         {/* Center – Search */}
-        <div className="flex-1 flex justify-center">
-          <div className="flex items-center gap-2 bg-[#2a0a38]/70 rounded-md px-3 py-1.5 w-full max-w-xs border border-white/10">
+        <div className="flex-1 flex justify-end">
+          <div className="flex items-center gap-2 bg-[#2a0a38]/70 rounded-md px-3 py-1.5 w-full max-w-xs border border-white/10 max-w-[400px]">
             <Search size={14} className="text-gray-400 flex-none" />
             <input
               type="text"
@@ -27,9 +27,9 @@ export default function Header() {
         </div>
 
         {/* Right – Controls + User */}
-        <div className="flex items-center text-white text-xs">
+        <div className="flex items-center text-white text-xs gap-3">
           {/* Separator */}
-          <span className="h-5 w-px bg-white/30 mx-3 block" />
+          <span className="h-5 w-px bg-white mx-3 block" />
 
           {/* Open */}
           <button className="flex items-center gap-1 hover:text-white/80 transition-colors whitespace-nowrap">
@@ -39,7 +39,7 @@ export default function Header() {
           </button>
 
           {/* Separator */}
-          <span className="h-5 w-px bg-white/30 mx-3 block" />
+          <span className="h-5 w-px bg-white mx-3 block" />
 
           {/* Working */}
           <button className="flex items-center gap-1 hover:text-white/80 transition-colors whitespace-nowrap">
@@ -49,7 +49,7 @@ export default function Header() {
           </button>
 
           {/* Separator */}
-          <span className="h-5 w-px bg-white/30 mx-3 block" />
+          <span className="h-5 w-px bg-white mx-3 block" />
 
           {/* TAV */}
           <button className="flex items-center gap-1 hover:text-white/80 transition-colors whitespace-nowrap">
@@ -59,7 +59,7 @@ export default function Header() {
           </button>
 
           {/* Separator */}
-          <span className="h-5 w-px bg-white/30 mx-3 block" />
+          <span className="h-5 w-px bg-white mx-3 block" />
 
           {/* User Profile */}
           <div className="relative">

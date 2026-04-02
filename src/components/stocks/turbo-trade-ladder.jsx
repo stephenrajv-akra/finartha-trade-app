@@ -45,23 +45,30 @@ const TurboTradeLadder = () => {
                         {/* Side – Buy / Sell */}
                         <div>
                             <p className="text-xs text-gray-500 mb-1.5">Side</p>
-                            <div className="flex gap-2">
+                            <div className={`relative flex h-10 rounded-md overflow-hidden transition-all ${
+                                buySellMode === 'buy' ? 'bg-[#FFEBEB]' : 'bg-green-50' 
+                            }`}>
+                                {/* Diagonal colored fill */}
+                                <div
+                                    className={`absolute inset-0 transition-all ${buySellMode === 'buy' ? 'bg-[#4CAF50]' : 'bg-[#F44336]'}`}
+                                    style={{
+                                        clipPath: buySellMode === 'buy'
+                                            ? 'polygon(0 0, 58% 0, 48% 100%, 0 100%)'
+                                            : 'polygon(52% 0, 100% 0, 100% 100%, 42% 100%)',
+                                    }}
+                                />  
                                 <button
                                     onClick={() => setBuySellMode('buy')}
-                                    className={`flex-1 py-2.5 rounded-md text-sm font-semibold transition-colors ${
-                                        buySellMode === 'buy'
-                                            ? 'bg-[#4CAF50] text-white'
-                                            : 'bg-[#F0FFF0] text-[#4CAF50]'
+                                    className={`relative flex-1 z-10 text-sm font-semibold pl-5 text-left transition-colors ${
+                                        buySellMode === 'buy' ? 'text-white' : 'text-[#4CAF50]'
                                     }`}
                                 >
                                     Buy
                                 </button>
                                 <button
                                     onClick={() => setBuySellMode('sell')}
-                                    className={`flex-1 py-2.5 rounded-md text-sm font-semibold transition-colors ${
-                                        buySellMode === 'sell'
-                                            ? 'bg-[#F44336] text-white'
-                                            : 'bg-[#FFF0F0] text-[#F44336]'
+                                    className={`relative flex-1 z-10 text-sm font-semibold pr-5 text-right transition-colors ${
+                                        buySellMode === 'sell' ? 'text-white' : 'text-[#F44336]'
                                     }`}
                                 >
                                     Sell
@@ -75,7 +82,7 @@ const TurboTradeLadder = () => {
                                 <p className="text-xs text-gray-500">Order Type</p>
                                 <Info size={12} className="text-gray-400" />
                             </div>
-                            <div className="flex gap-2">
+                            <div className="flex gap-0">
                                 {[
                                     { key: 'limit', label: 'Limit' },
                                     { key: 'market', label: 'Market' },
@@ -84,7 +91,7 @@ const TurboTradeLadder = () => {
                                     <button
                                         key={key}
                                         onClick={() => setOrderType(key)}
-                                        className={`flex-1 py-2 text-xs font-medium rounded-md border transition-colors ${
+                                        className={`flex-1 py-2 text-xs font-medium border transition-colors ${
                                             orderType === key
                                                 ? 'bg-[#EDE7F6] text-[#7B1FA2] border-[#CE93D8]'
                                                 : 'bg-white text-gray-600 border-gray-300'
@@ -121,7 +128,7 @@ const TurboTradeLadder = () => {
                                 {['10', '50', '100', '500', '+1', '-1'].map((v) => (
                                     <button
                                         key={v}
-                                        className="py-1.5 text-xs font-medium text-gray-700 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors"
+                                        className="py-1.5 text-xs bg-[#EDE8F2] font-medium text-gray-700 border border-gray-300 rounded hover:bg-gray-50 transition-colors"
                                     >
                                         {v}
                                     </button>
@@ -239,7 +246,7 @@ const TurboTradeLadder = () => {
 
                         {/* Buy / Sell Button */}
                         <button
-                            className={`w-full py-3 rounded-full text-sm font-semibold text-white transition-colors ${
+                            className={`w-full py-3 rounded text-sm font-semibold text-white transition-colors ${
                                 buySellMode === 'buy'
                                     ? 'bg-[#4CAF50] hover:bg-[#43A047]'
                                     : 'bg-[#F44336] hover:bg-[#E53935]'
