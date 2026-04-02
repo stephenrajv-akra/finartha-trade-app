@@ -124,7 +124,7 @@ export default function CandlestickChart({
         visible: false,
       }, 
       width: containerRef.current.clientWidth,
-      height: 400,
+      height: 425,
     };
 
     const chart = createChart(containerRef.current, chartOptions);
@@ -281,7 +281,7 @@ export default function CandlestickChart({
       {loading ? (
         <div
           className="w-full flex items-center justify-center bg-gray-50 rounded border-2 border-dashed border-gray-300"
-          style={{ height: '400px' }}
+          style={{ height: '425px' }}
         >
           <div className="text-center">
             <div className="w-12 h-12 border-4 border-gray-300 border-t-gray-800 rounded-full animate-spin mx-auto mb-4"></div>
@@ -292,7 +292,7 @@ export default function CandlestickChart({
         <div
           ref={containerRef}
           className="w-full"
-          style={{ height: '400px' }}
+          style={{ height: '425px' }}
         />
       )}
     </div>
