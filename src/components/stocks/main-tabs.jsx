@@ -29,7 +29,7 @@ const MainTabs = ({ gridLayout = 1, onGridChange }) => {
                     <button
                         key={tab}
                         onClick={() => setActiveTab(tab)}
-                        className={`px-2 py-2.5 border-r border-[#C8B9D8] rounded-tr-lg text-xs text-black font-medium whitespace-nowrap transition-colors ${
+                        className={`px-2 py-2 border-r border-[#C8B9D8] rounded-tr-lg text-xs text-black font-medium whitespace-nowrap transition-colors ${
                             activeTab === tab
                                 ? 'bg-white text-black'
                                 : 'text-gray-500 hover:text-gray-700 hover:border-gray-300'

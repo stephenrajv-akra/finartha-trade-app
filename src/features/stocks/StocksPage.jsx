@@ -10,7 +10,7 @@ import TimeAnalysis from '../../components/stocks/time-analysis';
 import TurboTradeLadder from '../../components/stocks/turbo-trade-ladder'; 
 
 const StocksPage = () => {
-  const [leftWidth, setLeftWidth] = useState(50); // percentage
+  const [leftWidth, setLeftWidth] = useState(52); // percentage
   const [gridLayout, setGridLayout] = useState(1);
 
   const handleLeftResize = (e, direction, ref) => {
@@ -44,9 +44,9 @@ const StocksPage = () => {
             bottomLeft: false,
             topLeft: false,
           }}
-          className="bg-gray-50 rounded-lg p-4 overflow-hidden border-2 border-[#EDE8F2]"
+          className="bg-gray-50 rounded-lg p-1 overflow-hidden border-2 border-[#EDE8F2]"
         >
-          <div className="flex flex-col h-full gap-4">
+          <div className="flex flex-col h-full gap-1">
             <Resizable
                 defaultSize={{
                     width: '100%',
@@ -71,7 +71,7 @@ const StocksPage = () => {
             <Resizable
                 defaultSize={{
                     width: '100%',
-                    height: '38.5%',
+                    height: '39.5%',
                 }}
                 minHeight="15%"
                 maxHeight="85%"
@@ -115,14 +115,14 @@ const StocksPage = () => {
             bottomLeft: false,
             topLeft: false,
           }}
-          className="bg-gray-50 rounded-lg p-4 overflow-hidden border-2 border-[#EDE8F2]"
+          className="bg-gray-50 rounded-lg p-1 overflow-hidden border-2 border-[#EDE8F2]"
         >
-          <div className="flex flex-col h-full gap-4">
+          <div className="flex flex-col h-full gap-1">
             {/* Right Top */}
             <Resizable
               defaultSize={{
                 width: '100%',
-                height: '30%', 
+                height: '32%',   
               }}
               minHeight="15%"
               maxHeight="85%"
@@ -142,7 +142,7 @@ const StocksPage = () => {
             </Resizable>
 
             {/* Right Bottom Split */}
-            <div className="flex-1 flex gap-4 overflow-hidden">
+            <div className="flex-1 flex gap-1 overflow-hidden">
               {/* Right Bottom Left */}
               <Resizable
                 defaultSize={{
@@ -162,7 +162,7 @@ const StocksPage = () => {
                   topLeft: false,
                 }}
               >
-                <div className="flex flex-col h-full gap-4">
+                <div className="flex flex-col h-full gap-1">
                   {/* Right Bottom Left Top */}
                   <Resizable
                     defaultSize={{
@@ -190,7 +190,7 @@ const StocksPage = () => {
                   <Resizable
                     defaultSize={{
                       width: '100%',
-                      height: '48%', 
+                      height: '49.5%', 
                     }}
                     minHeight="15%"
                     maxHeight="85%"
@@ -218,7 +218,7 @@ const StocksPage = () => {
                   height: '100%',
                 }}
                 minWidth="15%"
-                maxWidth="48%"
+                maxWidth="49.5%"
                 enable={{
                   top: false,
                   right: false,

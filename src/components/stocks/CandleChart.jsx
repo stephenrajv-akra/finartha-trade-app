@@ -122,9 +122,17 @@ export default function CandlestickChart({
       },
       watermark: {
         visible: false,
-      }, 
+      },
+      grid: {
+        horzLines: {
+          color: '#EEEEEE',
+        },
+        vertLines: {  
+          color: '#EEEEEE',
+        },
+      },
       width: containerRef.current.clientWidth,
-      height: 420,
+      height: 360, 
     };
 
     const chart = createChart(containerRef.current, chartOptions);
@@ -135,11 +143,11 @@ export default function CandlestickChart({
     switch (internalChartType) {
       case 'candles':
         series = chart.addSeries(CandlestickSeries, {
-          upColor: '#26a69a',
-          downColor: '#ef5350',
+          upColor: '#17B667',
+          downColor: '#EC4D5C',
           borderVisible: false,
-          wickUpColor: '#26a69a',
-          wickDownColor: '#ef5350',
+          wickUpColor: '#17B667',
+          wickDownColor: '#EC4D5C',
           wickVisible: true,
         });
         break;
@@ -227,7 +235,7 @@ export default function CandlestickChart({
   }, [data, internalChartType]);
 
   return (
-    <div className="w-full bg-white rounded-lg p-6">
+    <div className="w-full bg-white rounded-lg p-4">   
       {/* Header with Price Info */}
       {/* <div className="mb-6 flex justify-between items-start">
         <div className="flex-1">
@@ -281,7 +289,7 @@ export default function CandlestickChart({
       {loading ? (
         <div
           className="w-full flex items-center justify-center bg-gray-50 rounded border-2 border-dashed border-gray-300"
-          style={{ height: '420px' }}
+          style={{ height: '360px' }}
         >
           <div className="text-center">
             <div className="w-12 h-12 border-4 border-gray-300 border-t-gray-800 rounded-full animate-spin mx-auto mb-4"></div>
@@ -292,7 +300,7 @@ export default function CandlestickChart({
         <div
           ref={containerRef}
           className="w-full"
-          style={{ height: '420px' }}
+          style={{ height: '360px' }}
         />
       )}
     </div>
