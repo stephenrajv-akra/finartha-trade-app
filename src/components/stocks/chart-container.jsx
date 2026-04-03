@@ -104,7 +104,7 @@ const ChartContainer = ({ gridLayout = 1, onGridChange }) => {
                 <div className='flex items-center justify-start gap-1 px-2 lg:px-4 py-2 lg:py-3 border-t border-gray-200'>
                 <div className="flex items-center gap-1 flex-wrap">
                     <div className="flex items-center gap-1 flex-wrap">
-                        <span className="text-xs font-medium text-gray-600 whitespace-nowrap">Range:</span>
+                        <span className="text-xs font-medium text-[black] whitespace-nowrap">Range:</span>
                         <button className="text-xs px-1 py-0.5 lg:py-1 text-gray-600 hover:bg-gray-200 rounded whitespace-nowrap">1D</button>
                         <button className="text-xs px-1 py-0.5 lg:py-1 text-gray-600 hover:bg-gray-200 rounded whitespace-nowrap hidden sm:inline">5D</button>
                         <button className="text-xs px-1 py-0.5 lg:py-1 text-gray-600 hover:bg-gray-200 rounded whitespace-nowrap flex items-end gap-0.5">1M <ChevronUp strokeWidth={3} size={14} /></button>
@@ -113,7 +113,7 @@ const ChartContainer = ({ gridLayout = 1, onGridChange }) => {
 
                 <div className="flex items-center gap-1 lg:gap-2 flex-wrap text-xs relative">
                     <span className="font-medium text-gray-600 whitespace-nowrap hidden md:inline mx-2">|</span>
-                    <span className="font-medium text-gray-600 whitespace-nowrap hidden md:inline">Interval:</span>
+                    <span className="font-medium text-[black] whitespace-nowrap hidden md:inline">Interval:</span>
                     <button className="text-xs px-1 py-0.5 lg:py-1 text-gray-600 hover:bg-gray-200 rounded whitespace-nowrap">1m</button>
                     <button className="text-xs px-1 py-0.5 lg:py-1 text-gray-600 hover:bg-gray-200 rounded whitespace-nowrap hidden sm:inline">5m</button>
                     <button className="text-xs px-1 py-0.5 lg:py-1 text-gray-600 hover:bg-gray-200 rounded whitespace-nowrap hidden md:inline">15m</button>

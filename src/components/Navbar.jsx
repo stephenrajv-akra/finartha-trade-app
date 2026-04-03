@@ -5,11 +5,11 @@ export default function Navbar() {
   const location = useLocation();
 
   const mainLinks = [
-    { path: '/stocks', label: 'Stocks', icon: (color) => <ChartCandlestick color={color} /> },
-    { path: '/markets', label: 'Markets', icon: (color) => <Globe color={color} /> },
-    { path: '/portfolio', label: 'Trade', icon: (color) => <ArrowDownUp color={color} /> },
-    { path: '/porfolio', label: 'Portfolio', icon: (color) => <Percent color={color} /> },
-    { path: '/account', label: 'Account', icon: (color) => <CircleUser color={color} /> },
+    { path: '/stocks', label: 'Stocks', icon: (color) => <ChartCandlestick size={22} strokeWidth={1.3} color={color} /> },
+    { path: '/markets', label: 'Markets', icon: (color) => <Globe  size={22} strokeWidth={1.3} color={color} /> },
+    { path: '/portfolio', label: 'Trade', icon: (color) => <ArrowDownUp  size={22} strokeWidth={1.3} color={color} /> },
+    { path: '/porfolio', label: 'Portfolio', icon: (color) => <Percent  size={22} strokeWidth={1.3} color={color} /> },
+    { path: '/account', label: 'Account', icon: (color) => <CircleUser  size={22} strokeWidth={1.3} color={color} /> },
   ];
   
   const isActive = (path) => location.pathname === path;
@@ -32,7 +32,7 @@ export default function Navbar() {
             <span className="text-3xl mb-1 group-hover:scale-110 transition-transform">
               {icon(isActive(path) ? 'white' : '#38155C')}
             </span> 
-            <span className={`text-xs font-semibold text-center leading-tight ${
+            <span className={`text-xs font-medium text-center leading-tight tracking-wide ${
               isActive(path) ? 'text-white' : 'text-[#38155C]'
             }`}>
               {label}
@@ -52,8 +52,8 @@ export default function Navbar() {
           }`}
           title="Contact"
         >
-          <Headset color={isActive('/contact') ? 'white' : '#38155C'} />
-          <span className={`text-xs font-semibold ${
+          <Headset size={22} strokeWidth={1.3} color={isActive('/contact') ? 'white' : '#38155C'} />
+          <span className={`text-xs font-medium tracking-wide ${
             isActive('/contact') ? 'text-white' : 'text-[#38155C]'
           }`}>Contact</span>
         </Link>
@@ -68,9 +68,9 @@ export default function Navbar() {
           title="Settings"
         >
           <span className="text-3xl mb-1 group-hover:scale-110 transition-transform">
-            <Settings color={isActive('/settings') ? 'white' : '#38155C'} />
+            <Settings size={22} strokeWidth={1.3} color={isActive('/settings') ? 'white' : '#38155C'} />
           </span>
-          <span className={`text-xs font-semibold ${
+          <span className={`text-xs font-medium tracking-wide ${
             isActive('/settings') ? 'text-white' : 'text-[#38155C]'
           }`}>Settings</span>
         </Link>
