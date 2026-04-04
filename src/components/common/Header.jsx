@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ChevronDown, Search } from 'lucide-react';
-import logo from "../assets/logo.png";
+import logo from "../../assets/logo.png";
 
 export default function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);

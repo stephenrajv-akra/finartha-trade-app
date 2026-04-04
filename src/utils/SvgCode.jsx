@@ -60,7 +60,7 @@ export const CandlesIcon = ({ color = "#8968AB" }) => {
 export const EditIcon = ({ color = "#8968AB" }) => {
     return (
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M15.333 14.6672C15.7011 14.6672 15.9998 14.9652 16 15.3332C16 15.7014 15.7012 16.0002 15.333 16.0002H0.666992C0.298802 16.0002 0 15.7014 0 15.3332C0.000176037 14.9652 0.298911 14.6672 0.666992 14.6672H15.333ZM8.76074 2.88107C9.17715 3.66484 9.78927 4.6547 10.5674 5.43282C11.3455 6.21093 12.3354 6.82305 13.1191 7.23947L8.05371 12.3059C7.73932 12.6203 7.33077 12.824 6.89062 12.8869L3.83984 13.3225C3.16178 13.4193 2.58087 12.8384 2.67773 12.1604L3.11328 9.10958C3.17616 8.66944 3.37995 8.26088 3.69434 7.9465L8.76074 2.88107ZM11.0391 0.60177C11.8415 -0.200576 13.1429 -0.200604 13.9453 0.60177L15.3984 2.05489C16.2008 2.85733 16.2008 4.15869 15.3984 4.96114L14.1104 6.24923C14.0092 6.19916 13.9023 6.1452 13.792 6.08712C13.0494 5.69617 12.1684 5.14713 11.5107 4.48947C10.8531 3.8318 10.304 2.9508 9.91309 2.20821C9.85501 2.0979 9.80105 1.99098 9.75098 1.88986L11.0391 0.60177Z"
+            <path fillRule="evenodd" clipRule="evenodd" d="M15.333 14.6672C15.7011 14.6672 15.9998 14.9652 16 15.3332C16 15.7014 15.7012 16.0002 15.333 16.0002H0.666992C0.298802 16.0002 0 15.7014 0 15.3332C0.000176037 14.9652 0.298911 14.6672 0.666992 14.6672H15.333ZM8.76074 2.88107C9.17715 3.66484 9.78927 4.6547 10.5674 5.43282C11.3455 6.21093 12.3354 6.82305 13.1191 7.23947L8.05371 12.3059C7.73932 12.6203 7.33077 12.824 6.89062 12.8869L3.83984 13.3225C3.16178 13.4193 2.58087 12.8384 2.67773 12.1604L3.11328 9.10958C3.17616 8.66944 3.37995 8.26088 3.69434 7.9465L8.76074 2.88107ZM11.0391 0.60177C11.8415 -0.200576 13.1429 -0.200604 13.9453 0.60177L15.3984 2.05489C16.2008 2.85733 16.2008 4.15869 15.3984 4.96114L14.1104 6.24923C14.0092 6.19916 13.9023 6.1452 13.792 6.08712C13.0494 5.69617 12.1684 5.14713 11.5107 4.48947C10.8531 3.8318 10.304 2.9508 9.91309 2.20821C9.85501 2.0979 9.80105 1.99098 9.75098 1.88986L11.0391 0.60177Z"
                 fill={color} />
         </svg>
     )
@@ -78,11 +78,11 @@ export const GraphIcon = ({ color = "#8968AB" }) => {
 export const Delete = ({ color = "#8968AB" }) => {
     return (
         <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2 5.55566H16.2222" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M7.33594 9.11133V14.4447" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M10.8906 9.11133V14.4447" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M2.89062 5.55566L3.77951 16.2223C3.77951 16.6938 3.96681 17.146 4.30021 17.4794C4.63361 17.8128 5.0858 18.0001 5.55729 18.0001H12.6684C13.1399 18.0001 13.5921 17.8128 13.9255 17.4794C14.2589 17.146 14.4462 16.6938 14.4462 16.2223L15.3351 5.55566" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M6.44531 5.55556V2.88889C6.44531 2.65314 6.53896 2.42705 6.70566 2.26035C6.87236 2.09365 7.09845 2 7.3342 2H10.8898C11.1255 2 11.3516 2.09365 11.5183 2.26035C11.685 2.42705 11.7786 2.65314 11.7786 2.88889V5.55556" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M2 5.55566H16.2222" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M7.33594 9.11133V14.4447" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M10.8906 9.11133V14.4447" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M2.89062 5.55566L3.77951 16.2223C3.77951 16.6938 3.96681 17.146 4.30021 17.4794C4.63361 17.8128 5.0858 18.0001 5.55729 18.0001H12.6684C13.1399 18.0001 13.5921 17.8128 13.9255 17.4794C14.2589 17.146 14.4462 16.6938 14.4462 16.2223L15.3351 5.55566" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M6.44531 5.55556V2.88889C6.44531 2.65314 6.53896 2.42705 6.70566 2.26035C6.87236 2.09365 7.09845 2 7.3342 2H10.8898C11.1255 2 11.3516 2.09365 11.5183 2.26035C11.685 2.42705 11.7786 2.65314 11.7786 2.88889V5.55556" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
     )
 }
@@ -91,8 +91,8 @@ export const Delete = ({ color = "#8968AB" }) => {
 export const EyeIcon = ({ color = "#8968AB" }) => {
     return (
         <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9 10C9 10.5304 9.21071 11.0391 9.58579 11.4142C9.96086 11.7893 10.4696 12 11 12C11.5304 12 12.0391 11.7893 12.4142 11.4142C12.7893 11.0391 13 10.5304 13 10C13 9.46957 12.7893 8.96086 12.4142 8.58579C12.0391 8.21071 11.5304 8 11 8C10.4696 8 9.96086 8.21071 9.58579 8.58579C9.21071 8.96086 9 9.46957 9 10Z" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M20 10C17.6 14 14.6 16 11 16C7.4 16 4.4 14 2 10C4.4 6 7.4 4 11 4C14.6 4 17.6 6 20 10Z" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M9 10C9 10.5304 9.21071 11.0391 9.58579 11.4142C9.96086 11.7893 10.4696 12 11 12C11.5304 12 12.0391 11.7893 12.4142 11.4142C12.7893 11.0391 13 10.5304 13 10C13 9.46957 12.7893 8.96086 12.4142 8.58579C12.0391 8.21071 11.5304 8 11 8C10.4696 8 9.96086 8.21071 9.58579 8.58579C9.21071 8.96086 9 9.46957 9 10Z" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M20 10C17.6 14 14.6 16 11 16C7.4 16 4.4 14 2 10C4.4 6 7.4 4 11 4C14.6 4 17.6 6 20 10Z" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
     )
 }
@@ -100,9 +100,9 @@ export const EyeIcon = ({ color = "#8968AB" }) => {
 export const Magnet = ({ color = "#8968AB" }) => {
     return (
         <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M16.2227 9.11111L16.2227 16.2222C16.2227 16.6937 16.0354 17.1459 15.702 17.4793C15.3686 17.8127 14.9164 18 14.4449 18L13.556 18C13.0845 18 12.6323 17.8127 12.2989 17.4793C11.9655 17.1459 11.7782 16.6937 11.7782 16.2222L11.7782 9.11111C11.7782 8.40387 11.4973 7.72559 10.9972 7.22549C10.4971 6.7254 9.81879 6.44445 9.11155 6.44445C8.4043 6.44445 7.72603 6.7254 7.22593 7.22549C6.72583 7.72559 6.44488 8.40387 6.44488 9.11111L6.44488 16.2222C6.44488 16.6937 6.25758 17.1459 5.92418 17.4793C5.59078 17.8127 5.1386 18 4.6671 18L3.77821 18C3.30672 18 2.85453 17.8127 2.52113 17.4793C2.18774 17.1459 2.00043 16.6937 2.00044 16.2222L2.00044 9.11111C2.00044 7.22513 2.74964 5.41639 4.08323 4.0828C5.41682 2.7492 7.22556 2 9.11155 2C10.9975 2 12.8063 2.74921 14.1399 4.0828C15.4735 5.41639 16.2227 7.22513 16.2227 9.11111Z" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M16.2227 13.5557L11.7782 13.5557" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M6.44141 13.5557L2.88585 13.5557" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M16.2227 9.11111L16.2227 16.2222C16.2227 16.6937 16.0354 17.1459 15.702 17.4793C15.3686 17.8127 14.9164 18 14.4449 18L13.556 18C13.0845 18 12.6323 17.8127 12.2989 17.4793C11.9655 17.1459 11.7782 16.6937 11.7782 16.2222L11.7782 9.11111C11.7782 8.40387 11.4973 7.72559 10.9972 7.22549C10.4971 6.7254 9.81879 6.44445 9.11155 6.44445C8.4043 6.44445 7.72603 6.7254 7.22593 7.22549C6.72583 7.72559 6.44488 8.40387 6.44488 9.11111L6.44488 16.2222C6.44488 16.6937 6.25758 17.1459 5.92418 17.4793C5.59078 17.8127 5.1386 18 4.6671 18L3.77821 18C3.30672 18 2.85453 17.8127 2.52113 17.4793C2.18774 17.1459 2.00043 16.6937 2.00044 16.2222L2.00044 9.11111C2.00044 7.22513 2.74964 5.41639 4.08323 4.0828C5.41682 2.7492 7.22556 2 9.11155 2C10.9975 2 12.8063 2.74921 14.1399 4.0828C15.4735 5.41639 16.2227 7.22513 16.2227 9.11111Z" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M16.2227 13.5557L11.7782 13.5557" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M6.44141 13.5557L2.88585 13.5557" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
     )
 }
@@ -110,9 +110,9 @@ export const Magnet = ({ color = "#8968AB" }) => {
 export const PencilDraw = ({ color = "#8968AB" }) => {
     return (
         <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M19 16V4C19 2.879 18.121 2 17 2C15.879 2 15 2.879 15 4V16L17 18L19 16Z" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M15 6H19" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M17 18H4C3.46957 18 2.96086 17.7893 2.58579 17.4142C2.21071 17.0391 2 16.5304 2 16C2 15.4696 2.21071 14.9609 2.58579 14.5858C2.96086 14.2107 3.46957 14 4 14H8C8.53043 14 9.03914 13.7893 9.41421 13.4142C9.78929 13.0391 10 12.5304 10 12C10 11.4696 9.78929 10.9609 9.41421 10.5858C9.03914 10.2107 8.53043 10 8 10H5" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M19 16V4C19 2.879 18.121 2 17 2C15.879 2 15 2.879 15 4V16L17 18L19 16Z" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M15 6H19" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M17 18H4C3.46957 18 2.96086 17.7893 2.58579 17.4142C2.21071 17.0391 2 16.5304 2 16C2 15.4696 2.21071 14.9609 2.58579 14.5858C2.96086 14.2107 3.46957 14 4 14H8C8.53043 14 9.03914 13.7893 9.41421 13.4142C9.78929 13.0391 10 12.5304 10 12C10 11.4696 9.78929 10.9609 9.41421 10.5858C9.03914 10.2107 8.53043 10 8 10H5" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
     )
 }
@@ -120,12 +120,12 @@ export const PencilDraw = ({ color = "#8968AB" }) => {
 export const FilterArrow = ({ color = "#8968AB" }) => {
     return (
         <svg width="36" height="22" viewBox="0 0 36 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M14.5195 7.979L2 7.979" stroke={color} stroke-width="1.5" stroke-linecap="round" />
-            <path d="M17.5195 4L2 4" stroke={color} stroke-width="1.5" stroke-linecap="round" />
-            <circle cx="1.5" cy="1.5" r="1.5" transform="matrix(4.37114e-08 1 1 -4.37114e-08 14.5195 6.479)" stroke={color} stroke-width="1.5" stroke-linecap="round" />
-            <path d="M5 15.9077L17.5195 15.9077" stroke={color} stroke-width="1.5" stroke-linecap="round" />
-            <path d="M2 11.9287L17.5195 11.9287" stroke={color} stroke-width="1.5" stroke-linecap="round" />
-            <circle cx="3.5" cy="15.9077" r="1.5" transform="rotate(90 3.5 15.9077)" stroke={color} stroke-width="1.5" stroke-linecap="round" />
+            <path d="M14.5195 7.979L2 7.979" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+            <path d="M17.5195 4L2 4" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+            <circle cx="1.5" cy="1.5" r="1.5" transform="matrix(4.37114e-08 1 1 -4.37114e-08 14.5195 6.479)" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+            <path d="M5 15.9077L17.5195 15.9077" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+            <path d="M2 11.9287L17.5195 11.9287" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+            <circle cx="3.5" cy="15.9077" r="1.5" transform="rotate(90 3.5 15.9077)" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
             <path d="M29.5195 14.7039L26.0554 8.70386L32.9836 8.70386L29.5195 14.7039Z" fill={color} />
         </svg>
     )
@@ -134,12 +134,12 @@ export const FilterArrow = ({ color = "#8968AB" }) => {
 export const SettingArrow = ({ color = "#8968AB" }) => {
     return (
         <svg width="37" height="21" viewBox="0 0 37 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6.41406 12.3042L12.0071 6.71117" stroke={color} stroke-width="1.5" stroke-linecap="round" />
-            <circle cx="4.94531" cy="13.7738" r="2.08032" transform="rotate(45 4.94531 13.7738)" stroke={color} stroke-width="1.5" stroke-linecap="round" />
-            <circle cx="13.7734" cy="4.94226" r="2.08032" transform="rotate(45 13.7734 4.94226)" stroke={color} stroke-width="1.5" stroke-linecap="round" />
-            <path d="M15.1406 12.3074L16.7676 10.6804" stroke={color} stroke-width="1.5" stroke-linecap="round" />
-            <path d="M10.2773 17.4514L12.2944 15.4343" stroke={color} stroke-width="1.5" stroke-linecap="round" />
-            <circle cx="13.6758" cy="13.7802" r="2.08032" transform="rotate(45 13.6758 13.7802)" stroke={color} stroke-width="1.5" stroke-linecap="round" />
+            <path d="M6.41406 12.3042L12.0071 6.71117" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+            <circle cx="4.94531" cy="13.7738" r="2.08032" transform="rotate(45 4.94531 13.7738)" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+            <circle cx="13.7734" cy="4.94226" r="2.08032" transform="rotate(45 13.7734 4.94226)" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+            <path d="M15.1406 12.3074L16.7676 10.6804" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+            <path d="M10.2773 17.4514L12.2944 15.4343" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+            <circle cx="13.6758" cy="13.7802" r="2.08032" transform="rotate(45 13.6758 13.7802)" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
             <path d="M30.2461 14.3928L26.782 8.39282L33.7102 8.39282L30.2461 14.3928Z" fill={color} />
         </svg>
     )
@@ -148,9 +148,9 @@ export const SettingArrow = ({ color = "#8968AB" }) => {
 export const SettingArr = ({ color = "#8968AB" }) => {
     return (
         <svg width="35" height="22" viewBox="0 0 35 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6.23828 13.5354L11.6136 8.16005" stroke={color} stroke-width="1.5" stroke-linecap="round" />
-            <circle cx="4.82812" cy="14.9479" r="1.99936" transform="rotate(45 4.82812 14.9479)" stroke={color} stroke-width="1.5" stroke-linecap="round" />
-            <circle cx="13.3125" cy="6.46009" r="1.99936" transform="rotate(45 13.3125 6.46009)" stroke={color} stroke-width="1.5" stroke-linecap="round" />
+            <path d="M6.23828 13.5354L11.6136 8.16005" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+            <circle cx="4.82812" cy="14.9479" r="1.99936" transform="rotate(45 4.82812 14.9479)" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+            <circle cx="13.3125" cy="6.46009" r="1.99936" transform="rotate(45 13.3125 6.46009)" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
             <path d="M28.1445 14.7039L24.6804 8.70386L31.6086 8.70386L28.1445 14.7039Z" fill={color} />
         </svg>
     )
@@ -159,12 +159,12 @@ export const SettingArr = ({ color = "#8968AB" }) => {
 export const TextIcon = ({ color = "#8968AB" }) => {
     return (
         <svg width="36" height="22" viewBox="0 0 36 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2 6.38202V4.65332H13.2369V6.38202" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M8.05078 4.65332V16.7542" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M9.78172 16.7542H6.32422" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M11.9297 10.6843V9.67261H17.9999V10.6843" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M14.9688 9.67261V16.7543" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M14.1016 16.7542H15.8303" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M2 6.38202V4.65332H13.2369V6.38202" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M8.05078 4.65332V16.7542" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M9.78172 16.7542H6.32422" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M11.9297 10.6843V9.67261H17.9999V10.6843" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M14.9688 9.67261V16.7543" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M14.1016 16.7542H15.8303" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M30 14.7039L26.5359 8.70386L33.4641 8.70386L30 14.7039Z" fill={color} />
         </svg>
     )
@@ -173,12 +173,12 @@ export const TextIcon = ({ color = "#8968AB" }) => {
 export const FilterArr = ({ color = "#8968AB" }) => {
     return (
         <svg width="36" height="22" viewBox="0 0 36 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M14.5195 7.979L2 7.979" stroke={color} stroke-width="1.5" stroke-linecap="round" />
-            <path d="M17.5195 4L2 4" stroke={color} stroke-width="1.5" stroke-linecap="round" />
-            <circle cx="1.5" cy="1.5" r="1.5" transform="matrix(4.37114e-08 1 1 -4.37114e-08 14.5195 6.479)" stroke={color} stroke-width="1.5" stroke-linecap="round" />
-            <path d="M5 15.9077L17.5195 15.9077" stroke={color} stroke-width="1.5" stroke-linecap="round" />
-            <path d="M2 11.9287L17.5195 11.9287" stroke={color} stroke-width="1.5" stroke-linecap="round" />
-            <circle cx="3.5" cy="15.9077" r="1.5" transform="rotate(90 3.5 15.9077)" stroke={color} stroke-width="1.5" stroke-linecap="round" />
+            <path d="M14.5195 7.979L2 7.979" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+            <path d="M17.5195 4L2 4" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+            <circle cx="1.5" cy="1.5" r="1.5" transform="matrix(4.37114e-08 1 1 -4.37114e-08 14.5195 6.479)" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+            <path d="M5 15.9077L17.5195 15.9077" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+            <path d="M2 11.9287L17.5195 11.9287" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+            <circle cx="3.5" cy="15.9077" r="1.5" transform="rotate(90 3.5 15.9077)" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
             <path d="M29.5195 14.7039L26.0554 8.70386L32.9836 8.70386L29.5195 14.7039Z" fill={color} />
         </svg>
     )
@@ -187,12 +187,12 @@ export const FilterArr = ({ color = "#8968AB" }) => {
 export const DoubleStickRight = ({ color = "#8968AB" }) => {
     return (
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 2L6 18" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <line x1="6.73047" y1="5.27246" x2="9.23162" y2="5.27246" stroke={color} stroke-width="1.5" stroke-linecap="round" />
-            <line x1="2.75" y1="13.229" x2="5.25115" y2="13.229" stroke={color} stroke-width="1.5" stroke-linecap="round" />
-            <path d="M13.9805 2L13.9805 18" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <line x1="14.6797" y1="5.27246" x2="17.1808" y2="5.27246" stroke={color} stroke-width="1.5" stroke-linecap="round" />
-            <line x1="10.7305" y1="13.229" x2="13.2316" y2="13.229" stroke={color} stroke-width="1.5" stroke-linecap="round" />
+            <path d="M6 2L6 18" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <line x1="6.73047" y1="5.27246" x2="9.23162" y2="5.27246" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+            <line x1="2.75" y1="13.229" x2="5.25115" y2="13.229" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+            <path d="M13.9805 2L13.9805 18" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <line x1="14.6797" y1="5.27246" x2="17.1808" y2="5.27246" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+            <line x1="10.7305" y1="13.229" x2="13.2316" y2="13.229" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
         </svg>
     )
 }
@@ -200,12 +200,12 @@ export const DoubleStickRight = ({ color = "#8968AB" }) => {
 export const DoubleStickLeft = ({ color = "#8968AB" }) => {
     return (
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13.9308 2L13.9308 18" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <line x1="0.75" y1="-0.75" x2="3.25115" y2="-0.75" transform="matrix(-1 0 0 1 13.9504 6.02246)" stroke={color} stroke-width="1.5" stroke-linecap="round" />
-            <line x1="0.75" y1="-0.75" x2="3.25115" y2="-0.75" transform="matrix(-1 0 0 1 17.9308 13.979)" stroke={color} stroke-width="1.5" stroke-linecap="round" />
-            <path d="M5.95037 2L5.95036 18" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <line x1="0.75" y1="-0.75" x2="3.25115" y2="-0.75" transform="matrix(-1 0 0 1 6.00115 6.02246)" stroke={color} stroke-width="1.5" stroke-linecap="round" />
-            <line x1="0.75" y1="-0.75" x2="3.25115" y2="-0.75" transform="matrix(-1 0 0 1 9.95037 13.979)" stroke={color} stroke-width="1.5" stroke-linecap="round" />
+            <path d="M13.9308 2L13.9308 18" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <line x1="0.75" y1="-0.75" x2="3.25115" y2="-0.75" transform="matrix(-1 0 0 1 13.9504 6.02246)" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+            <line x1="0.75" y1="-0.75" x2="3.25115" y2="-0.75" transform="matrix(-1 0 0 1 17.9308 13.979)" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+            <path d="M5.95037 2L5.95036 18" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <line x1="0.75" y1="-0.75" x2="3.25115" y2="-0.75" transform="matrix(-1 0 0 1 6.00115 6.02246)" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+            <line x1="0.75" y1="-0.75" x2="3.25115" y2="-0.75" transform="matrix(-1 0 0 1 9.95037 13.979)" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
         </svg>
 
     )
@@ -214,14 +214,14 @@ export const DoubleStickLeft = ({ color = "#8968AB" }) => {
 export const CandleH = ({ color = "#8968AB" }) => {
     return (
         <svg width="18" height="20" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13.375 2L13.375 4.28564" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M14.5393 4.28589H12.2006C11.5548 4.28589 11.0312 4.79755 11.0312 5.42871V10C11.0312 10.6312 11.5548 11.1428 12.2006 11.1428H14.5393C15.1851 11.1428 15.7086 10.6312 15.7086 10V5.42871C15.7086 4.79755 15.1851 4.28589 14.5393 4.28589Z" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M11.0312 13.4478V18.0004" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M15.7148 13.4478V18.0004" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M15.7148 15.7236L11.0327 15.7044" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M4.33203 4.28589V6.57153" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M4.33203 15.7144V18" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M5.50802 6.57153H3.16934C2.52353 6.57153 2 7.08319 2 7.71435V14.5713C2 15.2024 2.52353 15.7141 3.16934 15.7141H5.50802C6.15383 15.7141 6.67736 15.2024 6.67736 14.5713V7.71435C6.67736 7.08319 6.15383 6.57153 5.50802 6.57153Z" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M13.375 2L13.375 4.28564" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M14.5393 4.28589H12.2006C11.5548 4.28589 11.0312 4.79755 11.0312 5.42871V10C11.0312 10.6312 11.5548 11.1428 12.2006 11.1428H14.5393C15.1851 11.1428 15.7086 10.6312 15.7086 10V5.42871C15.7086 4.79755 15.1851 4.28589 14.5393 4.28589Z" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M11.0312 13.4478V18.0004" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M15.7148 13.4478V18.0004" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M15.7148 15.7236L11.0327 15.7044" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M4.33203 4.28589V6.57153" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M4.33203 15.7144V18" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M5.50802 6.57153H3.16934C2.52353 6.57153 2 7.08319 2 7.71435V14.5713C2 15.2024 2.52353 15.7141 3.16934 15.7141H5.50802C6.15383 15.7141 6.67736 15.2024 6.67736 14.5713V7.71435C6.67736 7.08319 6.15383 6.57153 5.50802 6.57153Z" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
     )
 }
@@ -229,12 +229,12 @@ export const CandleH = ({ color = "#8968AB" }) => {
 export const CandlesFilled = ({ color = "#8968AB" }) => {
     return (
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15.2734 4.66553L15.2734 7.33244" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M16.6288 7.33374H13.8997C13.1461 7.33374 12.5352 7.93075 12.5352 8.6672V14.001C12.5352 14.7375 13.1461 15.3345 13.8997 15.3345H16.6288C17.3824 15.3345 17.9933 14.7375 17.9933 14.001V8.6672C17.9933 7.93075 17.3824 7.33374 16.6288 7.33374Z" fill={color} stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M15.2734 15.3342V18.0011" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M4.73438 2V4.66691" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M4.73438 15.3342V18.0011" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M6.09363 4.66553H3.36454C2.61093 4.66553 2 5.26254 2 5.99898V13.9997C2 14.7362 2.61093 15.3332 3.36454 15.3332H6.09363C6.84725 15.3332 7.45817 14.7362 7.45817 13.9997V5.99898C7.45817 5.26254 6.84725 4.66553 6.09363 4.66553Z" fill={color} stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M15.2734 4.66553L15.2734 7.33244" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M16.6288 7.33374H13.8997C13.1461 7.33374 12.5352 7.93075 12.5352 8.6672V14.001C12.5352 14.7375 13.1461 15.3345 13.8997 15.3345H16.6288C17.3824 15.3345 17.9933 14.7375 17.9933 14.001V8.6672C17.9933 7.93075 17.3824 7.33374 16.6288 7.33374Z" fill={color} stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M15.2734 15.3342V18.0011" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M4.73438 2V4.66691" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M4.73438 15.3342V18.0011" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M6.09363 4.66553H3.36454C2.61093 4.66553 2 5.26254 2 5.99898V13.9997C2 14.7362 2.61093 15.3332 3.36454 15.3332H6.09363C6.84725 15.3332 7.45817 14.7362 7.45817 13.9997V5.99898C7.45817 5.26254 6.84725 4.66553 6.09363 4.66553Z" fill={color} stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
     )
 }
@@ -242,23 +242,23 @@ export const CandlesFilled = ({ color = "#8968AB" }) => {
 export const CandlesOutline = ({ color = "#8968AB" }) => {
     return (
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15.2773 4.66675L15.2773 7.33342" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M16.634 7.33325H13.904C13.1502 7.33325 12.5391 7.93021 12.5391 8.66659V13.9999C12.5391 14.7363 13.1502 15.3333 13.904 15.3333H16.634C17.3879 15.3333 17.999 14.7363 17.999 13.9999V8.66659C17.999 7.93021 17.3879 7.33325 16.634 7.33325Z" fill={color} stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M15.2773 15.333V17.9997" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M4.73047 2V4.66668" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M4.73047 15.333V17.9997" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M6.09493 4.66675H3.36498C2.61112 4.66675 2 5.2637 2 6.00009V14.0001C2 14.7365 2.61112 15.3335 3.36498 15.3335H6.09493C6.84879 15.3335 7.45991 14.7365 7.45991 14.0001V6.00009C7.45991 5.2637 6.84879 4.66675 6.09493 4.66675Z" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M15.2773 4.66675L15.2773 7.33342" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M16.634 7.33325H13.904C13.1502 7.33325 12.5391 7.93021 12.5391 8.66659V13.9999C12.5391 14.7363 13.1502 15.3333 13.904 15.3333H16.634C17.3879 15.3333 17.999 14.7363 17.999 13.9999V8.66659C17.999 7.93021 17.3879 7.33325 16.634 7.33325Z" fill={color} stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M15.2773 15.333V17.9997" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M4.73047 2V4.66668" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M4.73047 15.333V17.9997" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M6.09493 4.66675H3.36498C2.61112 4.66675 2 5.2637 2 6.00009V14.0001C2 14.7365 2.61112 15.3335 3.36498 15.3335H6.09493C6.84879 15.3335 7.45991 14.7365 7.45991 14.0001V6.00009C7.45991 5.2637 6.84879 4.66675 6.09493 4.66675Z" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
     )
 }
 
 
 export const NIcon = ({ color = "#8968AB" }) => {
-    return (
+    return ( 
         <svg width="26" height="20" viewBox="0 0 26 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3.11719 18L8.49814 4.35833C8.83109 3.51425 10.0257 3.51425 10.3586 4.35833L14.8094 15.6417C15.1423 16.4858 16.3369 16.4858 16.6699 15.6417L22.0508 2" stroke={color} stroke-width="1.5" stroke-linecap="round" />
+            <path d="M3.11719 18L8.49814 4.35833C8.83109 3.51425 10.0257 3.51425 10.3586 4.35833L14.8094 15.6417C15.1423 16.4858 16.3369 16.4858 16.6699 15.6417L22.0508 2" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
             <rect x="2" y="8.35181" width="21.3333" height="2.56719" rx="1.23486" fill="#EDE8F2" />
-            <path d="M3.06641 9.63623H22.2558" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-dasharray="1 2" />
+            <path d="M3.06641 9.63623H22.2558" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeDasharray="1 2" />
         </svg>
     )
 }
@@ -266,8 +266,8 @@ export const NIcon = ({ color = "#8968AB" }) => {
 export const WaveOutlineIcon = ({ color = "#8968AB" }) => {
     return (
         <svg width="23" height="20" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2 17.375H20.9231" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M2 12.6442L6.73077 5.54808L11.4615 7.91346L16.1923 2L20.9231 6.73077" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M2 17.375H20.9231" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M2 12.6442L6.73077 5.54808L11.4615 7.91346L16.1923 2L20.9231 6.73077" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
     )
 }
@@ -275,7 +275,7 @@ export const WaveOutlineIcon = ({ color = "#8968AB" }) => {
 export const WaveFilledIcon = ({ color = "#8968AB" }) => {
     return (
         <svg width="23" height="20" viewBox="0 0 23 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2 12.4445L6.17769 6.17795L10.3554 8.2668L15.699 2L19.8767 6.1777" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M2 12.4445L6.17769 6.17795L10.3554 8.2668L15.699 2L19.8767 6.1777" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M14.7628 6.56928C14.9342 6.3554 15.1828 6.21747 15.455 6.18523C15.7272 6.15299 16.0011 6.22903 16.2177 6.39695L16.3159 6.48363L20.4936 10.6613C20.6559 10.8238 20.7601 11.0352 20.7902 11.2629L20.7996 11.3997V16.6219C20.7996 16.8777 20.7056 17.1246 20.5356 17.3157C20.3657 17.5069 20.1314 17.629 19.8774 17.659L19.7552 17.6663H3.02144L2.90656 17.6569L2.79167 17.636L2.67992 17.6005L2.57025 17.5524L2.46581 17.4908L2.36764 17.4177L2.30497 17.3603L2.22977 17.2746L2.16293 17.1817L2.10653 17.0814L2.08982 17.0449L2.04804 16.9373L2.01984 16.8266L2.00418 16.7138L2 16.5989L2.0094 16.484L2.02924 16.3743C2.03969 16.3326 2.05222 16.2939 2.0658 16.2574L2.11384 16.1477L2.17546 16.0433L6.35315 9.7767C6.48173 9.58311 6.67122 9.43794 6.8916 9.36416C7.11198 9.29038 7.35068 9.29222 7.5699 9.36938L7.68896 9.4216L11.1115 11.1324L14.7618 6.56928H14.7628Z" fill={color} />
         </svg>
     )
@@ -285,7 +285,7 @@ export const WaveFilledIcon = ({ color = "#8968AB" }) => {
 export const GridOne = ({ color = "#8968AB" }) => {
     return (
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="2.75" y="2.75" width="14.5" height="14.5" rx="3.25" stroke={color} stroke-width="1.5" />
+            <rect x="2.75" y="2.75" width="14.5" height="14.5" rx="3.25" stroke={color} strokeWidth="1.5" />
         </svg>
     )
 }
@@ -293,8 +293,8 @@ export const GridOne = ({ color = "#8968AB" }) => {
 export const GridTwo = ({ color = "#8968AB" }) => {
     return (
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="2.75" y="2.75" width="5.5" height="14.5" rx="1.25" stroke={color} stroke-width="1.5" />
-            <rect x="11.75" y="2.75" width="5.5" height="14.5" rx="1.25" stroke={color} stroke-width="1.5" />
+            <rect x="2.75" y="2.75" width="5.5" height="14.5" rx="1.25" stroke={color} strokeWidth="1.5" />
+            <rect x="11.75" y="2.75" width="5.5" height="14.5" rx="1.25" stroke={color} strokeWidth="1.5" />
         </svg>
     )
 }
@@ -302,9 +302,9 @@ export const GridTwo = ({ color = "#8968AB" }) => {
 export const GridThree = ({ color = "#8968AB" }) => {
     return (
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="17.25" y="2.75" width="5.5" height="14.5" rx="1.25" transform="rotate(90 17.25 2.75)" stroke={color} stroke-width="1.5" />
-            <rect x="17.25" y="11.75" width="5.5" height="5.5" rx="1.25" transform="rotate(90 17.25 11.75)" stroke={color} stroke-width="1.5" />
-            <rect x="8.25" y="11.75" width="5.5" height="5.5" rx="1.25" transform="rotate(90 8.25 11.75)" stroke={color} stroke-width="1.5" />
+            <rect x="17.25" y="2.75" width="5.5" height="14.5" rx="1.25" transform="rotate(90 17.25 2.75)" stroke={color} strokeWidth="1.5" />
+            <rect x="17.25" y="11.75" width="5.5" height="5.5" rx="1.25" transform="rotate(90 17.25 11.75)" stroke={color} strokeWidth="1.5" />
+            <rect x="8.25" y="11.75" width="5.5" height="5.5" rx="1.25" transform="rotate(90 8.25 11.75)" stroke={color} strokeWidth="1.5" />
         </svg>
     )
 }
@@ -312,10 +312,10 @@ export const GridThree = ({ color = "#8968AB" }) => {
 export const GridFour = ({ color = "#8968AB" }) => {
     return (
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="17.25" y="2.75" width="5.5" height="5.5" rx="1.25" transform="rotate(90 17.25 2.75)" stroke={color} stroke-width="1.5" />
-            <rect x="8.25" y="2.75" width="5.5" height="5.5" rx="1.25" transform="rotate(90 8.25 2.75)" stroke={color} stroke-width="1.5" />
-            <rect x="17.25" y="11.75" width="5.5" height="5.5" rx="1.25" transform="rotate(90 17.25 11.75)" stroke={color} stroke-width="1.5" />
-            <rect x="8.25" y="11.75" width="5.5" height="5.5" rx="1.25" transform="rotate(90 8.25 11.75)" stroke={color} stroke-width="1.5" />
+            <rect x="17.25" y="2.75" width="5.5" height="5.5" rx="1.25" transform="rotate(90 17.25 2.75)" stroke={color} strokeWidth="1.5" />
+            <rect x="8.25" y="2.75" width="5.5" height="5.5" rx="1.25" transform="rotate(90 8.25 2.75)" stroke={color} strokeWidth="1.5" />
+            <rect x="17.25" y="11.75" width="5.5" height="5.5" rx="1.25" transform="rotate(90 17.25 11.75)" stroke={color} strokeWidth="1.5" />
+            <rect x="8.25" y="11.75" width="5.5" height="5.5" rx="1.25" transform="rotate(90 8.25 11.75)" stroke={color} strokeWidth="1.5" />
         </svg>
     )
 }
@@ -323,12 +323,12 @@ export const GridFour = ({ color = "#8968AB" }) => {
 export const GridH = ({ color = "#8968AB" }) => {
     return (
         <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="2.75" y="2.75" width="5.5" height="14.5" rx="1.25" stroke={color} stroke-width="1.5" />
-            <rect x="11.75" y="2.75" width="5.5" height="14.5" rx="1.25" stroke={color} stroke-width="1.5" />
+            <rect x="2.75" y="2.75" width="5.5" height="14.5" rx="1.25" stroke={color} strokeWidth="1.5" />
+            <rect x="11.75" y="2.75" width="5.5" height="14.5" rx="1.25" stroke={color} strokeWidth="1.5" />
             <rect x="6.69141" y="8.4126" width="12.4258" height="9.85498" rx="2" fill="#EDE8F2" />
-            <path d="M15.5352 13.3403H10.4493" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M10.9954 16.4762C9.26342 16.4762 7.85938 15.0721 7.85938 13.3401C7.85938 11.6081 9.26342 10.2041 10.9954 10.2041" stroke={color} stroke-width="1.5" stroke-linecap="round" />
-            <path d="M14.8171 16.4764C16.5491 16.4764 17.9531 15.0724 17.9531 13.3404C17.9531 11.6084 16.5491 10.2043 14.8171 10.2043" stroke={color} stroke-width="1.5" stroke-linecap="round" />
+            <path d="M15.5352 13.3403H10.4493" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M10.9954 16.4762C9.26342 16.4762 7.85938 15.0721 7.85938 13.3401C7.85938 11.6081 9.26342 10.2041 10.9954 10.2041" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+            <path d="M14.8171 16.4764C16.5491 16.4764 17.9531 15.0724 17.9531 13.3404C17.9531 11.6084 16.5491 10.2043 14.8171 10.2043" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
         </svg>
     )
 }
@@ -337,11 +337,11 @@ export const GridH = ({ color = "#8968AB" }) => {
 export const DeleteIcon = ({ color = "#8968AB" }) => {
     return (
         <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2 5.55566H16.2222" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M7.33594 9.11133V14.4447" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M10.8906 9.11133V14.4447" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M2.89062 5.55566L3.77951 16.2223C3.77951 16.6938 3.96681 17.146 4.30021 17.4794C4.63361 17.8128 5.0858 18.0001 5.55729 18.0001H12.6684C13.1399 18.0001 13.5921 17.8128 13.9255 17.4794C14.2589 17.146 14.4462 16.6938 14.4462 16.2223L15.3351 5.55566" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M6.44531 5.55556V2.88889C6.44531 2.65314 6.53896 2.42705 6.70566 2.26035C6.87236 2.09365 7.09845 2 7.3342 2H10.8898C11.1255 2 11.3516 2.09365 11.5183 2.26035C11.685 2.42705 11.7786 2.65314 11.7786 2.88889V5.55556" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M2 5.55566H16.2222" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M7.33594 9.11133V14.4447" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M10.8906 9.11133V14.4447" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M2.89062 5.55566L3.77951 16.2223C3.77951 16.6938 3.96681 17.146 4.30021 17.4794C4.63361 17.8128 5.0858 18.0001 5.55729 18.0001H12.6684C13.1399 18.0001 13.5921 17.8128 13.9255 17.4794C14.2589 17.146 14.4462 16.6938 14.4462 16.2223L15.3351 5.55566" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M6.44531 5.55556V2.88889C6.44531 2.65314 6.53896 2.42705 6.70566 2.26035C6.87236 2.09365 7.09845 2 7.3342 2H10.8898C11.1255 2 11.3516 2.09365 11.5183 2.26035C11.685 2.42705 11.7786 2.65314 11.7786 2.88889V5.55556" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
     )
 }
@@ -350,8 +350,8 @@ export const DeleteIcon = ({ color = "#8968AB" }) => {
 export const UploadIcon = ({color = "#8968AB" }) => {
     return (
         <svg width="24" height="20" viewBox="0 0 24 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15.332 13.5584L11.7788 10.0052M11.7788 10.0052L8.2255 13.5584M11.7788 10.0052L11.7788 18" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M19.6677 15.415C20.44 14.872 21.0191 14.0969 21.3211 13.2024C21.6231 12.3078 21.6321 11.3404 21.347 10.4403C21.0618 9.54028 20.4973 8.75453 19.7353 8.19709C18.9733 7.63964 18.0535 7.33951 17.1093 7.34025H15.9901C15.7229 6.29903 15.223 5.33199 14.528 4.51192C13.833 3.69186 12.961 3.04014 11.9777 2.60584C10.9944 2.17153 9.92539 1.96596 8.85113 2.00459C7.77688 2.04322 6.72538 2.32506 5.77581 2.82887C4.82623 3.33268 4.00332 4.04535 3.36903 4.91322C2.73474 5.78109 2.3056 6.78154 2.11391 7.83926C1.92222 8.89698 1.97297 9.98441 2.26236 11.0197C2.55175 12.0549 3.07222 13.0111 3.7846 13.8161" stroke={color} stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M15.332 13.5584L11.7788 10.0052M11.7788 10.0052L8.2255 13.5584M11.7788 10.0052L11.7788 18" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M19.6677 15.415C20.44 14.872 21.0191 14.0969 21.3211 13.2024C21.6231 12.3078 21.6321 11.3404 21.347 10.4403C21.0618 9.54028 20.4973 8.75453 19.7353 8.19709C18.9733 7.63964 18.0535 7.33951 17.1093 7.34025H15.9901C15.7229 6.29903 15.223 5.33199 14.528 4.51192C13.833 3.69186 12.961 3.04014 11.9777 2.60584C10.9944 2.17153 9.92539 1.96596 8.85113 2.00459C7.77688 2.04322 6.72538 2.32506 5.77581 2.82887C4.82623 3.33268 4.00332 4.04535 3.36903 4.91322C2.73474 5.78109 2.3056 6.78154 2.11391 7.83926C1.92222 8.89698 1.97297 9.98441 2.26236 11.0197C2.55175 12.0549 3.07222 13.0111 3.7846 13.8161" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
         </svg> 
     )
 }

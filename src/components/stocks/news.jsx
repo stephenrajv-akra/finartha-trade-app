@@ -2,7 +2,7 @@ import { useState } from 'react';
 import TabsComponent from './TabsComponent';
 import { newsData } from '../../utils/placeholder-data';
 import { SquarePlus, Search, Trash2 , CircleX} from 'lucide-react';
-import Modal from '../Modal';
+import Modal from '../common/Modal';
 
 const News = () => {
     const [activeTab, setActiveTab] = useState('Symbol News');

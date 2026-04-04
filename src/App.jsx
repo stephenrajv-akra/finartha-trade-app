@@ -3,6 +3,7 @@ import MainLayout from './layouts/MainLayout';
 import Home from './pages/Home';
 import Stocks from './pages/Stocks';
 import Markets from './pages/Markets';
+import Trade from "./pages/Trade"; 
 import Portfolio from './pages/Portfolio';
 import Account from './pages/Account';
 import Contact from './pages/Contact';
@@ -17,6 +18,7 @@ function App() {
           <Route path="/stocks" element={<Stocks />} />
           <Route path="/markets" element={<Markets />} />
           <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/trade" element={<Trade />} />
           <Route path="/account" element={<Account />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/settings" element={<Settings />} />
