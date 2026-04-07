@@ -10,11 +10,11 @@ const ChartContainer = ({ gridLayout = 1, onGridChange }) => {
     const [showMoreMenu, setShowMoreMenu] = useState(false);
 
     return (
-        <div className="flex flex-col h-full w-full">
+        <div className="flex flex-col h-full w-full" style={{background: 'conic-gradient(from 20deg at 48.04% 45.06%, #FFF 0deg, #FFFDF5 167.88461208343506deg, #FFFDF5 194.79776859283447deg, #FEFFFA 360deg)'}}>
             <ChartControls chartType={chartType} onChartTypeChange={setChartType} gridLayout={gridLayout} onGridChange={onGridChange} />
 
             {/* Stock Info Header */}
-            <div className="flex items-center justify-between flex-wrap gap-2 px-2 lg:px-4 py-1.5 bg-white">
+            <div className="flex items-center justify-between flex-wrap gap-2 px-2 lg:px-4 py-1.5">
                 <div className="flex items-center flex-wrap gap-2 lg:gap-4 pt-3">
                     <div className="flex items-center gap-1.5 min-w-0 border border-[#EDE8F2] rounded-md p-2">  
                         <h3 className="font-semibold text-xs text-gray-900 truncate pr-1 lg:pr-2 border-r border-[#EDE8F2]">XAUUSD Gold/USD</h3>

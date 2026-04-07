@@ -64,7 +64,8 @@ const StocksPage = () => {
                     bottomLeft: false,
                     topLeft: false,
                 }}
-                className="bg-white border-2 border-gray-200 rounded-lg overflow-hidden flex flex-col"
+                className="border-2 border-gray-200 rounded-lg overflow-hidden flex flex-col"
+                style={{background: 'conic-gradient(from 20deg at 48.04% 45.06%, #FFF 0deg, #FFFDF5 167.88461208343506deg, #FFFDF5 194.79776859283447deg, #FEFFFA 360deg)'}}
             >
               <MainTabs gridLayout={gridLayout} onGridChange={setGridLayout} />
             </Resizable>
@@ -85,8 +86,9 @@ const StocksPage = () => {
                     bottomLeft: false,
                     topLeft: false,
                 }}
-                className="bg-white border-2 border-gray-200 rounded-lg overflow-hidden flex flex-col"
-            >
+                className="border-2 border-gray-200 rounded-lg overflow-hidden flex flex-col"
+                style={{background: 'conic-gradient(from 20deg at 48.04% 45.06%, #FFF 0deg, #FFFDF5 167.88461208343506deg, #FFFDF5 194.79776859283447deg, #FEFFFA 360deg)'}} 
+            > 
              <OpenAccount />
             </Resizable> 
           </div>
@@ -136,7 +138,8 @@ const StocksPage = () => {
                 bottomLeft: false,
                 topLeft: false,
               }}
-              className="bg-white border-2 border-gray-200 rounded-lg overflow-hidden flex flex-col"
+              className="border-2 border-gray-200 rounded-lg overflow-hidden flex flex-col"
+              style={{background: "conic-gradient(from 20deg at 48.04% 45.06%, #FFF 0deg, #FFFDF5 167.88461208343506deg, #FFFDF5 194.79776859283447deg, #FEFFFA 360deg)"}} 
             >
               <QuotesWatchlist />
             </Resizable>
@@ -181,7 +184,8 @@ const StocksPage = () => {
                       bottomLeft: false,
                       topLeft: false,
                     }}
-                    className="bg-white border-2 border-gray-200 rounded-lg overflow-hidden flex flex-col"
+                    className="border-2 border-gray-200 rounded-lg overflow-hidden flex flex-col"
+                    style={{background: 'conic-gradient(from 20deg at 48.04% 45.06%, #FFF 0deg, #FFFDF5 167.88461208343506deg, #FFFDF5 194.79776859283447deg, #FEFFFA 360deg)'}}
                   >
                     <OrdersNOI />
                   </Resizable>
@@ -204,7 +208,8 @@ const StocksPage = () => {
                       bottomLeft: false,
                       topLeft: false,
                     }}
-                    className="bg-white border-2 border-gray-200 rounded-lg overflow-hidden flex flex-col"
+                    className="border-2 border-gray-200 rounded-lg overflow-hidden flex flex-col"
+                    style={{background: 'conic-gradient(from 20deg at 48.04% 45.06%, #FFF 0deg, #FFFDF5 167.88461208343506deg, #FFFDF5 194.79776859283447deg, #FEFFFA 360deg)'}}
                   >
                     <TimeAnalysis />
                   </Resizable>
@@ -229,7 +234,8 @@ const StocksPage = () => {
                   bottomLeft: false,
                   topLeft: false,
                 }}
-                className="bg-white border-2 border-gray-200 rounded-lg overflow-auto flex flex-col"
+                className="border-2 border-gray-200 rounded-lg overflow-auto flex flex-col"
+                style={{background: 'conic-gradient(from 20deg at 48.04% 45.06%, #FFF 0deg, #FFFDF5 167.88461208343506deg, #FFFDF5 194.79776859283447deg, #FEFFFA 360deg)'}}
               >
                 <TurboTradeLadder /> 
               </Resizable>

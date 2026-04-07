@@ -163,7 +163,7 @@ export default function IndexChart() {
     <div className="flex flex-col h-full overflow-hidden">
 
       {/* ── Tab Bar ── */}
-      <div className="flex items-center border-b border-gray-200 bg-[#f7f7f7] shrink-0">
+      <div className="flex items-center border-b border-gray-200 shrink-0"> 
         {TABS.map((tab) => (
           <button
             key={tab}

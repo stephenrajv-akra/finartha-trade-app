@@ -44,7 +44,7 @@ const NewsQuotesTabs = () => {
   ];
 
   return (
-    <div className="flex flex-col h-full overflow-hidden">
+    <div className="flex flex-col h-full overflow-hidden" style={{background: 'conic-gradient(from 20deg at 48.04% 45.06%, #FFF 0deg, #FFFDF5 167.88461208343506deg, #FFFDF5 194.79776859283447deg, #FEFFFA 360deg)'}}>
       <TabBar tabs={['News', 'Quotes']} active={active} onSelect={setActive} />
       {active === 'News' ? (
         <div className="flex-1 overflow-y-auto">
@@ -128,7 +128,7 @@ const MarketDataTabs = () => {
 const TradeTabs = () => {
   const [active, setActive] = useState('Trade');
   return (
-    <div className="flex flex-col h-full overflow-hidden">
+    <div className="flex flex-col h-full overflow-hidden" style={{background: 'conic-gradient(from 20deg at 48.04% 45.06%, #FFF 0deg, #FFFDF5 167.88461208343506deg, #FFFDF5 194.79776859283447deg, #FEFFFA 360deg)'}}> 
       <TabBar tabs={['Trade', 'TurboTrader', 'Ladder']} active={active} onSelect={setActive} />
       <div className="flex-1 flex items-center justify-center text-gray-300 text-sm">
         {active} Panel

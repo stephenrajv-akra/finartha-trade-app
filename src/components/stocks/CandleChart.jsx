@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import {
   createChart,
+  ColorType,
   CandlestickSeries,
   LineSeries,
   BarSeries,
@@ -118,7 +119,7 @@ export default function CandlestickChart({
     const chartOptions = {
       layout: {
         textColor: '#1F2937',
-        backgroundColor: '#FFFFFF',
+        background: { type: ColorType.Solid, color: 'rgba(0, 0, 0, 0)' }, 
       },
       watermark: {
         visible: false,
@@ -236,7 +237,10 @@ export default function CandlestickChart({
   }, [data, internalChartType]);
 
   return (
-    <div className="w-full h-full bg-white rounded-lg p-4 flex flex-col">   
+    <div className="w-full h-full rounded-lg p-4 flex flex-col" style={{
+        // background: 'conic-gradient(from 20deg at 48.04% 45.06%, #FFF 0deg, #FFFDF5 167.88461208343506deg, #FFFDF5 194.79776859283447deg, #FEFFFA 360deg)'
+        background: 'transparent'
+      }}>   
       {/* Header with Price Info */}
       {/* <div className="mb-6 flex justify-between items-start">
         <div className="flex-1">
