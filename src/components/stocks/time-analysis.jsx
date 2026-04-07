@@ -5,7 +5,7 @@ const TimeAnalysis = () => {
     return (
         <>
             {/* Tabs Header */}
-            <div className="flex items-center gap-0 border-b border-gray-200"> 
+            <div className="flex items-center gap-0 border-b border-gray-200 bg-[#f7f7f7]"> 
                 <button
                     onClick={() => setActiveTimeSalesTab('timeSales')}
                     className={`px-4 py-2 text-xs lg:text-sm font-medium border-r border-[#C8B9D8] rounded-tr-lg transition-all whitespace-nowrap ${activeTimeSalesTab === 'timeSales'
