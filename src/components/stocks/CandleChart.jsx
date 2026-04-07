@@ -9,6 +9,7 @@ import {
   BaselineSeries,
   HistogramSeries,
 } from 'lightweight-charts';
+import ChartControls from './chart-controls';
 
 // Mock API to simulate fetching trading data
 const mockTradingAPI = {
@@ -238,7 +239,6 @@ export default function CandlestickChart({
 
   return (
     <div className="w-full h-full rounded-lg p-4 flex flex-col" style={{
-        // background: 'conic-gradient(from 20deg at 48.04% 45.06%, #FFF 0deg, #FFFDF5 167.88461208343506deg, #FFFDF5 194.79776859283447deg, #FEFFFA 360deg)'
         background: 'transparent'
       }}>   
       {/* Header with Price Info */}
@@ -303,8 +303,13 @@ export default function CandlestickChart({
       ) : (
         <div
           ref={containerRef}
-          className="w-full flex-1"
-        />
+          className="w-full flex-1 relative"
+        >
+          {/* Chart Controls - Overlay at top-left */}
+          <div className="absolute top-0 left-0 z-10">
+            <ChartControls /> 
+          </div>
+        </div> 
       )}
     </div>
   );

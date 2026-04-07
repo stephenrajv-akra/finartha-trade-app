@@ -89,3 +89,16 @@ export const newsData = [
     time: "9h ago"
   }
 ];
+
+export const chartsymbolNameSuggestions = [ 
+    { symbol: 'EURUSD', name: 'Euro / US Dollar' },
+    { symbol: 'GBPUSD', name: 'British Pound / US Dollar' },
+    { symbol: 'USDJPY', name: 'US Dollar / Japanese Yen' },
+    { symbol: 'AUDUSD', name: 'Australian Dollar / US Dollar' },
+    { symbol: 'NZDUSD', name: 'New Zealand Dollar / US Dollar' },
+    { symbol: 'USDCAD', name: 'US Dollar / Canadian Dollar' },
+    { symbol: 'XAUUSD', name: 'Gold / US Dollar' },
+    { symbol: 'XAGUSD', name: 'Silver / US Dollar' },
+    { symbol: 'BRENTUSD', name: 'Brent Crude Oil' },
+    { symbol: 'SP500', name: 'S&P 500 Index' },
+];

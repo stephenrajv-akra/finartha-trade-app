@@ -1,55 +1,16 @@
 import { useState } from 'react';
 import CandlestickChart from './CandleChart';
-import { Star, MoreVertical, RotateCcw , ChevronUp } from 'lucide-react';
-import ChartControls from './chart-controls';
+import { RotateCcw , ChevronUp } from 'lucide-react';
+import ChartToolbar from './chart-toolbar';
 
 
 
 const ChartContainer = ({ gridLayout = 1, onGridChange }) => {
     const [chartType, setChartType] = useState('candles');
-    const [showMoreMenu, setShowMoreMenu] = useState(false);
 
     return (
         <div className="flex flex-col h-full w-full" style={{background: 'conic-gradient(from 20deg at 48.04% 45.06%, #FFF 0deg, #FFFDF5 167.88461208343506deg, #FFFDF5 194.79776859283447deg, #FEFFFA 360deg)'}}>
-            <ChartControls chartType={chartType} onChartTypeChange={setChartType} gridLayout={gridLayout} onGridChange={onGridChange} />
-
-            {/* Stock Info Header */}
-            <div className="flex items-center justify-between flex-wrap gap-2 px-2 lg:px-4 py-1.5">
-                <div className="flex items-center flex-wrap gap-2 lg:gap-4 pt-3">
-                    <div className="flex items-center gap-1.5 min-w-0 border border-[#EDE8F2] rounded-md p-2">  
-                        <h3 className="font-semibold text-xs text-gray-900 truncate pr-1 lg:pr-2 border-r border-[#EDE8F2]">XAUUSD Gold/USD</h3>
-                        <span className="text-xs text-gray-500 whitespace-nowrap pl-1 lg:pl-2 pr-1 lg:pr-2 border-r border-[#EDE8F2]">30 Min</span>
-                        <button className="flex-shrink-0 pl-1 lg:pl-2 pr-1 lg:pr-2 border-r border-[#EDE8F2]">
-                            <Star size={14} fill="#4F1D81" />
-                        </button>
-                        <button
-                            onClick={() => setShowMoreMenu(!showMoreMenu)}
-                            className="text-gray-400 hover:text-gray-600 flex-shrink-0 relative pl-1 lg:pl-2"
-                        >
-                            <MoreVertical size={14} color='#28303F' className="lg:size-4" />
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            {/* Technical Indicators */}
-            <div className="flex items-center flex-wrap gap-2 px-2 lg:px-4 py-1 lg:py-2 text-xs overflow-x-auto">
-                <div className="flex items-center gap-1 whitespace-nowrap">
-                    <span className="text-green-600 font-semibold text-xs">O 4000</span>
-                </div>
-                <div className="flex items-center gap-1 whitespace-nowrap">
-                    <span className="text-red-600 font-semibold text-xs">H 4100</span>
-                </div>
-                <div className="flex items-center gap-1 whitespace-nowrap">
-                    <span className="text-green-600 font-semibold text-xs">L 4100</span>
-                </div>
-                <div className="flex items-center gap-1 whitespace-nowrap">
-                    <span className="text-red-600 font-semibold text-xs">C 4100</span>
-                </div>
-                <div className="flex items-center gap-1 whitespace-nowrap">
-                    <span className="text-[black] font-semibold text-xs">+24% (+0.68%)</span>
-                </div>
-            </div>
+            <ChartToolbar chartType={chartType} onChartTypeChange={setChartType} gridLayout={gridLayout} onGridChange={onGridChange} />
 
             {/* Chart Area */}
             <div className="flex-1 overflow-hidden min-h-0"> 
