@@ -191,7 +191,7 @@ export default function IndexChart() {
       <div className="flex flex-1 overflow-hidden">
 
         {/* Left – stock list */}
-        <div className="w-full max-w-[170px] hide-scrollbar shrink-0 flex flex-col gap-2 overflow-y-auto border-r border-gray-100 p-2">
+        <div className="w-full max-w-[170px] max-h-[350px] hide-scrollbar shrink-0 flex flex-col gap-2 overflow-y-auto border-r border-gray-100 p-2">
           {stocks.map((s) => {
             const isSelected = selectedStock === s.id;
             return (

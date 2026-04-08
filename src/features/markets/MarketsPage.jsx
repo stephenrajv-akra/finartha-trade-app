@@ -5,6 +5,9 @@ import { SquareCheckBig } from 'lucide-react';
 import { ArrowDown, HamburgerIcon } from "../../utils/SvgCode";
 import IndexChart from '../../components/markets/IndexChart';
 import GlobalMap from '../../components/markets/GlobalMap';
+import HeatMap from '../../components/markets/HeatMap'; 
+import IndustryChart from '../../components/markets/IndustryChart'; 
+import IndustryDetails from '../../components/markets/IndustryDetails'; 
 
 const MenuIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
@@ -143,7 +146,7 @@ const MarketDataTabs = () => {
         </div> 
         <div className="right-sec flex items-center gap-2 w-fit cursor-pointer"> 
             <div className="icon-container"> 
-              <SquareCheckBig size={16} color='#616161' />
+              <SquareCheckBig strokeWidth={2.3} size={16} color='#616161' />
             </div> 
             <div className="dropdown-contianer flex items-center gap-1">
                 <div className="text-[#616161] text-xs font-normal">Pre-market</div>
@@ -204,14 +207,80 @@ const MarketDataTabs = () => {
   );
 };
 
-const TradeTabs = () => {
-  const [active, setActive] = useState('Trade');
+const CalenderIpo = () => {
+  const [mainActive, setMainActive] = useState('Calendar');
+  const [subActive, setSubActive] = useState('Available');
+  const subTabs = ['Available', 'Upcoming', 'Filed', 'Listed', 'Up'];
+  
+  const tableData = [ 
+    { symbol: 'BWGC', name: 'Titanium Ventures Ltd.' },
+    { symbol: 'AXTN', name: 'NovaGen Therapeutics Inc.' },
+    { symbol: 'TVCN', name: 'AeroTech Innovations Corp.' },
+    { symbol: 'CDIX', name: 'EcoWave Energy Solutions Inc.' },
+    { symbol: 'UNIU', name: 'Quantum Dynamics Holdings LLC.' },
+    { symbol: 'UNID', name: 'Vertex Robotics Inc.' },
+  ];
+  
   return (
-    <div className="flex flex-col h-full overflow-hidden" style={{ background: 'conic-gradient(from 20deg at 48.04% 45.06%, #FFF 0deg, #FFFDF5 167.88461208343506deg, #FFFDF5 194.79776859283447deg, #FEFFFA 360deg)' }}>
-      <TabBar tabs={['Trade', 'TurboTrader', 'Ladder']} active={active} onSelect={setActive} />
-      <div className="flex-1 flex items-center justify-center text-gray-300 text-sm">
-        {active} Panel
-      </div>
+    <div className="flex flex-col h-full overflow-hidden">
+      {/* Main Tabs - Calendar & IPO */}
+      <TabBar tabs={['Calendar', 'IPO']} active={mainActive} onSelect={setMainActive} />
+      
+      {mainActive === 'Calendar' ? (
+        <>
+          {/* Sub Tabs with Slider Indicator */}
+          <div className="left-sec relative border-b border-gray-200 bg-white">
+            {/* Sliding Indicator */}
+            <div
+              className={`absolute bottom-0 left-0 h-px bg-[#724A9A] transition-all duration-300 ease-out`}
+              style={{
+                width: `${(1 / subTabs.length) * 100}%`,
+                transform: `translateX(${subTabs.indexOf(subActive) * 100}%)`
+              }}
+            />
+            <div className="flex relative z-10">
+              {subTabs.map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setSubActive(tab)}
+                  className={`flex-1 px-3 py-2 text-xs font-normal transition-colors whitespace-nowrap text-center ${
+                    subActive === tab
+                      ? 'text-[#724A9A]'
+                      : 'text-[#7F7F7F]' 
+                  }`}
+                >
+                  {tab}
+                </button> 
+              ))}
+            </div>
+          </div>
+
+          {/* Table */}
+          <div className="flex-1 overflow-x-auto">
+            <table className="w-full text-xs">
+              <thead className="bg-[#EDE8F2] border-b border-gray-200 sticky top-0">
+                <tr>
+                  <th className="px-4 py-3 text-xs text-left font-medium tracking-wide text-black font-medium relative after:content-[''] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:h-[16px] after:w-[2px] after:bg-[#AE97C5]">Symbol</th>
+                  <th className="px-4 py-3 text-xs text-left font-medium tracking-wide text-black font-medium">Name</th> 
+                </tr> 
+              </thead>
+              <tbody className="divide-y divide-gray-200">
+                {tableData.map((row, idx) => ( 
+                  <tr key={idx} className="hover:bg-gray-50 transition-colors cursor-pointer"> 
+                    <td className="px-4 py-3 text-[#616161] font-normal">{row.symbol}</td>
+                    <td className="px-4 py-3 text-[#616161] font-normal">{row.name}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      ) : (
+        /* IPO Panel */
+        <div className="flex-1 flex items-center justify-center text-gray-300 text-sm">
+          IPO Panel
+        </div>
+      )}
     </div>
   );
 };
@@ -220,34 +289,35 @@ const MarketsPage = () => {
   // Top row column widths (percentages)
   const [col1Width, setCol1Width] = useState(40);
   const [col2Width, setCol2Width] = useState(30);
-  // col3 = 100 - col1 - col2 (fills remaining)
 
-  // Top / bottom row height split
-  const [topHeight, setTopHeight] = useState(55);
-  // bottomHeight is handled by flex-1
+  // Row heights
+  const [topHeight, setTopHeight] = useState(45);
+  const [midHeight, setMidHeight] = useState(30);
+  // Third row = 100 - topHeight - midHeight 
 
-  // Bottom row column widths
+  // Middle row column widths
   const [botCol1Width, setBotCol1Width] = useState(70);
-  // botCol2 fills remaining
+
+  // Third row column widths
+  const [thirdCol1Width, setThirdCol1Width] = useState(33);
+  const [thirdCol2Width, setThirdCol2Width] = useState(33);
 
   return (
-    <div className="w-full h-screen bg-white overflow-hidden flex flex-col gap-1 p-1">
+    <div className="w-full bg-white overflow-y-auto flex flex-col gap-1 p-1"> 
 
       {/* ── TOP ROW ── */}
       <Resizable
-        size={{ width: '100%', height: `${topHeight}%` }}
-        minHeight="20%"
-        maxHeight="80%"
+        size={{ width: '100%', height: '400px' }}
+        minHeight="200px"
+        maxHeight="800px"
         enable={{
           top: false, right: false, bottom: true, left: false,
           topRight: false, bottomRight: false, bottomLeft: false, topLeft: false,
         }}
         onResizeStop={(e, direction, ref) => {
-          const containerHeight = ref.parentElement.clientHeight;
-          const pct = (ref.clientHeight / containerHeight) * 100;
-          setTopHeight(Math.max(20, Math.min(80, pct)));
+          setTopHeight(ref.clientHeight);
         }}
-        className="flex gap-1 overflow-hidden"
+        className="flex gap-1 overflow-hidden shrink-0"
       >
         {/* Top Col 1 – 4/10 */}
         <Resizable
@@ -288,17 +358,27 @@ const MarketsPage = () => {
           <GlobalMap />
         </Resizable>
 
-        {/* Top Col 3 – 3/10 (fills remaining) */}
+        {/* Top Col 3 – fills remaining */}
         <div className="flex-1 border-2 border-[#EDE8F2] rounded-lg overflow-hidden flex flex-col min-w-[15%]">
-          {/* Tab bar */}
           <NewsQuotesTabs />
         </div>
       </Resizable>
 
-      {/* ── BOTTOM ROW ── */}
-      <div className="flex-1 flex gap-1 overflow-hidden">
-
-        {/* Bottom Col 1 – 7/10 */}
+      {/* ── MIDDLE ROW ── */}
+      <Resizable
+        size={{ width: '100%', height: '400px' }}
+        minHeight="200px"
+        maxHeight="800px"
+        enable={{
+          top: false, right: false, bottom: true, left: false,
+          topRight: false, bottomRight: false, bottomLeft: false, topLeft: false,
+        }}
+        onResizeStop={(e, direction, ref) => {
+          setMidHeight(ref.clientHeight);
+        }}
+        className="flex gap-1 overflow-hidden shrink-0"
+      >
+        {/* Middle Col 1 – 7/10 */}
         <Resizable
           size={{ width: `${botCol1Width}%`, height: '100%' }}
           minWidth="20%"
@@ -317,9 +397,55 @@ const MarketsPage = () => {
           <MarketDataTabs />
         </Resizable>
 
-        {/* Bottom Col 2 – 3/10 (fills remaining) */}
+        {/* Middle Col 2 – fills remaining */}
         <div className="flex-1 border-2 border-[#EDE8F2] rounded-lg overflow-hidden flex flex-col min-w-[15%]">
-          <TradeTabs />
+          <CalenderIpo /> 
+        </div>
+      </Resizable>
+
+      {/* ── THIRD ROW ── */}
+      <div className="h-[400px] shrink-0 flex gap-1 overflow-hidden">
+        {/* Third Col 1 – 1/3 */}
+        <Resizable
+          size={{ width: `${thirdCol1Width}%`, height: '100%' }}
+          minWidth="15%"
+          maxWidth="70%"
+          enable={{
+            top: false, right: true, bottom: false, left: false,
+            topRight: false, bottomRight: false, bottomLeft: false, topLeft: false,
+          }}
+          onResizeStop={(e, direction, ref) => {
+            const containerWidth = ref.parentElement.clientWidth;
+            const pct = (ref.clientWidth / containerWidth) * 100;
+            setThirdCol1Width(Math.max(15, Math.min(70, pct)));
+          }}
+          className="border-2 border-[#EDE8F2] rounded-lg overflow-hidden flex flex-col"
+        >
+          <HeatMap />
+        </Resizable>
+
+        {/* Third Col 2 – 1/3 , third row */} 
+        <Resizable
+          size={{ width: `${thirdCol2Width}%`, height: '100%' }}
+          minWidth="15%"
+          maxWidth="70%"
+          enable={{
+            top: false, right: true, bottom: false, left: false,
+            topRight: false, bottomRight: false, bottomLeft: false, topLeft: false,
+          }}
+          onResizeStop={(e, direction, ref) => {
+            const containerWidth = ref.parentElement.clientWidth;
+            const pct = (ref.clientWidth / containerWidth) * 100;
+            setThirdCol2Width(Math.max(15, Math.min(70, pct)));
+          }}
+          className="border-2 border-[#EDE8F2] rounded-lg overflow-hidden flex flex-col"
+        >
+          <IndustryChart />
+        </Resizable>
+
+        {/* Third Col 3 – fills remaining */}
+        <div className="flex-1 border-2 border-[#EDE8F2] rounded-lg overflow-hidden flex flex-col min-w-[15%]">
+          <IndustryDetails />
         </div>
       </div>
 

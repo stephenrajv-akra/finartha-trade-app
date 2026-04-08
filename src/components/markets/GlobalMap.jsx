@@ -13,7 +13,7 @@ const MARKERS = [
 ];
 
 const WIDTH = 900; 
-const HEIGHT = 500;
+const HEIGHT = 645;
 
 export default function GlobalMap() {
   const [activeTab, setActiveTab] = useState('Index');
