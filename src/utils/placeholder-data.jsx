@@ -208,3 +208,176 @@ export const MOST_POPULAR_ETFS = [
   { name: 'XLE', value: 1600, change: 6.12 },
   { name: 'XLI', value: 1400, change: 0.56 },
 ];
+
+export const BUBBLE_DATA = { 
+  'PE/PB': {
+    '1Y': [
+      { name: 'Healthcare', pe: 15, pb: 10, size: 14, highlighted: false },
+      { name: 'Financials', pe: 25, pb: 28, size: 16, highlighted: false },
+      { name: 'Consumer Staples', pe: 32, pb: 35, size: 12, highlighted: false },
+      { name: 'Industrials', pe: 40, pb: 40, size: 14, highlighted: false },
+      { name: 'Materials', pe: 48, pb: 38, size: 12, highlighted: false },
+      { name: 'Energy', pe: 55, pb: 42, size: 16, highlighted: false },
+      { name: 'Communication', pe: 68, pb: 55, size: 22, highlighted: true },
+      { name: 'Technology', pe: 75, pb: 35, size: 30, highlighted: true },
+      { name: 'Utilities', pe: 82, pb: 60, size: 16, highlighted: false },
+      { name: 'Real Estate', pe: 88, pb: 52, size: 12, highlighted: false },
+      { name: 'Consumer Disc', pe: 92, pb: 68, size: 14, highlighted: false },
+    ],
+    '5Y': [
+      { name: 'Healthcare', pe: 20, pb: 18, size: 16, highlighted: false },
+      { name: 'Financials', pe: 30, pb: 22, size: 18, highlighted: false },
+      { name: 'Consumer Staples', pe: 35, pb: 40, size: 14, highlighted: false },
+      { name: 'Industrials', pe: 45, pb: 48, size: 16, highlighted: false },
+      { name: 'Materials', pe: 52, pb: 32, size: 14, highlighted: false },
+      { name: 'Energy', pe: 60, pb: 55, size: 18, highlighted: true },
+      { name: 'Communication', pe: 72, pb: 62, size: 24, highlighted: true },
+      { name: 'Technology', pe: 80, pb: 45, size: 32, highlighted: false },
+      { name: 'Utilities', pe: 85, pb: 70, size: 16, highlighted: false },
+      { name: 'Real Estate', pe: 90, pb: 58, size: 14, highlighted: false },
+    ],
+    '10Y': [
+      { name: 'Healthcare', pe: 18, pb: 15, size: 18, highlighted: false },
+      { name: 'Financials', pe: 28, pb: 25, size: 20, highlighted: false },
+      { name: 'Consumer Staples', pe: 38, pb: 45, size: 16, highlighted: false },
+      { name: 'Industrials', pe: 50, pb: 50, size: 18, highlighted: true },
+      { name: 'Materials', pe: 55, pb: 38, size: 14, highlighted: false },
+      { name: 'Energy', pe: 65, pb: 58, size: 20, highlighted: true },
+      { name: 'Communication', pe: 75, pb: 65, size: 26, highlighted: false },
+      { name: 'Technology', pe: 82, pb: 42, size: 34, highlighted: false },
+      { name: 'Utilities', pe: 88, pb: 72, size: 18, highlighted: false },
+    ],
+  },
+  'EV/EBITDA': {
+    '1Y': [
+      { name: 'Healthcare', pe: 22, pb: 30, size: 18, highlighted: false },
+      { name: 'Financials', pe: 35, pb: 20, size: 16, highlighted: false },
+      { name: 'Technology', pe: 70, pb: 65, size: 28, highlighted: true },
+      { name: 'Energy', pe: 45, pb: 50, size: 20, highlighted: true },
+      { name: 'Industrials', pe: 58, pb: 42, size: 16, highlighted: false },
+      { name: 'Materials', pe: 80, pb: 55, size: 14, highlighted: false },
+      { name: 'Utilities', pe: 90, pb: 70, size: 12, highlighted: false },
+    ],
+    '5Y': [
+      { name: 'Healthcare', pe: 25, pb: 35, size: 20, highlighted: false },
+      { name: 'Technology', pe: 72, pb: 60, size: 30, highlighted: true },
+      { name: 'Energy', pe: 50, pb: 48, size: 22, highlighted: false },
+      { name: 'Financials', pe: 38, pb: 28, size: 18, highlighted: false },
+      { name: 'Industrials', pe: 60, pb: 45, size: 18, highlighted: true },
+      { name: 'Materials', pe: 82, pb: 58, size: 16, highlighted: false },
+    ],
+    '10Y': [
+      { name: 'Healthcare', pe: 28, pb: 32, size: 22, highlighted: false },
+      { name: 'Technology', pe: 75, pb: 58, size: 32, highlighted: true },
+      { name: 'Energy', pe: 55, pb: 52, size: 24, highlighted: true },
+      { name: 'Financials', pe: 40, pb: 25, size: 20, highlighted: false },
+      { name: 'Industrials', pe: 62, pb: 48, size: 20, highlighted: false },
+    ],
+  },
+}; 
+
+
+export const HISTORY_DATA = {
+  PE: {
+    '1Y': {
+      industryName: 'Software & IT Service',
+      currentValue: 37.03,
+      percentile: 1.89,
+      dates: [
+        '2025-04-11', '2025-04-25', '2025-05-10', '2025-05-25',
+        '2025-06-10', '2025-06-25', '2025-07-10', '2025-07-25',
+        '2025-08-10', '2025-08-25', '2025-09-10', '2025-09-25',
+        '2025-10-10', '2025-10-25', '2025-11-10', '2025-11-25',
+        '2025-12-10', '2025-12-25', '2026-01-10', '2026-01-25',
+        '2026-02-10', '2026-02-25', '2026-03-10', '2026-03-25',
+        '2026-04-02',
+      ],
+      values: [
+        62.31, 61.40, 59.80, 58.10, 56.50, 57.20, 58.00, 56.30,
+        54.80, 53.50, 52.10, 50.80, 49.00, 47.50, 46.20, 44.80,
+        43.10, 41.50, 40.00, 42.50, 44.80, 42.30, 39.80, 38.20,
+        37.39,
+      ],
+    },
+    '3Y': {
+      industryName: 'Software & IT Service',
+      currentValue: 37.03,
+      percentile: 5.42,
+      dates: [
+        '2023-04-01', '2023-07-01', '2023-10-01', '2024-01-01',
+        '2024-04-01', '2024-07-01', '2024-10-01', '2025-01-01',
+        '2025-04-01', '2025-07-01', '2025-10-01', '2026-01-01',
+        '2026-04-02',
+      ],
+      values: [
+        48.50, 52.30, 55.80, 58.10, 60.20, 63.50, 65.80,
+        62.31, 58.10, 52.30, 47.50, 40.00, 37.39,
+      ],
+    },
+    '5Y': {
+      industryName: 'Software & IT Service',
+      currentValue: 37.03,
+      percentile: 8.75,
+      dates: [
+        '2021-04-01', '2021-10-01', '2022-04-01', '2022-10-01',
+        '2023-04-01', '2023-10-01', '2024-04-01', '2024-10-01',
+        '2025-04-01', '2025-10-01', '2026-04-02',
+      ],
+      values: [
+        45.00, 50.20, 55.80, 52.10, 48.50, 55.80, 60.20,
+        65.80, 58.10, 47.50, 37.39,
+      ],
+    },
+  },
+  PB: {
+    '1Y': {
+      industryName: 'Software & IT Service',
+      currentValue: 4.82,
+      percentile: 3.21,
+      dates: [
+        '2025-04-11', '2025-04-25', '2025-05-10', '2025-05-25',
+        '2025-06-10', '2025-06-25', '2025-07-10', '2025-07-25',
+        '2025-08-10', '2025-08-25', '2025-09-10', '2025-09-25',
+        '2025-10-10', '2025-10-25', '2025-11-10', '2025-11-25',
+        '2025-12-10', '2025-12-25', '2026-01-10', '2026-01-25',
+        '2026-02-10', '2026-02-25', '2026-03-10', '2026-03-25',
+        '2026-04-02',
+      ],
+      values: [
+        8.20, 8.05, 7.80, 7.55, 7.30, 7.45, 7.60, 7.35,
+        7.10, 6.85, 6.60, 6.35, 6.10, 5.85, 5.65, 5.45,
+        5.25, 5.50, 5.80, 5.55, 5.30, 5.10, 4.95, 4.88,
+        4.82,
+      ],
+    },
+    '3Y': {
+      industryName: 'Software & IT Service',
+      currentValue: 4.82,
+      percentile: 6.10,
+      dates: [
+        '2023-04-01', '2023-07-01', '2023-10-01', '2024-01-01',
+        '2024-04-01', '2024-07-01', '2024-10-01', '2025-01-01',
+        '2025-04-01', '2025-07-01', '2025-10-01', '2026-01-01',
+        '2026-04-02',
+      ],
+      values: [
+        6.50, 7.10, 7.80, 8.20, 8.50, 8.80, 8.50,
+        8.20, 7.30, 6.35, 5.65, 5.25, 4.82,
+      ],
+    },
+    '5Y': {
+      industryName: 'Software & IT Service',
+      currentValue: 4.82,
+      percentile: 10.30,
+      dates: [
+        '2021-04-01', '2021-10-01', '2022-04-01', '2022-10-01',
+        '2023-04-01', '2023-10-01', '2024-04-01', '2024-10-01',
+        '2025-04-01', '2025-10-01', '2026-04-02',
+      ],
+      values: [
+        5.80, 6.50, 7.50, 6.80, 6.50, 7.80, 8.50,
+        8.50, 7.30, 5.65, 4.82,
+      ],
+    },
+  },
+};

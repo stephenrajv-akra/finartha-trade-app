@@ -55,10 +55,10 @@ const ChevronDown = ({ open }) => (
 
 /* ── Collapsible Dropdown ── */
 const Dropdown = ({ label, value, options, onChange, open, onToggle }) => (
-  <div className='p-1'>
+  <div className='mb-1'>   
     <button
       onClick={onToggle}
-      className="w-full flex border border-[#E0E0E4] bg-[#F7F7F7] rounded items-center justify-between p-2 mb-1 text-xs font-normal text-[#38155C] hover:bg-gray-50 transition-colors"
+      className="w-full flex border border-[#E0E0E4] bg-[#F7F7F7] rounded items-center justify-between p-2 text-xs font-normal text-[#38155C] hover:bg-gray-50 transition-colors"
     >
       <span>{label}</span>
       <ChevronDown open={open} />
@@ -291,7 +291,7 @@ export default function HeatMap() {
       {/* ── Heat Map — always mounted so ECharts instance is never destroyed ── */}
       <div className="flex flex-1 overflow-hidden min-h-0" style={{ display: mainTab === 'Heat Map' ? 'flex' : 'none' }}>
         {/* Left Sidebar */}
-        <div className="w-[180px] shrink-0 flex flex-col border-r border-gray-100 overflow-y-auto bg-white hide-scrollbar">
+        <div className="w-[180px] shrink-0 flex flex-col border-r border-gray-100 overflow-y-auto bg-white hide-scrollbar p-1">
           <Dropdown
             label="Industries"
             value={selectedIndustry}

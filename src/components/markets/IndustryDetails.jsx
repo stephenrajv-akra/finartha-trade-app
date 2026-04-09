@@ -1,97 +1,211 @@
-import { useEffect, useRef, useState } from 'react';
-import { createChart, LineSeries, ColorType } from 'lightweight-charts';
+import { useEffect, useRef, useState, useCallback } from 'react';
+import * as echarts from 'echarts';
+import { HISTORY_DATA } from '../../utils/placeholder-data';
 
-const lineData = [
-  { time: '2025-04-11', value: 62.31 },
-  { time: '2025-05-01', value: 60.5 },
-  { time: '2025-06-01', value: 58.2 },
-  { time: '2025-07-01', value: 56.8 },
-  { time: '2025-08-01', value: 55.0 },
-  { time: '2025-09-01', value: 53.4 },
-  { time: '2025-10-01', value: 51.0 },
-  { time: '2025-11-01', value: 49.2 },
-  { time: '2025-12-01', value: 47.5 },
-  { time: '2026-01-01', value: 44.1 },
-  { time: '2026-02-01', value: 40.8 },
-  { time: '2026-03-01', value: 38.5 },
-  { time: '2026-04-02', value: 37.39 },
-];
+/* ──────────────────────────────────────────────────────────────────────────────
+ *  DUMMY DATA — Replace with API calls during backend integration.
+ *
+ *  Expected API response shape:
+ *  {
+ *    dates: string[],         // Array of date strings e.g. ["2025-04-11", ...]
+ *    values: number[],        // Corresponding PE or PB values
+ *    currentValue: number,    // Latest value e.g. 37.03
+ *    percentile: number,      // Percentile rank e.g. 1.89
+ *    industryName: string,    // e.g. "Software & IT Service"
+ *  }
+ *
+ *  Filters:
+ *    timeframe — 1Y, 3Y, 5Y        (dropdown)
+ *    historyType — PE / PB          (sub-tab)
+ * 
+ *  To integrate:
+ *    Replace `HISTORY_DATA[historyType][timeframe]` with:
+ *      fetch(`/api/industry-details?type=${historyType}&tf=${timeframe}`)
+ * ────────────────────────────────────────────────────────────────────────────── */
 
+const TIMEFRAME_OPTIONS = ['1Y', '3Y', '5Y'];
+
+/* ── Chevron icon ── */
+const ChevronDown = () => (
+  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <polyline points="6 9 12 15 18 9" />
+  </svg>
+);
+
+/* ══════════════════════════════════════════════════════════════════════════════
+ *  MAIN COMPONENT
+ * ══════════════════════════════════════════════════════════════════════════════ */
 export default function IndustryDetails() {
   const [mainTab, setMainTab] = useState('Details');
   const [subTab, setSubTab] = useState('PE History');
-  const chartContainerRef = useRef(null);
-  const chartRef = useRef(null);
+  const [timeframe, setTimeframe] = useState('1Y');
+  const [tfDropdownOpen, setTfDropdownOpen] = useState(false);
 
+  const chartContainerRef = useRef(null);
+  const chartInstance = useRef(null);
+
+  /* ── Derive the history type from subTab ── */
+  const historyType = subTab === 'PE History' ? 'PE' : 'PB';
+
+  /* ── Get current dataset ── */
+  const getData = useCallback(() => {
+    return HISTORY_DATA[historyType]?.[timeframe] || {};
+  }, [historyType, timeframe]);
+
+  /* ── Format date for display ── */
+  const formatDate = (dateStr) => {
+    if (!dateStr) return '';
+    const d = new Date(dateStr);
+    return `${String(d.getMonth() + 1).padStart(2, '0')}/${String(d.getDate()).padStart(2, '0')}/${d.getFullYear()}`;
+  };
+
+  /* ── Init ECharts ── */
   useEffect(() => {
     if (!chartContainerRef.current) return;
+    const container = chartContainerRef.current;
 
-    const chart = createChart(chartContainerRef.current, {
-      width: chartContainerRef.current.clientWidth,
-      height: chartContainerRef.current.clientHeight,
-      layout: {
-        background: { type: ColorType.Solid, color: 'transparent' },
-        textColor: '#9ca3af',
-        fontSize: 10,
-        fontFamily: 'Inter, sans-serif',
-      },
-      grid: {
-        vertLines: { visible: false },
-        horzLines: { color: '#f3f4f6' },
-      },
-      rightPriceScale: {
-        borderVisible: false,
-        scaleMargins: { top: 0.15, bottom: 0.1 },
-      },
-      timeScale: {
-        borderVisible: false,
-        timeVisible: false,
-      },
-      crosshair: {
-        mode: 1,
-        vertLine: { color: '#d1d5db', width: 1, style: 3 },
-        horzLine: { color: '#d1d5db', width: 1, style: 3 },
-      },
-      handleScroll: false,
-      handleScale: false,
-    });
+    if (!chartInstance.current) {
+      chartInstance.current = echarts.init(container);
+    }
 
-    const series = chart.addSeries(LineSeries, {
-      color: '#ef4444',
-      lineWidth: 1.5,
-      priceLineVisible: false,
-      lastValueVisible: false,
-      crosshairMarkerVisible: false,
+    const observer = new ResizeObserver(() => {
+      chartInstance.current?.resize();
     });
-    series.setData(lineData);
-    chart.timeScale().fitContent();
-    chartRef.current = chart;
-
-    const resizeObserver = new ResizeObserver(() => {
-      if (chartContainerRef.current) {
-        chart.applyOptions({
-          width: chartContainerRef.current.clientWidth,
-          height: chartContainerRef.current.clientHeight,
-        });
-      }
-    });
-    resizeObserver.observe(chartContainerRef.current);
+    observer.observe(container);
 
     return () => {
-      resizeObserver.disconnect();
-      chart.remove();
+      observer.disconnect();
     };
   }, []);
 
+  /* ── Update chart when data changes ── */
+  useEffect(() => {
+    if (!chartInstance.current) return;
+
+    const data = getData();
+    const { dates = [], values = [] } = data;
+    
+    // Guard against empty data
+    if (!dates.length || !values.length) { 
+      return;
+    }
+
+    const maxVal = Math.max(...values);
+    const minVal = Math.min(...values);
+    const padding = (maxVal - minVal) * 0.15;
+
+    const option = {
+      tooltip: {
+        trigger: 'axis',
+        backgroundColor: '#fff',
+        borderColor: '#E0E0E4',
+        borderWidth: 1,
+        textStyle: { fontSize: 10, color: '#333' },
+        formatter: (params) => {
+          const p = params[0];
+          return `<span style="font-size:10px;color:#9ca3af">${p.name}</span><br/><b style="color:#724A9A">${p.value}</b>`;
+        },
+        axisPointer: {
+          lineStyle: { color: '#d1d5db', type: 'dashed' },
+        },
+      },
+      grid: {
+        left: 8,
+        right: 8,
+        top: 12,
+        bottom: 8,
+        containLabel: true,
+      },
+      xAxis: {
+        type: 'category',
+        data: dates,
+        boundaryGap: false,
+        axisLabel: {
+          show: true,
+          fontSize: 9,
+          color: '#9ca3af',
+          formatter: (val, idx) => {
+            if (idx === 0) return formatDate(val);
+            if (idx === dates.length - 1) return formatDate(val);
+            return '';
+          },
+          showMinLabel: true,
+          showMaxLabel: true,
+        },
+        axisLine: { show: false },
+        axisTick: { show: false },
+        splitLine: { show: false },
+      },
+      yAxis: {
+        type: 'value',
+        min: Math.floor((minVal - padding) * 100) / 100,
+        max: Math.ceil((maxVal + padding) * 100) / 100,
+        splitNumber: 3,
+        axisLabel: {
+          fontSize: 9,
+          color: '#9ca3af',
+          formatter: (val) => val.toFixed(2),
+        },
+        axisLine: { show: false },
+        axisTick: { show: false },
+        splitLine: {
+          lineStyle: { color: '#f3f4f6', type: 'dashed' },
+        },
+      },
+      series: [
+        {
+          type: 'line',
+          data: values,
+          smooth: 0.3,
+          symbol: 'none',
+          lineStyle: {
+            color: '#ef4444',
+            width: 1.5,
+          },
+          areaStyle: {
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+              { offset: 0, color: 'rgba(239, 68, 68, 0.12)' },
+              { offset: 1, color: 'rgba(239, 68, 68, 0.01)' },
+            ]),
+          },
+          animationDuration: 800,
+          animationEasing: 'cubicOut',
+        },
+      ],
+    };
+
+    chartInstance.current.setOption(option);
+    chartInstance.current.resize(); 
+  }, [getData, timeframe, subTab]);
+
+  /* ── Resize when switching tabs or timeframe ── */
+  useEffect(() => {
+    if (mainTab === 'Details') {
+      requestAnimationFrame(() => {
+        chartInstance.current?.resize();
+      });
+    }
+  }, [mainTab, subTab, timeframe]);
+
+  /* ── Cleanup on unmount ── */
+  useEffect(() => {
+    return () => {
+      chartInstance.current?.dispose();
+      chartInstance.current = null;
+    };
+  }, []);
+
+  const data = getData();
+
   return (
     <div className="flex flex-col h-full overflow-hidden">
-      {/* Main tabs */}
-      <div className="flex items-center border-b border-gray-200 bg-[#f7f7f7] shrink-0">
+      {/* ── Main tabs ── */}
+      <div className="flex items-center border-b border-[#E0E0E4] bg-[#f7f7f7] shrink-0">
         {['Details', 'Related Stocks'].map((tab) => (
           <button
             key={tab}
             onClick={() => setMainTab(tab)}
-            className={`px-4 py-2 text-xs font-medium border-r border-[#C8B9D8] rounded-tr-lg transition-all whitespace-nowrap ${
+            className={`px-4 py-2 text-xs font-medium border-r border-[#E0E0E4] rounded-tr-lg transition-all whitespace-nowrap ${
               mainTab === tab ? 'bg-white text-black' : 'text-gray-600 hover:text-gray-900'
             }`}
           >
@@ -107,22 +221,43 @@ export default function IndustryDetails() {
 
       {mainTab === 'Details' ? (
         <>
-          {/* Sub controls */}
+          {/* ── Sub controls: timeframe dropdown + PE/PB tabs ── */}
           <div className="flex items-center gap-2 px-3 py-2 border-b border-gray-100 shrink-0 bg-white">
-            {/* 1Y dropdown */}
-            <div className="flex items-center gap-1 border border-gray-200 rounded px-2 py-0.5 cursor-pointer text-xs text-gray-700 font-medium">
-              1Y
-              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
+            {/* Timeframe dropdown */}
+            <div className="relative">
+              <button
+                onClick={() => setTfDropdownOpen(!tfDropdownOpen)}
+                className="flex items-center gap-1 border border-gray-200 rounded px-2 py-0.5 text-xs text-gray-700 font-medium hover:bg-gray-50 transition-colors"
+              >
+                {timeframe}
+                <ChevronDown />
+              </button>
+              {tfDropdownOpen && (
+                <div className="absolute top-full left-0 mt-1 bg-white border border-gray-200 rounded shadow-md z-10 min-w-[60px]">
+                  {TIMEFRAME_OPTIONS.map((opt) => (
+                    <div
+                      key={opt}
+                      onClick={() => { setTimeframe(opt); setTfDropdownOpen(false); }}
+                      className={`px-3 py-1.5 text-xs cursor-pointer transition-colors ${
+                        timeframe === opt
+                          ? 'bg-[#EDE8F2] text-[#724A9A] font-medium'
+                          : 'text-gray-600 hover:bg-gray-50'
+                      }`}
+                    >
+                      {opt}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
-            {/* Sub tabs with sliding indicator */}
+
+            {/* PE / PB History tabs with sliding indicator */}
             <div className="relative flex">
               <div
-                className="absolute bottom-0 left-0 h-px bg-[#724A9A] transition-all duration-300 ease-out"
+                className="absolute bottom-0 left-0 h-[2px] bg-[#724A9A] transition-all duration-300 ease-out rounded-full"
                 style={{
-                  width: `${(1 / 2) * 100}%`,
-                  transform: `translateX(${['PE History', 'PB History'].indexOf(subTab) * 100}%)`
+                  width: '50%',
+                  transform: `translateX(${['PE History', 'PB History'].indexOf(subTab) * 100}%)`,
                 }}
               />
               {['PE History', 'PB History'].map((tab) => (
@@ -139,32 +274,17 @@ export default function IndustryDetails() {
             </div>
           </div>
 
-          {/* Description */}
-          <div className="px-3 py-2 border-b border-gray-100 shrink-0 bg-white">
-            <p className="text-[10.5px] text-gray-600 leading-relaxed">
-              The <span className="font-semibold text-gray-800">PE</span> value of Software &amp; IT Service industry is{' '}
-              <span className="font-bold text-[#724A9A]">37.03</span> and the current valuation is higher than the{' '}
-              <span className="font-bold text-[#724A9A]">1.89%</span> time in the past 1 year(s).
+          {/* ── Description text ── */}
+          <div className="px-3 py-2.5 shrink-0 bg-white">
+            <p className="text-[11px] text-gray-600 leading-[1.6]">
+              The <span className="font-semibold text-[#724A9A]">{historyType}</span> value of {data.industryName || 'Software & IT Service'} industry is{' '}
+              <span className="font-bold text-gray-800">{data.currentValue}</span> and the current valuation is higher than the{' '}
+              <span className="font-bold text-[#724A9A]">{data.percentile}%</span> time in the past {timeframe === '1Y' ? '1' : timeframe === '3Y' ? '3' : '5'} year(s).
             </p>
           </div>
 
-          {/* Price labels + chart */}
-          <div className="flex flex-1 overflow-hidden px-1 pt-1 pb-1">
-            {/* Y-axis price labels */}
-            <div className="flex flex-col justify-between shrink-0 text-[9px] text-gray-400 pr-1 items-end py-1">
-              <span>62.31</span>
-              <span>37.39</span>
-            </div>
-            {/* Chart */}
-            <div className="flex-1 flex flex-col overflow-hidden">
-              <div className="flex-1 relative" style={{ minHeight: 0 }} ref={chartContainerRef} />
-              {/* X-axis date labels */}
-              <div className="flex justify-between text-[9px] text-gray-400 pt-0.5 px-1">
-                <span>04/11/2025</span>
-                <span>04/02/2026</span>
-              </div>
-            </div>
-          </div>
+          {/* ── ECharts area chart — always mounted ── */}
+          <div className="flex-1 min-h-0 min-w-0 overflow-hidden px-1 pb-1" ref={chartContainerRef} />
         </>
       ) : (
         <div className="flex-1 flex items-center justify-center text-gray-300 text-xs">
