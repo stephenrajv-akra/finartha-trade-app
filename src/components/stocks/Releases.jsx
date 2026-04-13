@@ -24,7 +24,7 @@ const Releases = () => {
                     {filteredData.map((release) => (
                         <div
                             key={release.id}
-                            className="flex items-start gap-4 px-4 py-2 hover:bg-[#EDE8F2] cursor-pointer rounded"
+                            className="flex items-start gap-4 px-4 py-2 hover:bg-[#EDE8F2] border-b border-[#EDE8F2] rounded cursor-pointer" 
                         >  
 
                             {/* ── Right: Content ── */}
