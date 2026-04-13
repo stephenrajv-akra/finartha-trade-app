@@ -584,3 +584,48 @@ export const ANALYST_DATA = {
   },
 };
 
+/* ──────────────────────────────────────────────────────────────────────────────
+ *  ORDER FLOW DATA — Replace with API calls during backend integration.
+ *
+ *  Expected API endpoints:
+ *    GET /api/order-flow/distribution?symbol=AAPL
+ *      → { inflow: { total, breakdown: [{ size, pct, value }] },
+ *          outflow: { total, breakdown: [...] } }
+ *
+ *    GET /api/order-flow/large-scale?symbol=AAPL&days=5
+ *      → { orders: [{ date, value }] }
+ *        value > 0 = net buy (green), value < 0 = net sell (red)
+ *
+ *  size key: 'L' = Large, 'M' = Medium, 'S' = Small
+ * ────────────────────────────────────────────────────────────────────────────── */
+
+export const ORDER_FLOW_DATA = { 
+  distribution: {
+    inflow: {
+      total: 821.27,
+      breakdown: [
+        { size: 'L', pct: 7.45,  value: 112.67 },
+        { size: 'M', pct: 5.89,  value: 98.12  },
+        { size: 'S', pct: 8.15,  value: 120.45 },
+      ],
+    },
+    outflow: {
+      total: 855.27,
+      breakdown: [
+        { size: 'L', pct: 4.72,  value: 88.90  },
+        { size: 'M', pct: 9.03,  value: 130.22 },
+        { size: 'S', pct: 3.56,  value: 75.34  },
+      ],
+    },
+  },
+  largeScaleOrders: [
+    { date: '12/15', value: -225.83  },
+    { date: '03/22', value: -1515.19 },
+    { date: '09/05', value: 486.25   },
+    { date: '11/30', value: 1445.37 },
+    { date: '01/18', value: -550.83   },
+  ], 
+};
+
+
+

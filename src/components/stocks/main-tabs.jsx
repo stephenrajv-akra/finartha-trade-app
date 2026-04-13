@@ -4,6 +4,7 @@ import ChartContainer from './chart-container';
 import Note from './note';
 import News from './news';
 import Analysis from './Analysis';
+import OrderFlow from './Order-Flow'; 
 
 const TABS = [
     'Chart',
@@ -20,7 +21,7 @@ const TABS = [
 ];
 
 const MainTabs = ({ gridLayout = 1, onGridChange }) => {
-    const [activeTab, setActiveTab] = useState('Analysis');
+    const [activeTab, setActiveTab] = useState('Chart');
 
     return (
         <div className="flex flex-col h-full"> 
@@ -95,8 +96,8 @@ const MainTabs = ({ gridLayout = 1, onGridChange }) => {
                     </div>
                 )}
                 {activeTab === 'Order Flow' && (
-                    <div className="flex items-center justify-center h-full text-gray-400 text-sm">
-                        Order Flow — coming soon
+                    <div className='order-flow-wrapper'>
+                        <OrderFlow /> 
                     </div>
                 )}
             </div>
