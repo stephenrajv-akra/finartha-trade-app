@@ -23,7 +23,7 @@ const TABS = [
 ];
 
 const MainTabs = ({ gridLayout = 1, onGridChange }) => {
-    const [activeTab, setActiveTab] = useState('Releases');
+    const [activeTab, setActiveTab] = useState('Chart');
 
     return (
         <div className="flex flex-col h-full"> 
