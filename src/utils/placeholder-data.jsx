@@ -798,22 +798,6 @@ export const stats = [
   {
     column: [
       { label: "High", value: "4,510.95" },
-      { label: "Close", value: "4,510.95" }, 
-      { label: "52 Wk Low", value: "4,510.95" },
-      { label: "Market Cap", value: "0.00" },
-    ],
-  },
-  {
-    column: [
-      { label: "Open", value: "4,510.95" },
-      { label: "Low", value: "4,510.95" },
-      { label: "52 Wk High", value: "4,510.95" },
-      { label: "Volume", value: "0.00" },
-    ],
-  },
-  {
-    column: [
-      { label: "High", value: "4,510.95" },
       { label: "Close", value: "4,510.95" },
       { label: "52 Wk Low", value: "4,510.95" },
       { label: "Market Cap", value: "0.00" },
@@ -827,14 +811,80 @@ export const stats = [
       { label: "Volume", value: "0.00" },
     ],
   },
-  {
-    column: [
-      { label: "High", value: "4,510.95" },
-      { label: "Close", value: "4,510.95" },
-      { label: "52 Wk Low", value: "4,510.95" },
-      { label: "Market Cap", value: "0.00" },
-    ], 
+];
+
+
+// ── Portfolio Page Data ──────────────────────────────────────────────────────
+
+export const PORTFOLIO_CHART_DATA = {
+  '1M': {
+    labels: ['Apr 1', 'Apr 3', 'Apr 5', 'Apr 7', 'Apr 9', 'Apr 11', 'Apr 13', 'Apr 15', 'Apr 17', 'Apr 19', 'Apr 21', 'Apr 23', 'Apr 25', 'Apr 27', 'Apr 29', 'May 1'],
+    current: [270, 290, 280, 305, 335, 318, 360, 390, 375, 405, 428, 418, 445, 462, 478, 500],
+    invested: [158, 170, 163, 182, 205, 192, 222, 248, 236, 260, 278, 268, 285, 290, 293, 295],
   },
+  '6M': {
+    labels: ['Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr'],
+    current: [270, 215, 195, 155, 280, 500],
+    invested: [162, 172, 172, 118, 168, 295],
+  },
+  '1Y': {
+    labels: ['May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr'],
+    current: [20, 165, 148, 215, 365, 435, 395, 285, 195, 155, 275, 500],
+    invested: [20, 205, 182, 272, 540, 618, 550, 345, 172, 118, 165, 295],
+  },
+  '3Y': {
+    labels: ["Q2'23", "Q3'23", "Q4'23", "Q1'24", "Q2'24", "Q3'24", "Q4'24", "Q1'25", "Q2'25", "Q3'25", "Q4'25", "Q1'26"],
+    current: [20, 165, 148, 215, 365, 435, 395, 285, 195, 155, 275, 500],
+    invested: [20, 205, 182, 272, 540, 618, 550, 345, 172, 118, 165, 295],
+  },
+  '5Y': {
+    labels: ['2021', 'Q2\'21', 'Q3\'21', 'Q4\'21', '2022', 'Q2\'22', 'Q3\'22', 'Q4\'22', '2023', 'Q2\'23', 'Q3\'23', 'Q4\'23', '2024', 'Q2\'24', 'Q3\'24', 'Q4\'24', '2025', 'Q2\'25', 'Q3\'25', 'Q4\'25', '2026'],
+    current: [20, 80, 120, 95, 60, 88, 128, 108, 75, 165, 148, 215, 365, 435, 395, 285, 195, 155, 275, 440, 500],
+    invested: [20, 95, 145, 115, 65, 105, 165, 132, 90, 205, 182, 272, 540, 618, 550, 345, 172, 118, 165, 255, 295],
+  },
+  'ALL': {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    current: [20, 165, 148, 215, 365, 435, 395, 285, 195, 155, 275, 500],
+    invested: [20, 205, 182, 272, 540, 618, 550, 345, 172, 118, 165, 295],
+  },
+};
+
+export const PORTFOLIO_SUMMARY = {
+  currentValue: '$1,000,00.00',
+  investedValue: '$5,000,00.00',
+  currentValueChange: '-$4,000,00.00',
+  currentReturn: '-$1,000,00.00',
+};
+
+export const PORTFOLIO_HOLDINGS = [
+  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [12, 14, 11, 15, 13, 16, 14, 17, 15, 18, 16, 14, 13, 15, 17, 16, 18, 15, 14, 16], marketPrice: '$14.24', priceChange: '0.00 (0.01%)', returns: '+$15.42', returnsPct: '56.48%', current: '$142.72', invested: '$27.30' },
+  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [10, 12, 11, 13, 12, 14, 13, 15, 14, 16, 15, 13, 12, 14, 16, 15, 17, 14, 13, 15], marketPrice: '$14.24', priceChange: '0.00 (0.01%)', returns: '+$15.42', returnsPct: '56.48%', current: '$142.72', invested: '$27.30' },
+  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [14, 13, 15, 12, 14, 11, 13, 15, 14, 16, 13, 15, 14, 12, 16, 15, 13, 14, 16, 15], marketPrice: '$14.24', priceChange: '0.00 (0.01%)', returns: '+$15.42', returnsPct: '56.48%', current: '$142.72', invested: '$27.30' },
+  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [11, 13, 12, 14, 13, 15, 14, 16, 15, 17, 16, 14, 13, 15, 17, 16, 18, 15, 14, 16], marketPrice: '$14.24', priceChange: '0.00 (0.01%)', returns: '+$15.42', returnsPct: '56.48%', current: '$142.72', invested: '$27.30' },
+  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [13, 15, 14, 16, 15, 17, 16, 18, 17, 19, 18, 16, 15, 17, 19, 18, 20, 17, 16, 18], marketPrice: '$14.24', priceChange: '0.00 (0.01%)', returns: '+$15.42', returnsPct: '56.48%', current: '$142.72', invested: '$27.30' },
+  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [15, 14, 16, 13, 15, 12, 14, 16, 15, 17, 14, 16, 15, 13, 17, 16, 14, 15, 17, 16], marketPrice: '$14.24', priceChange: '0.00 (0.01%)', returns: '+$15.42', returnsPct: '56.48%', current: '$142.72', invested: '$27.30' },
+  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [12, 14, 13, 15, 14, 16, 15, 17, 16, 18, 17, 15, 14, 16, 18, 17, 19, 16, 15, 17], marketPrice: '$14.24', priceChange: '0.00 (0.01%)', returns: '+$15.42', returnsPct: '56.48%', current: '$142.72', invested: '$27.30' },
+  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [10, 12, 11, 13, 12, 14, 13, 15, 14, 16, 15, 13, 12, 14, 16, 15, 17, 14, 13, 15], marketPrice: '$14.24', priceChange: '0.00 (0.01%)', returns: '+$15.42', returnsPct: '56.48%', current: '$142.72', invested: '$27.30' },
+  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [14, 13, 15, 12, 14, 11, 13, 15, 14, 16, 13, 15, 14, 12, 16, 15, 13, 14, 16, 15], marketPrice: '$14.24', priceChange: '0.00 (0.01%)', returns: '+$15.42', returnsPct: '56.48%', current: '$142.72', invested: '$27.30' },
+  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [11, 13, 12, 14, 13, 15, 14, 16, 15, 17, 16, 14, 13, 15, 17, 16, 18, 15, 14, 16], marketPrice: '$14.24', priceChange: '0.00 (0.01%)', returns: '+$15.42', returnsPct: '56.48%', current: '$142.72', invested: '$27.30' },
+  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [14, 13, 15, 12, 14, 11, 13, 15, 14, 16, 13, 15, 14, 12, 16, 15, 13, 14, 16, 15], marketPrice: '$14.24', priceChange: '0.00 (0.01%)', returns: '+$15.42', returnsPct: '56.48%', current: '$142.72', invested: '$27.30' },
+  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [11, 13, 12, 14, 13, 15, 14, 16, 15, 17, 16, 14, 13, 15, 17, 16, 18, 15, 14, 16], marketPrice: '$14.24', priceChange: '0.00 (0.01%)', returns: '+$15.42', returnsPct: '56.48%', current: '$142.72', invested: '$27.30' },
+]; 
+
+export const MARKET_CAP_DATA = [
+  { name: 'Large Cap', count: '7 Stocks', allocation: '$111.88', allocationPct: '5.30%', returns: '+$15.42', returnsPct: '56.48%', color: '#3B82F6' },
+  { name: 'Mid Cap', count: '0 Stocks', allocation: '$111.88', allocationPct: '5.30%', returns: '+$15.42', returnsPct: '56.48%', color: '#F59E0B' },
+  { name: 'Small Cap', count: '3 Stocks', allocation: '$111.88', allocationPct: '5.30%', returns: '+$15.42', returnsPct: '56.48%', color: '#14B8A6' },
+];
+
+export const SECTOR_ALLOCATION_DATA = [
+  { name: 'ETF', count: '1 Stocks', allocation: '$111.88', allocationPct: '5.30%', returns: '+$15.42', returnsPct: '56.48%', color: '#F7B84B' },
+  { name: 'Oil & Gas', count: '0 Stocks', allocation: '$111.88', allocationPct: '5.30%', returns: '+$15.42', returnsPct: '56.48%', color: '#8668B9' },
+  { name: 'IT Sector', count: '3 Stocks', allocation: '$111.88', allocationPct: '5.30%', returns: '+$15.42', returnsPct: '56.48%', color: '#DA6AAB' },
+];
+
+export const ASSET_ALLOCATION_DATA = [
+  { name: 'Stocks', count: '7 Stocks', allocation: '$111.88', allocationPct: '5.30%', returns: '+$15.42', returnsPct: '56.48%', color: '#17B667' },
 ];
 
 export const colorMap = {

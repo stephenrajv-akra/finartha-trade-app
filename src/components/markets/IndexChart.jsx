@@ -3,7 +3,7 @@ import { createChart, LineSeries, ColorType } from 'lightweight-charts';
 
 const TABS = ['Index Chart', 'Yield Curves', 'Net Inflow', 'Market Overview'];
 
-const stocks = [ 
+const stocks = [
   {
     id: 'dow',
     name: 'Dow Jones',
@@ -94,13 +94,13 @@ export default function IndexChart() {
   const seriesRefs = useRef([]);
 
   useEffect(() => {
-    if (!chartContainerRef.current) return;
+    if (!chartContainerRef.current || activeTab !== 'Index Chart') return;
 
     const chart = createChart(chartContainerRef.current, {
       width: chartContainerRef.current.clientWidth,
       height: chartContainerRef.current.clientHeight,
       layout: {
-        background: { type: ColorType.Solid, color: 'rgba(0, 0, 0, 0)' }, 
+        background: { type: ColorType.Solid, color: 'rgba(0, 0, 0, 0)' },
         textColor: '#9ca3af',
         fontSize: 11,
         fontFamily: 'Inter, sans-serif',
@@ -152,7 +152,7 @@ export default function IndexChart() {
       if (!tooltip) return;
 
       if (!param || !param.time || !param.point ||
-          param.point.x < 0 || param.point.y < 0) {
+        param.point.x < 0 || param.point.y < 0) {
         tooltip.style.display = 'none';
         return;
       }
@@ -209,22 +209,21 @@ export default function IndexChart() {
       resizeObserver.disconnect();
       chart.remove();
     };
-  }, []);
+  }, [activeTab]);
 
   return (
     <div className="flex flex-col h-full overflow-hidden">
 
       {/* ── Tab Bar ── */}
-      <div className="flex items-center border-b border-gray-200 shrink-0 bg-[#f7f7f7]">  
+      <div className="flex items-center border-b border-gray-200 shrink-0 bg-[#f7f7f7]">
         {TABS.map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`px-4 py-2 text-xs lg:text-sm font-medium border-r border-[#C8B9D8] rounded-tr-lg transition-all whitespace-nowrap ${
-              activeTab === tab
+            className={`px-4 py-2 text-xs lg:text-sm font-medium border-r border-[#C8B9D8] rounded-tr-lg transition-all whitespace-nowrap ${activeTab === tab
                 ? 'bg-white text-black'
                 : 'text-gray-600 border-b-transparent hover:text-gray-900'
-            }`}
+              }`}
           >
             {tab}
           </button>
@@ -239,58 +238,72 @@ export default function IndexChart() {
         </div>
       </div>
 
-      {/* ── Body: stock list + chart ── */}
-      <div className="flex flex-1 overflow-hidden">
+        {activeTab === 'Index Chart' && (
+          <div className="flex flex-1 overflow-hidden">
+            {/* Left – stock list */}
+            <div className="w-full max-w-[170px] max-h-[350px] hide-scrollbar shrink-0 flex flex-col gap-2 overflow-y-auto border-r border-gray-100 p-2">
+              {stocks.map((s) => {
+                const isSelected = selectedStock === s.id;
+                return (
+                  <button
+                    key={s.id}
+                    onClick={() => setSelectedStock(s.id)}
+                    className={`w-full text-left px-3 py-3 border bg-[rgba(237,232,242,0.50)] rounded-lg transition-all ${isSelected
+                        ? 'border-[#AE6DA2]'
+                        : 'border-transparent'
+                      }`}
+                  >
+                    <div className="flex items-center gap-1 mb-0.5">
+                      <span className={`w-1 h-1 rounded-full shrink-0 ${isSelected ? 'bg-[#AE6DA2]' : 'bg-black'}`} />
+                      <span className="text-xs font-medium text-black">{s.name}</span>
+                    </div>
+                    <div className={`text-sm font-bold pl-3 text-black`}>
+                      {s.price}
+                    </div>
+                    <div className={`text-xs pl-3 font-medium mt-0.5 ${s.positive ? 'text-[#17B667]' : 'text-[#EC4D5C]'}`}>
+                      {s.change} &nbsp; {s.pct}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
 
-        {/* Left – stock list */}
-        <div className="w-full max-w-[170px] max-h-[350px] hide-scrollbar shrink-0 flex flex-col gap-2 overflow-y-auto border-r border-gray-100 p-2">
-          {stocks.map((s) => {
-            const isSelected = selectedStock === s.id;
-            return (
-              <button
-                key={s.id}
-                onClick={() => setSelectedStock(s.id)}
-                className={`w-full text-left px-3 py-3 border bg-[rgba(237,232,242,0.50)] rounded-lg transition-all ${
-                  isSelected
-                    ? 'border-[#AE6DA2]'
-                    : 'border-transparent'
-                }`} 
-              > 
-                <div className="flex items-center gap-1 mb-0.5">
-                  <span className={`w-1 h-1 rounded-full shrink-0 ${isSelected ? 'bg-[#AE6DA2]' : 'bg-black'}`} />
-                  <span className="text-xs font-medium text-black">{s.name}</span>
-                </div>
-                <div className={`text-sm font-bold pl-3 text-black`}> 
-                  {s.price}
-                </div>
-                <div className={`text-xs pl-3 font-medium mt-0.5 ${s.positive ? 'text-[#17B667]' : 'text-[#EC4D5C]'}`}>   
-                  {s.change} &nbsp; {s.pct} 
-                </div>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Right – chart */}
-        <div className="flex-1 overflow-hidden relative" ref={chartContainerRef}>
-          {/* Custom tooltip */}
-          <div
-            ref={tooltipRef}
-            style={{
-              display: 'none',
-              position: 'absolute',
-              zIndex: 10,
-              pointerEvents: 'none',
-              background: '#fff',
-              border: '1px solid #E0E0E4',
-              borderRadius: '6px',
-              padding: '8px 10px',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
-              minWidth: '160px',
-            }}
-          />
-        </div>
-      </div>
-    </div>
+            {/* Right – chart */}
+            <div className="flex-1 overflow-hidden relative" ref={chartContainerRef}>
+              {/* Custom tooltip */}
+              <div
+                ref={tooltipRef}
+                style={{
+                  display: 'none',
+                  position: 'absolute',
+                  zIndex: 10,
+                  pointerEvents: 'none',
+                  background: '#fff',
+                  border: '1px solid #E0E0E4',
+                  borderRadius: '6px',
+                  padding: '8px 10px',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+                  minWidth: '160px',
+                }}
+              />
+            </div>
+          </div>
+        )}
+        {activeTab === 'Yield Curves' && (
+          <div className="flex flex-1 overflow-hidden">
+            <h1>Yield Curves</h1>
+          </div>
+        )}
+        {activeTab === 'Net Inflow' && (
+          <div className="flex flex-1 overflow-hidden">
+            <h1>Net Inflow</h1>
+          </div>
+        )}
+        {activeTab === 'Market Overview' && (
+          <div className="flex flex-1 overflow-hidden">
+            <h1>Market Overview</h1> 
+          </div>
+        )} 
+      </div> 
   );
 }
