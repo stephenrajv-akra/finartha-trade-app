@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Star, Bell, ChevronDown, AlignJustify, ArrowUpDown,Menu } from 'lucide-react';
+import { stats, colorMap } from "../../utils/placeholder-data";
 
 const QuotesWatchlist = () => {
   const [activeRightTopTab, setActiveRightTopTab] = useState('quotes');
+
     return (
         <>
             {/* Tabs */}
@@ -49,6 +51,9 @@ const QuotesWatchlist = () => {
 
                         {/* Price Display */}
                         <div className="mb-6">
+                            <div className="symbol">
+                                <h4 className="text-base font-normal text-[#7F7F7F]">Apple Inc.</h4>
+                            </div> 
                             <div className="flex items-center gap-2 mb-2">
                                 <h2 className="text-4xl font-bold text-green-600">4560.65</h2>
                                 <div className="flex flex-col">
@@ -60,43 +65,17 @@ const QuotesWatchlist = () => {
                         </div>
 
                         {/* Info Grid */}
-                        <div className="flex items-center justify-between gap-40">
-                            <div className="left-block flex flex-col gap-2.5 w-1/2">
-                                <div className='flex items-center justify-between'>
-                                    <p className="text-xs text-[#616161] mb-1">Open</p>
-                                    <p className="text-sm font-semibold text-green-600">4,510.95</p>
+                        <div className="flex flex-wrap items-center justify-start gap-10"> 
+                            {stats.map((statGroup, index) => (
+                                <div key={index} className="flex flex-col w-fit gap-2">
+                                    {statGroup.column.map((item, idx) => (
+                                        <div key={idx} className='flex items-center justify-between gap-6'> 
+                                            <p className="text-xs text-[#616161] mb-1">{item.label}</p>
+                                            <p className={`text-sm font-semibold ${colorMap[item.label] || 'text-[#616161]'}`}>{item.value}</p>
+                                        </div>
+                                    ))}
                                 </div>
-                                <div className='flex items-center justify-between'>
-                                    <p className="text-xs text-[#616161] mb-1">Low</p>
-                                    <p className="text-sm font-semibold text-red-600">4,510.95</p>
-                                </div>
-                                <div className='flex items-center justify-between'>
-                                    <p className="text-xs text-[#616161] mb-1">52 Wk High</p>
-                                    <p className="text-sm font-semibold text-[#616161]">4,510.95</p>
-                                </div>
-                                <div className='flex items-center justify-between'>
-                                    <p className="text-xs text-[#616161] mb-1">Volume</p>
-                                    <p className="text-sm font-semibold text-[#616161]">0.00</p>
-                                </div>
-                            </div>
-                            <div className="right-block flex flex-col gap-2.5 w-1/2">
-                                <div className='flex items-center justify-between'>
-                                    <p className="text-xs text-[#616161] mb-1">High</p>
-                                    <p className="text-sm font-semibold text-green-600">4,510.95</p>
-                                </div>
-                                <div className='flex items-center justify-between'>
-                                    <p className="text-xs text-[#616161] mb-1">Prev Close</p>
-                                    <p className="text-sm font-semibold text-red-600">4,510.95</p>
-                                </div>
-                                <div className='flex items-center justify-between'>
-                                    <p className="text-xs text-[#616161] mb-1">52 Wk Low</p>
-                                    <p className="text-sm font-semibold text-[#616161]">4,510.95</p>
-                                </div>
-                                <div className='flex items-center justify-between'>
-                                    <p className="text-xs text-[#616161] mb-1">Market Cap</p>
-                                    <p className="text-sm font-semibold text-[#616161]">0.00</p>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
                 )}
