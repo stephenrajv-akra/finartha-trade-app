@@ -627,5 +627,110 @@ export const ORDER_FLOW_DATA = {
   ], 
 };
 
+// ── Releases Data ────────────────────────────────────────────────────────────────
+// type: 'All' | 'Financials' | 'Insiders'
+// date: YYYY-MM-DD, time: HH:MM (24-hour format)
+export const RELEASES_DATA = [
+  {
+    id: 1,
+    type: 'Insiders', 
+    company: 'Apple Inc.', 
+    ticker: '0000320193',
+    date: '04/03/2026',
+    time: '18:30',
+    description: 'Statement of changes in beneficial ownership of securities',
+  },
+  {
+    id: 2,
+    type: 'Insiders',
+    company: 'Orchard Innovations Ltd.',
+    ticker: '0012345678',
+    date: '04/03/2026',
+    time: '18:30',
+    description: 'Statement of changes in beneficial ownership of securities',
+  },
+  {
+    id: 3,
+    type: 'Insiders',
+    company: 'Quantum Orchard Corp.',
+    ticker: '0012345679',
+    date: '04/03/2026',
+    time: '18:30',
+    description: 'Statement of changes in beneficial ownership of securities',
+  },
+  {
+    id: 4,
+    type: 'Insiders',
+    company: 'Stellar Orchard Inc.',
+    ticker: '0012345680',
+    date: '04/03/2026',
+    time: '18:30',
+    description: 'Statement of changes in beneficial ownership of securities',
+  },
+  {
+    id: 5,
+    type: 'Financials',
+    company: 'Future Orchard Group',
+    ticker: '0012345681',
+    date: '04/03/2026',
+    time: '18:30',
+    description: 'Statement of changes in beneficial ownership of securities',
+  },
+  {
+    id: 6,
+    type: 'Insiders',
+    company: 'Nexus Orchard Enterprises',
+    ticker: '0012345682',
+    date: '04/03/2026',
+    time: '18:30',
+    description: 'Statement of changes in beneficial ownership of securities',
+  },
+  {
+    id: 7,
+    type: 'Insiders',
+    company: 'Apex Orchard Innovations',
+    ticker: '0012345683',
+    date: '04/03/2026',
+    time: '18:30',
+    description: 'Statement of changes in beneficial ownership of securities',
+  },
+  {
+    id: 8,
+    type: 'Financials',
+    company: 'Horizon Orchard Technologies',
+    ticker: '0012345684',
+    date: '04/03/2026',
+    time: '18:30',
+    description: 'Statement of changes in beneficial ownership of securities',
+  },
+  {
+    id: 9,
+    type: 'Insiders',
+    company: 'Visionary Orchard Systems',
+    ticker: '0012345685',
+    date: '04/03/2026',
+    time: '18:30',
+    description: 'Statement of changes in beneficial ownership of securities',
+  },
+  {
+    id: 10,
+    type: 'Insiders',
+    company: 'Synergy Orchard Labs',
+    ticker: '0012345686',
+    date: '04/03/2026',
+    time: '18:30',
+    description: 'Statement of changes in beneficial ownership of securities',
+  },
+  {
+    id: 11,
+    type: 'Financials',
+    company: 'Infinity Orchard Solutions',
+    ticker: '0012345687',
+    date: '04/03/2026',
+    time: '18:30',
+    description: 'Statement of changes in beneficial ownership of securities',
+  },
+];
+
 
 
