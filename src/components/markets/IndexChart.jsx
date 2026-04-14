@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { createChart, LineSeries, ColorType } from 'lightweight-charts';
 import YeildCurves from './Yeild-Curves';
+import NewFlowChart from './NetFlow-Chart';
 const TABS = ['Index Chart', 'Yield Curves', 'Net Inflow', 'Market Overview'];
 
 const stocks = [
@@ -86,7 +87,7 @@ const seriesConfigs = [
 ];
 
 export default function IndexChart() {
-  const [activeTab, setActiveTab] = useState('Yield Curves');
+  const [activeTab, setActiveTab] = useState('Net Inflow');
   const [selectedStock, setSelectedStock] = useState('dow');
   const chartContainerRef = useRef(null);
   const chartRef = useRef(null);
@@ -296,7 +297,7 @@ export default function IndexChart() {
         )}
         {activeTab === 'Net Inflow' && (
           <div className="flex flex-1 overflow-hidden">
-            <h1>Net Inflow</h1>
+            <NewFlowChart /> 
           </div>
         )}
         {activeTab === 'Market Overview' && (
