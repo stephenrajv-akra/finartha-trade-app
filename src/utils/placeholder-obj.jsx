@@ -1,5 +1,43 @@
 // Placeholder data for Time&Sales and Vol Analysis
 
+// ── Yield Curves ──────────────────────────────────────────────────────────────
+// Expected API shape:
+// {
+//   xAxis: string[],          // Maturity labels: ["6M","1Y","2Y","5Y","10Y","30Y"]
+//   series: [
+//     { id: string, label: string, color: string, data: number[] }
+//   ]
+// }
+
+
+export const yieldCurvesData = {
+  xAxis: ['6M', '1Y', '2Y', '5Y', '10Y', '30Y'],
+  series: [
+    {
+      id: 'treasury',
+      label: 'Treasury',
+      color: '#724A9A',
+      bgColor: '#EDE8F280', 
+      data: [5.02, 5.48, 6.05, 7.12, 7.40, 7.72],
+    },
+    {
+      id: 'ig_corp',
+      label: 'IG Corp',
+      color: '#9E5190',
+      bgColor: '#F3E9F1',
+      data: [5.20, 5.90, 6.80, 9.20, 9.35, 8.42],
+    },
+    {
+      id: 'hy_corp',
+      label: 'HY Corp',
+      color: '#D7A564',
+      bgColor: '#F4EFEA',
+      data: [4.32, 4.60, 4.85, 5.42, 5.82, 6.38],
+    },
+  ],
+};
+// ─────────────────────────────────────────────────────────────────────────────
+
 export const timeAndSalesData = [
   { time: '00:47:12', price: 260.12, volume: 3, symbol: 'OCEA' },
   { time: '00:48:15', price: 261.15, volume: 553, symbol: 'OCEA' },
