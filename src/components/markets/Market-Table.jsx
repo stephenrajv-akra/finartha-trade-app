@@ -1,4 +1,4 @@
-import {useState, useRef, useEffect, useCallback} from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { SquareCheckBig } from 'lucide-react';
 import { ArrowDown, HamburgerIcon } from "../../utils/SvgCode";
 import { gainersData, losersData, DEFAULT_VISIBLE_IDS, ALL_COLUMN_IDS, COLUMN_LABELS, MARKET_TABLE_COLUMNS } from '../../utils/placeholder-data'; 
@@ -101,6 +101,25 @@ const MarketDataTabs = () => {
 
   // Visible columns (controlled by table-controls dropdown)
   const [visibleColumns, setVisibleColumns] = useState(() => new Set(DEFAULT_VISIBLE_IDS));
+
+  // Time period dropdown
+  const [timePeriodOpen, setTimePeriodOpen] = useState(false);
+  const [selectedTimePeriod, setSelectedTimePeriod] = useState('Pre-market');
+  const dropdownRef = useRef(null);
+  const timePeriodOptions = ['Pre-market', 'After-hours', '5 Minutes', '1 Day', '5 Days', '1 Month', '3 Months', '52 Weeks'];
+
+  // Click outside to close dropdown
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setTimePeriodOpen(false);
+      }
+    };
+    if (timePeriodOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, [timePeriodOpen]);
 
   // Table controls modal — smooth open/close
   const [showTableControls, setShowTableControls] = useState(false);
@@ -220,9 +239,40 @@ const MarketDataTabs = () => {
             <div className="icon-container"> 
               <SquareCheckBig strokeWidth={2.3} size={16} color='#616161' />
             </div> 
-            <div className="dropdown-contianer flex items-center gap-1">
-                <div className="text-[#616161] text-xs font-normal">Pre-market</div>
-                <div className="icon"><ArrowDown /></div>
+            <div className="relative" ref={dropdownRef}>
+              <div 
+                className="dropdown-contianer flex items-center gap-1 cursor-pointer hover:bg-gray-100 px-2 py-1 rounded transition-colors"
+                onClick={() => setTimePeriodOpen(!timePeriodOpen)}
+              >
+                <div className="text-[#616161] text-xs font-normal">{selectedTimePeriod}</div>
+                <div className={`icon transition-transform duration-300 ${timePeriodOpen ? 'rotate-180' : ''}`}><ArrowDown /></div>
+              </div>
+
+              {/* Dropdown menu */}
+              <div 
+                className={`absolute left-0 top-full mt-1 bg-white border border-gray-200 rounded shadow-lg z-50 min-w-max overflow-hidden transition-all duration-300 origin-top-left ${
+                  timePeriodOpen 
+                    ? 'opacity-100 scale-100 visible' 
+                    : 'opacity-0 scale-95 invisible' 
+                }`}
+              >
+                {timePeriodOptions.map((option) => (
+                  <div
+                    key={option}
+                    className={`px-3 py-2 text-xs cursor-pointer transition-colors ${
+                      selectedTimePeriod === option
+                        ? 'bg-[#EDE8F2] text-[#724A9A] font-medium'
+                        : 'text-[#616161] hover:bg-gray-50'
+                    }`}
+                    onClick={() => {
+                      setSelectedTimePeriod(option);
+                      setTimePeriodOpen(false);
+                    }}
+                  >
+                    {option}
+                  </div>
+                ))}
+              </div>
             </div>
         </div>
       </div>

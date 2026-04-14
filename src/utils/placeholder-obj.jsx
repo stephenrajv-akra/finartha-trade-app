@@ -160,3 +160,30 @@ export const volAnalysisData = [
   { price: 250, buy: 38120, sell: 25750, volume: 53880, ratio: 37.80 },
   { price: 250, buy: 63450, sell: 46780, volume: 53880, ratio: 18.90 },
 ];
+
+// ── Market Overview (Adv/Dec) ────────────────────────────────────────────────
+// Expected API shape:
+// {
+//   total: number,
+//   decliners: number,
+//   advancers: number,
+//   bars: [{ label: string, value: number, type: 'decline'|'neutral'|'advance' }]
+// }
+// To integrate: replace marketOverviewData with an API response of the same shape.
+export const marketOverviewData = {
+  total: 6469,
+  decliners: 1914,
+  advancers: 3857, 
+  bars: [
+    { label: '<-10%', value: 72, type: 'decline' },
+    { label: '-5~-2%', value: 102, type: 'decline' },
+    { label: '-5~-2%', value: 102, type: 'decline' },
+    { label: '', value: 335, type: 'decline' },
+    { label: '0', value: 295, type: 'neutral' },
+    { label: '', value: 2563, type: 'advance' },
+    { label: '2~5%', value: 932, type: 'advance' },
+    { label: '', value: 324, type: 'advance' },
+    { label: '>10%', value: 111, type: 'advance' },
+  ],
+};
+// ─────────────────────────────────────────────────────────────────────────────
