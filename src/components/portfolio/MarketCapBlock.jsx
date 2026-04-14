@@ -15,43 +15,75 @@ export default function MarketCapBlock() {
     const chart = echarts.init(chartRef.current);
 
     chart.setOption({
+      grid: {
+        left: 20,
+        right: 20,
+        top: 20,
+        bottom: 30,
+        containLabel: true,
+      },
+
+      xAxis: {
+        type: 'category',
+        data: MARKET_CAP_DATA.map(d => d.name),
+        axisTick: { show: false },
+        axisLine: { show: false },
+        axisLabel: {
+          color: '#6b7280',
+          fontSize: 12,
+        },
+      },
+
+      yAxis: {
+        type: 'value',
+        splitLine: {
+          show: true,
+          lineStyle: {
+            color: '#E5E7EB',
+            type: 'dashed',
+          },
+        },
+        axisLabel: { show: false },
+        axisLine: { show: false },
+        axisTick: { show: false },
+      },
+
       tooltip: {
-        trigger: 'item',
+        trigger: 'axis',
         backgroundColor: '#fff',
         borderColor: '#e5e7eb',
         borderWidth: 1,
         textStyle: { color: '#374151', fontSize: 11 },
         formatter: (params) => {
-          return `<div style="padding:4px 0">
-            <div style="font-weight:600;color:#374151">${params.name}</div>
-            <div style="font-size:10px;color:#6b7280;margin-top:2px">${params.value}</div>
-          </div>`;
+          const p = params[0];
+          return `
+        <div style="padding:4px 0">
+          <div style="font-weight:600">${p.name}</div>
+          <div style="font-size:10px;color:#6b7280;margin-top:2px">
+            ${p.value}
+          </div>
+        </div>
+      `;
         },
       },
-      series: [{
-        type: 'pie',
-        radius: ['42%', '70%'],
-        center: ['50%', '50%'],
-        avoidLabelOverlap: false,
-        label: {
-          show: true,
-          position: 'center',
-          formatter: 'Market\nCap',
-          fontSize: 10,
-          color: '#737373',
-          fontWeight: '500',
-          lineHeight: 16,
+
+      series: [
+        {
+          type: 'bar',
+          data: MARKET_CAP_DATA.map(d => ({
+            value: parseFloat(d.allocation.replace('$', '')),
+            itemStyle: {
+              color: d.color,
+              borderRadius: [0, 0, 0, 0], // no rounded corners
+            },
+          })),
+
+          barWidth: 60, // controls thickness (tune for pixel perfection)
+          itemStyle: {
+            borderRadius: [0, 0, 0, 0],
+          },
         },
-        emphasis: {
-          label: { show: true, fontSize: 10, fontWeight: 'bold', color: '#6b7280' },
-        },
-        labelLine: { show: false },
-        data: MARKET_CAP_DATA.map(d => ({
-          value: parseFloat(d.allocation.replace('$', '')),
-          name: d.name,
-          itemStyle: { color: d.color, borderColor: '#fff', borderWidth: 2 },
-        })),
-      }],
+      ],
     });
 
     const ro = new ResizeObserver(() => chart.resize());
@@ -63,9 +95,9 @@ export default function MarketCapBlock() {
     <div className="flex flex-col h-full overflow-hidden bg-white">
 
       {/* ── Title ── */}
-      <div className="flex items-center justify-center border-b border-[#EDE8F2] px-4 pt-4 pb-2 shrink-0">
+      <div className="flex items-center justify-center border-b border-[#EDE8F2] px-4 bg-[#EDE8F2] py-2 shrink-0">
         <h3 className="text-base font-normal text-[#242424]">Market Cap</h3>
-      </div>  
+      </div>
 
       {/* ── Chart ── */}
       <div className="h-[200px]" ref={chartRef} />
@@ -75,7 +107,7 @@ export default function MarketCapBlock() {
 
       {/* ── Table Header ── */}
       <div className="shrink-0">
-        <div className="flex items-center px-4 py-2 bg-[#EDE8F2] text-[11px] font-semibold text-gray-800">
+        <div className="flex items-center px-4 py-2 bg-[#F4EFEA] text-[11px] font-semibold text-gray-800">
           <div className="flex-1">Market cap</div>
           <div className="flex-1 text-center">Current (Allocation)</div>
           <div className="flex-1 text-right">Returns(%)</div>
@@ -104,7 +136,7 @@ export default function MarketCapBlock() {
                 </p>
               </div>
             </div>
-        
+
             {/* Center: allocation value & percentage */}
             <div className="flex-1 text-center px-2">
               <p className="text-[12px] font-bold text-gray-900 leading-tight">

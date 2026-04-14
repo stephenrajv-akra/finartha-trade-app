@@ -1,24 +1,56 @@
 import { PORTFOLIO_SUMMARY } from '../../utils/placeholder-data';
+import { useState } from 'react';
+import {IndianRupee, DollarSign, ChevronUp} from 'lucide-react';
 
 export default function PortfolioSummary() {
+    const [active, setActive] = useState("INR");
     return (
         <div className="flex flex-col h-full overflow-hidden bg-white">
 
             {/* ── Top row: Current value label + value + buttons ── */}
             <div className="flex items-center justify-between px-5 pt-4 pb-3 border-b border-[#EDE8F2] shrink-0">
-                <div>  
+                <div>
                     <p className="text-[#616161] text-base font-normal">Current value</p>
-                    <p className="text-[#862574] text-xl font-bold">{PORTFOLIO_SUMMARY.currentValue}</p>
+                    <div className='flex items-end gap-1'>  
+                        <p className="text-[#862574] text-xl font-bold">{PORTFOLIO_SUMMARY.currentValue}</p>
+                        <div className='flex items-end'>
+                        <ChevronUp color='#079E53' />   
+                        <p className='text-[#079E53] text-base font-medium'>{PORTFOLIO_SUMMARY.inflation}</p>
+                        </div>
+                    </div>
                 </div>
                 <div className="flex items-center gap-4">
-                    {/* Analyse button */}
-                    <button className="flex items-center gap-1.5 border border-[#38155C] rounded px-2 py-1 text-[#38155C] font-xs font-normal">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                            <path d="M2 2V12.6667C2 13.0203 2.14048 13.3594 2.39052 13.6095C2.64057 13.8595 2.97971 14 3.33333 14H14" stroke="#38155C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M12.667 6L9.33366 9.33333L6.66699 6.66667L4.66699 8.66667" stroke="#38155C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        Analyse
-                    </button>
+                    <div className="relative inline-flex bg-[#6E3A9C] rounded-full p-[8px] w-[120px]">
+
+                        {/* Sliding Background */}
+                        <div
+                            className={`absolute top-[3px] h-[calc(100%-6px)] w-[calc(50%-3px)] bg-white rounded-full transition-all duration-300 ease-in-out
+          ${active === "USD" ? "left-[calc(50%+1.5px)]" : "left-[3px]"}
+        `}
+                        />
+
+                        {/* INR */}
+                        <button
+                            onClick={() => setActive("INR")}
+                            className={`relative z-10 flex items-center justify-center gap-0.5 w-1/2 text-xs font-semibold
+          ${active === "INR" ? "text-[#6E3A9C]" : "text-white"}
+        `}
+                        >
+                            <span className="text-xs"><IndianRupee size={14} /></span>
+                            INR
+                        </button>
+
+                        {/* USD */}
+                        <button
+                            onClick={() => setActive("USD")}  
+                            className={`relative z-10 flex items-center justify-center gap-0.5 w-1/2 text-xs font-semibold
+          ${active === "USD" ? "text-[#6E3A9C]" : "text-white"}
+        `}  
+                        >
+                            <span className="text-xs"><DollarSign size={14} /></span>  
+                            USD 
+                        </button>
+                    </div> 
                     {/* Menu icon */}
                     <button className="p-1 text-gray-400 hover:text-gray-600 transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -52,7 +84,7 @@ export default function PortfolioSummary() {
                 <div className="flex-1 text-right">
                     <p className="text-[#7F7F7F] text-base font-normal">Current value</p>
                     <p className="text-[#EC4D5C] text-base font-bold">{PORTFOLIO_SUMMARY.currentReturn}</p>
-                </div> 
+                </div>
             </div>
 
         </div>

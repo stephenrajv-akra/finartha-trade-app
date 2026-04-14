@@ -854,6 +854,7 @@ export const PORTFOLIO_SUMMARY = {
   investedValue: '$5,000,00.00',
   currentValueChange: '-$4,000,00.00',
   currentReturn: '-$1,000,00.00',
+  inflation: '56.48%'
 };
 
 export const PORTFOLIO_HOLDINGS = [
@@ -873,8 +874,8 @@ export const PORTFOLIO_HOLDINGS = [
 
 export const MARKET_CAP_DATA = [
   { name: 'Large Cap', count: '7 Stocks', allocation: '$111.88', allocationPct: '5.30%', returns: '+$15.42', returnsPct: '56.48%', color: '#3B82F6' },
-  { name: 'Mid Cap', count: '0 Stocks', allocation: '$111.88', allocationPct: '5.30%', returns: '+$15.42', returnsPct: '56.48%', color: '#F59E0B' },
-  { name: 'Small Cap', count: '3 Stocks', allocation: '$111.88', allocationPct: '5.30%', returns: '+$15.42', returnsPct: '56.48%', color: '#14B8A6' },
+  { name: 'Mid Cap', count: '0 Stocks', allocation: '$40.88', allocationPct: '5.30%', returns: '+$15.42', returnsPct: '56.48%', color: '#F59E0B' },
+  { name: 'Small Cap', count: '3 Stocks', allocation: '$70.88', allocationPct: '5.30%', returns: '+$15.42', returnsPct: '56.48%', color: '#14B8A6' },
 ];
 
 export const SECTOR_ALLOCATION_DATA = [

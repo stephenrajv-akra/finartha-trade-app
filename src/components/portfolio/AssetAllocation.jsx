@@ -65,7 +65,7 @@ export default function AssetAllocation() {
     <div className="flex flex-col h-full overflow-hidden bg-white">
 
       {/* ── Title ── */}
-      <div className="flex items-center justify-center border-b border-[#EDE8F2] px-4 pt-4 pb-2 shrink-0">
+      <div className="flex items-center justify-center border-b border-[#EDE8F2] px-4 bg-[#EDE8F2] py-2 pb-2 shrink-0">
         <h3 className="text-base font-normal text-[#242424]">Asset Allocation</h3>
       </div>
 
@@ -77,7 +77,7 @@ export default function AssetAllocation() {
 
       {/* ── Table Header ── */}
       <div className="shrink-0">  
-        <div className="flex items-center px-4 py-2 bg-[#EDE8F2] text-[11px] font-semibold text-gray-800">
+        <div className="flex items-center px-4 py-2 bg-[#F4EFEA] text-[11px] font-semibold text-gray-800">
           <div className="flex-1">Assets</div>
           <div className="flex-1 text-center">Current (Allocation)</div>
           <div className="flex-1 text-right">Returns(%)</div>
