@@ -88,7 +88,7 @@ const seriesConfigs = [
 ];
 
 export default function IndexChart() {
-  const [activeTab, setActiveTab] = useState('Market Overview');
+  const [activeTab, setActiveTab] = useState('Index Chart');
   const [selectedStock, setSelectedStock] = useState('dow');
   const chartContainerRef = useRef(null);
   const chartRef = useRef(null);
