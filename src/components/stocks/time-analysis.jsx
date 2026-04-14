@@ -29,7 +29,7 @@ const TimeAnalysis = () => {
             {/* Tab Content */}
             <div className="flex-1 flex items-center justify-center overflow-auto">
                 {activeTimeSalesTab === 'timeSales' && (  
-                    <div className="flex flex-col items-center justify-center py-12 px-4 gap-2 max-w-[75%] text-center mx-auto"> 
+                    <div className="time-analysis flex flex-col items-center justify-center py-12 px-4 gap-2 max-w-[75%] text-center mx-auto"> 
                         <div className="img-wrapper">
                             <img src="/icons/search-data.png" alt="search data" />
                         </div>
@@ -38,7 +38,7 @@ const TimeAnalysis = () => {
                 )}
 
                 {activeTimeSalesTab === 'volAnalysis' && ( 
-                    <div className="flex flex-col items-center justify-center py-12 px-4 gap-2 max-w-[75%] text-center mx-auto"> 
+                    <div className="vol-analysis flex flex-col items-center justify-center py-12 px-4 gap-2 max-w-[75%] text-center mx-auto"> 
                         <div className="img-wrapper">
                             <img src="/icons/search-data.png" alt="search data" />
                         </div>
