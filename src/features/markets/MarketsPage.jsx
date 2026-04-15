@@ -74,9 +74,12 @@ const CalenderIpo = () => {
   return (
     <div className="flex flex-col h-full overflow-hidden">
       {/* Main Tabs - Calendar & IPO */}
-      <TabBar tabs={['IPO']} active={mainActive} onSelect={setMainActive} />
+      <TabBar tabs={[
+        // 'Calendar',
+        'IPO'
+        ]} active={mainActive} onSelect={setMainActive} />
       
-      {mainActive === 'IPO' ? (
+      {mainActive === 'IPO' && (
         <>
           {/* Sub Tabs with Slider Indicator */}
           <div className="left-sec relative border-b border-gray-200 bg-white">
@@ -125,12 +128,14 @@ const CalenderIpo = () => {
             </table>
           </div>
         </>
-      ) : (
-        /* IPO Panel */
-        <div className="flex-1 flex items-center justify-center text-gray-300 text-sm">
-          IPO Panel
-        </div>
       )}
+        {/* /* IPO Panel */}
+        {mainActive === 'Calendar' && (
+        <div className="flex-1 flex items-center justify-center text-gray-300 text-sm">
+          Calendar Panel
+        </div>
+        )}
+      
     </div>
   );
 };
