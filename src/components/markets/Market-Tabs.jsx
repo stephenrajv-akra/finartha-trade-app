@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { SquareCheckBig } from 'lucide-react';
 import { ArrowDown, HamburgerIcon } from "../../utils/SvgCode";
-import { gainersData, losersData, DEFAULT_VISIBLE_IDS, ALL_COLUMN_IDS, COLUMN_LABELS, MARKET_TABLE_COLUMNS, activeData, ACTIVE_TABLE_COLUMNS, ACTIVE_DEFAULT_VISIBLE_IDS, ACTIVE_ALL_COLUMN_IDS, ACTIVE_COLUMN_LABELS, ACTIVE_LABEL_COLS, ACTIVE_STOCK_COLS, etfData, ETF_TABLE_COLUMNS, ETF_DEFAULT_VISIBLE_IDS, ETF_ALL_COLUMN_IDS, ETF_COLUMN_LABELS, ETF_LABEL_COLS, ETF_STOCK_COLS, cryptoData, CRYPTO_TABLE_COLUMNS, CRYPTO_DEFAULT_VISIBLE_IDS, CRYPTO_ALL_COLUMN_IDS, CRYPTO_COLUMN_LABELS, CRYPTO_LABEL_COLS, CRYPTO_STOCK_COLS } from '../../utils/placeholder-data'; 
+import { gainersData, losersData, DEFAULT_VISIBLE_IDS, ALL_COLUMN_IDS, COLUMN_LABELS, MARKET_TABLE_COLUMNS, activeData, ACTIVE_TABLE_COLUMNS, ACTIVE_DEFAULT_VISIBLE_IDS, ACTIVE_ALL_COLUMN_IDS, ACTIVE_COLUMN_LABELS, ACTIVE_LABEL_COLS, ACTIVE_STOCK_COLS, etfData, ETF_TABLE_COLUMNS, ETF_DEFAULT_VISIBLE_IDS, ETF_ALL_COLUMN_IDS, ETF_COLUMN_LABELS, ETF_LABEL_COLS, ETF_STOCK_COLS, cryptoData, CRYPTO_TABLE_COLUMNS, CRYPTO_DEFAULT_VISIBLE_IDS, CRYPTO_ALL_COLUMN_IDS, CRYPTO_COLUMN_LABELS, CRYPTO_LABEL_COLS, CRYPTO_STOCK_COLS, week52Data, WEEK52_TABLE_COLUMNS, WEEK52_DEFAULT_VISIBLE_IDS, WEEK52_ALL_COLUMN_IDS, WEEK52_COLUMN_LABELS, WEEK52_LABEL_COLS, WEEK52_STOCK_COLS, popularData, POPULAR_TABLE_COLUMNS, POPULAR_DEFAULT_VISIBLE_IDS, POPULAR_ALL_COLUMN_IDS, POPULAR_COLUMN_LABELS, POPULAR_LABEL_COLS, POPULAR_STOCK_COLS } from '../../utils/placeholder-data'; 
 import { MenuIcon } from '../../utils/SvgCode'; 
 import TableControls from './Table-Controls-Popup';
 import * as echarts from 'echarts/core';
@@ -93,7 +93,7 @@ const POPUP_HEIGHT = 430;
 const MarketDataTabs = () => {   
   const [active, setActive] = useState('Tops');
   const [subActive, setSubActive] = useState('Top Gainers');
-  const mainTabs = ['Tops', 'Active', 'ETFs','Crypto']; 
+  const mainTabs = ['Tops', 'Active', 'ETFs','Crypto', '52 Week','Popular Stocks'];  
 
   const tableData = subActive === 'Top Gainers' ? gainersData : losersData;
   const isGainers = subActive === 'Top Gainers';
@@ -116,6 +116,18 @@ const MarketDataTabs = () => {
   const [cryptoSubTab, setCryptoSubTab] = useState('Tradable');
   const [cryptoVisibleColumns, setCryptoVisibleColumns] = useState(() => new Set(CRYPTO_DEFAULT_VISIBLE_IDS));
   const isCryptoPage = active === 'Crypto';
+
+  // 52 Week tab state
+  const WEEK52_SUB_TABS = ['New High', 'Near High', 'New Low', 'Near Low'];
+  const [week52SubTab, setWeek52SubTab] = useState('New High');
+  const [week52VisibleColumns, setWeek52VisibleColumns] = useState(() => new Set(WEEK52_DEFAULT_VISIBLE_IDS));
+  const is52WeekPage = active === '52 Week';
+
+  // Popular Stocks tab state
+  const POPULAR_SUB_TABS = ['High Dividend Stocks', 'Earnings Beyond Exp.', 'Earnings Below Exp.'];
+  const [popularSubTab, setPopularSubTab] = useState('High Dividend Stocks');
+  const [popularVisibleColumns, setPopularVisibleColumns] = useState(() => new Set(POPULAR_DEFAULT_VISIBLE_IDS));
+  const isPopularPage = active === 'Popular Stocks';
 
   // Visible columns (controlled by table-controls dropdown)
   const [visibleColumns, setVisibleColumns] = useState(() => new Set(DEFAULT_VISIBLE_IDS));
@@ -186,10 +198,36 @@ const MarketDataTabs = () => {
   const activeVisibleCols = ACTIVE_ALL_COLUMN_IDS.filter(id => activeVisibleColumns.has(id));
   const etfVisibleCols = ETF_ALL_COLUMN_IDS.filter(id => etfVisibleColumns.has(id));
   const cryptoVisibleCols = CRYPTO_ALL_COLUMN_IDS.filter(id => cryptoVisibleColumns.has(id));
-  const currentVisibleCols = isCryptoPage ? cryptoVisibleCols : isEtfPage ? etfVisibleCols : isActivePage ? activeVisibleCols : visibleCols;
+  const week52VisibleCols = WEEK52_ALL_COLUMN_IDS.filter(id => week52VisibleColumns.has(id));
+  const popularVisibleCols = POPULAR_ALL_COLUMN_IDS.filter(id => popularVisibleColumns.has(id));
+  const currentVisibleCols = isPopularPage ? popularVisibleCols : is52WeekPage ? week52VisibleCols : isCryptoPage ? cryptoVisibleCols : isEtfPage ? etfVisibleCols : isActivePage ? activeVisibleCols : visibleCols;
   const lastColId = currentVisibleCols[currentVisibleCols.length - 1];
   const thBase = "px-4 py-2 text-xs text-left font-medium text-black relative after:content-[''] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:h-[16px] after:w-[1.5px] after:bg-[#AE97C5]";
   const thLast = 'px-4 py-2 text-xs text-left font-medium text-black relative';
+
+  const renderPopularTd = (colId, row, idx) => {
+    switch (colId) {
+      case 'symbol':    return <td key="symbol"    className="px-4 py-2 text-[#616161] font-normal">{row.symbol}</td>;
+      case 'name':      return <td key="name"      className="px-4 py-2 text-[#616161] font-normal">{row.name}</td>;
+      case 'div-yield': return <td key="div-yield" className="px-4 py-2 font-normal text-[#17B667]">{row.divYield}</td>;
+      case 'dividend':  return <td key="dividend"  className="px-4 py-2 text-gray-700">{row.dividend}</td>;
+      case 'ex-date':   return <td key="ex-date"   className="px-4 py-2 text-gray-700">{row.exDate}</td>;
+      case 'market-cap':return <td key="market-cap"className="px-4 py-2 text-gray-700">{row.marketCap}</td>;
+      case 'sparkline': return (
+        <td key="sparkline" className="px-4 py-2"
+          onMouseEnter={(e) => handleSparklineEnter(e, row)}
+          onMouseLeave={handleSparklineLeave}
+          style={{ background: 'linear-gradient(180deg, #23fc3523 0%, rgba(35,252,46,0) 95.55%)' }}
+        >
+          <SparklineChart dataKey={`Popular-${popularSubTab}-${idx}`} isGainers={true} />
+        </td>
+      );
+      default: {
+        const col = POPULAR_TABLE_COLUMNS.find(c => c.id === colId);
+        return <td key={colId} className="px-4 py-2 text-gray-700">{row[col?.field ?? colId] ?? '-'}</td>;
+      }
+    }
+  };
 
   const renderActiveTd = (colId, row, idx) => {
     const isPositive = !row.change?.startsWith('-');
@@ -211,6 +249,33 @@ const MarketDataTabs = () => {
       );
       default: {
         const col = ACTIVE_TABLE_COLUMNS.find(c => c.id === colId);
+        return <td key={colId} className="px-4 py-2 text-gray-700">{row[col?.field ?? colId] ?? '-'}</td>;
+      }
+    }
+  };
+
+  const renderWeek52Td = (colId, row, idx) => {
+    const isPositive = row.lastHigh?.startsWith('+');
+    const isChangePositive = !row.change?.includes('-');
+    switch (colId) {
+      case 'symbol':       return <td key="symbol"       className="px-4 py-2 text-[#616161] font-normal">{row.symbol}</td>;
+      case 'name':         return <td key="name"         className="px-4 py-2 text-[#616161] font-normal">{row.name}</td>;
+      case 'week-high':    return <td key="week-high"    className="px-4 py-2 text-gray-700">{row.weekHigh}</td>;
+      case '52w-last-high':return <td key="52w-last-high"className="px-4 py-2 text-gray-700">{row.w52LastHigh}</td>;
+      case 'last-high':    return <td key="last-high"    className={`px-4 py-2 font-medium ${isPositive ? 'text-[#17B667]' : 'text-red-500'}`}>{row.lastHigh}</td>;
+      case 'last-price':   return <td key="last-price"   className="px-4 py-2 text-gray-700">{row.lastPrice}</td>;
+      case 'pct-change':   return <td key="pct-change"   className={`px-4 py-2 font-medium ${isChangePositive ? 'text-green-500' : 'text-red-500'}`}>{row.change}</td>;
+      case 'sparkline': return (
+        <td key="sparkline" className="px-4 py-2"
+          onMouseEnter={(e) => handleSparklineEnter(e, row)}
+          onMouseLeave={handleSparklineLeave}
+          style={{ background: isPositive ? 'linear-gradient(180deg, #23fc3523 0%, rgba(35,252,46,0) 95.55%)' : 'linear-gradient(180deg, #ef44442f 0%, rgba(35,252,46,0) 95.55%)' }}
+        >
+          <SparklineChart dataKey={`Week52-${week52SubTab}-${idx}`} isGainers={isPositive} />
+        </td>
+      );
+      default: {
+        const col = WEEK52_TABLE_COLUMNS.find(c => c.id === colId);
         return <td key={colId} className="px-4 py-2 text-gray-700">{row[col?.field ?? colId] ?? '-'}</td>;
       }
     }
@@ -300,7 +365,53 @@ const MarketDataTabs = () => {
       </div>
       <div className="flex items-center justify-between shrink-0 bg-white p-1">
         <div className="left-sec relative border-b border-gray-200">
-          {isActivePage ? (
+          {isPopularPage ? (
+            <>
+              <div
+                className="absolute bottom-0 left-0 h-px bg-[#724A9A] transition-all duration-300 ease-out"
+                style={{
+                  width: `calc(${100 / POPULAR_SUB_TABS.length}%)`,
+                  transform: `translateX(${POPULAR_SUB_TABS.indexOf(popularSubTab) * 100}%)`
+                }}
+              />
+              <div className="flex relative z-10">
+                {POPULAR_SUB_TABS.map((tab) => (
+                  <button
+                    key={tab}
+                    onClick={() => setPopularSubTab(tab)}
+                    className={`px-3 py-2 text-xs font-medium transition-colors whitespace-nowrap ${
+                      popularSubTab === tab ? 'text-[#724A9A]' : 'text-[#7F7F7F]'
+                    }`}
+                  >
+                    {tab}
+                  </button>
+                ))}
+              </div>
+            </>
+          ) : is52WeekPage ? (
+            <>
+              <div
+                className="absolute bottom-0 left-0 h-px bg-[#724A9A] transition-all duration-300 ease-out"
+                style={{
+                  width: `calc(${100 / WEEK52_SUB_TABS.length}%)`,
+                  transform: `translateX(${WEEK52_SUB_TABS.indexOf(week52SubTab) * 100}%)`
+                }}
+              />
+              <div className="flex relative z-10">
+                {WEEK52_SUB_TABS.map((tab) => (
+                  <button
+                    key={tab}
+                    onClick={() => setWeek52SubTab(tab)}
+                    className={`px-3 py-2 text-xs font-medium transition-colors whitespace-nowrap ${
+                      week52SubTab === tab ? 'text-[#724A9A]' : 'text-[#7F7F7F]'
+                    }`}
+                  >
+                    {tab}
+                  </button>
+                ))}
+              </div>
+            </>
+          ) : isActivePage ? (
             <>
               <div
                 className="absolute bottom-0 left-0 h-px bg-[#724A9A] transition-all duration-300 ease-out"
@@ -453,15 +564,15 @@ const MarketDataTabs = () => {
                 <tr>
                   {currentVisibleCols.map(colId => (
                     <th key={colId} className={colId === lastColId ? thLast : thBase}>
-                      {isCryptoPage ? CRYPTO_COLUMN_LABELS[colId] : isEtfPage ? ETF_COLUMN_LABELS[colId] : isActivePage ? ACTIVE_COLUMN_LABELS[colId] : COLUMN_LABELS[colId]}
+                      {isPopularPage ? POPULAR_COLUMN_LABELS[colId] : is52WeekPage ? WEEK52_COLUMN_LABELS[colId] : isCryptoPage ? CRYPTO_COLUMN_LABELS[colId] : isEtfPage ? ETF_COLUMN_LABELS[colId] : isActivePage ? ACTIVE_COLUMN_LABELS[colId] : COLUMN_LABELS[colId]}
                     </th>
                   ))}
                 </tr> 
               </thead>
               <tbody className="divide-y divide-gray-200">
-                {(isCryptoPage ? (cryptoData[cryptoSubTab] ?? []) : isEtfPage ? (etfData[etfSubTab] ?? []) : isActivePage ? (activeData[activeSubTab] ?? []) : tableData).map((row, idx) => (
+                {(isPopularPage ? (popularData[popularSubTab] ?? []) : is52WeekPage ? (week52Data[week52SubTab] ?? []) : isCryptoPage ? (cryptoData[cryptoSubTab] ?? []) : isEtfPage ? (etfData[etfSubTab] ?? []) : isActivePage ? (activeData[activeSubTab] ?? []) : tableData).map((row, idx) => (
                   <tr key={idx} className="hover:bg-gray-50 transition-colors cursor-pointer">
-                    {currentVisibleCols.map(colId => isCryptoPage ? renderCryptoTd(colId, row, idx) : isEtfPage ? renderEtfTd(colId, row, idx) : isActivePage ? renderActiveTd(colId, row, idx) : renderTd(colId, row, idx))}
+                    {currentVisibleCols.map(colId => isPopularPage ? renderPopularTd(colId, row, idx) : is52WeekPage ? renderWeek52Td(colId, row, idx) : isCryptoPage ? renderCryptoTd(colId, row, idx) : isEtfPage ? renderEtfTd(colId, row, idx) : isActivePage ? renderActiveTd(colId, row, idx) : renderTd(colId, row, idx))}
                   </tr>
                 ))}
               </tbody>
@@ -498,12 +609,12 @@ const MarketDataTabs = () => {
           >
             <TableControls
               tabName={active}
-              initialVisible={isCryptoPage ? cryptoVisibleColumns : isEtfPage ? etfVisibleColumns : isActivePage ? activeVisibleColumns : visibleColumns}
+              initialVisible={isPopularPage ? popularVisibleColumns : is52WeekPage ? week52VisibleColumns : isCryptoPage ? cryptoVisibleColumns : isEtfPage ? etfVisibleColumns : isActivePage ? activeVisibleColumns : visibleColumns}
               onClose={closeControls}
-              onApply={(newVis) => isCryptoPage ? setCryptoVisibleColumns(newVis) : isEtfPage ? setEtfVisibleColumns(newVis) : isActivePage ? setActiveVisibleColumns(newVis) : setVisibleColumns(newVis)}
-              labelCols={isCryptoPage ? CRYPTO_LABEL_COLS : isEtfPage ? ETF_LABEL_COLS : isActivePage ? ACTIVE_LABEL_COLS : undefined}
-              stockCols={isCryptoPage ? CRYPTO_STOCK_COLS : isEtfPage ? ETF_STOCK_COLS : isActivePage ? ACTIVE_STOCK_COLS : undefined}
-              defaultVisibleIds={isCryptoPage ? CRYPTO_DEFAULT_VISIBLE_IDS : isEtfPage ? ETF_DEFAULT_VISIBLE_IDS : isActivePage ? ACTIVE_DEFAULT_VISIBLE_IDS : undefined}
+              onApply={(newVis) => isPopularPage ? setPopularVisibleColumns(newVis) : is52WeekPage ? setWeek52VisibleColumns(newVis) : isCryptoPage ? setCryptoVisibleColumns(newVis) : isEtfPage ? setEtfVisibleColumns(newVis) : isActivePage ? setActiveVisibleColumns(newVis) : setVisibleColumns(newVis)}
+              labelCols={isPopularPage ? POPULAR_LABEL_COLS : is52WeekPage ? WEEK52_LABEL_COLS : isCryptoPage ? CRYPTO_LABEL_COLS : isEtfPage ? ETF_LABEL_COLS : isActivePage ? ACTIVE_LABEL_COLS : undefined}
+              stockCols={isPopularPage ? POPULAR_STOCK_COLS : is52WeekPage ? WEEK52_STOCK_COLS : isCryptoPage ? CRYPTO_STOCK_COLS : isEtfPage ? ETF_STOCK_COLS : isActivePage ? ACTIVE_STOCK_COLS : undefined}
+              defaultVisibleIds={isPopularPage ? POPULAR_DEFAULT_VISIBLE_IDS : is52WeekPage ? WEEK52_DEFAULT_VISIBLE_IDS : isCryptoPage ? CRYPTO_DEFAULT_VISIBLE_IDS : isEtfPage ? ETF_DEFAULT_VISIBLE_IDS : isActivePage ? ACTIVE_DEFAULT_VISIBLE_IDS : undefined}
             />
           </div>
         </div>

@@ -665,6 +665,107 @@ export const etfData = {
   ],
 };
 
+// ── 52 Week Tab Data ────────────────────────────────────────────────────────
+export const WEEK52_TABLE_COLUMNS = [
+  { id: 'symbol',       label: 'Symbol',         group: 'label', field: 'symbol',       pinned: true, defaultVisible: true },
+  { id: 'name',         label: 'Name',           group: 'label', field: 'name',         defaultVisible: true },
+  { id: 'sparkline',    label: 'Sparkline',      group: 'label', field: null,           defaultVisible: true },
+  { id: 'week-high',    label: 'his Week High',  group: 'label', field: 'weekHigh',     defaultVisible: true },
+  { id: '52w-last-high',label: '52W Last High',  group: 'label', field: 'w52LastHigh',  defaultVisible: true },
+  { id: 'last-high',    label: 'Last High',      group: 'stock', field: 'lastHigh',     defaultVisible: true },
+  { id: 'last-price',   label: 'Last Price',     group: 'stock', field: 'lastPrice',    defaultVisible: true },
+  { id: 'pct-change',   label: '% Change',       group: 'stock', field: 'change',       defaultVisible: true },
+];
+export const WEEK52_DEFAULT_VISIBLE_IDS = WEEK52_TABLE_COLUMNS.filter(c => c.defaultVisible).map(c => c.id);
+export const WEEK52_ALL_COLUMN_IDS      = WEEK52_TABLE_COLUMNS.map(c => c.id);
+export const WEEK52_COLUMN_LABELS       = Object.fromEntries(WEEK52_TABLE_COLUMNS.map(c => [c.id, c.label]));
+export const WEEK52_LABEL_COLS          = WEEK52_TABLE_COLUMNS.filter(c => c.group === 'label');
+export const WEEK52_STOCK_COLS          = WEEK52_TABLE_COLUMNS.filter(c => c.group === 'stock');
+
+const _week52Row = (symbol, name, weekHigh, w52LastHigh, lastHigh, lastPrice, change) =>
+  ({ symbol, name, weekHigh, w52LastHigh, lastHigh, lastPrice, change });
+
+export const week52Data = {
+  'New High': [
+    _week52Row('ALLO', 'Allogene Therapeutics',       '3.567',  '4.678',  '+45.67%', '45.67',  'After: -3.25%'),
+    _week52Row('SYRE', 'Avanos Health Solutions',      '42.89',  '2.345',  '+72.15%', '12.89',  'After: -5.12%'),
+    _week52Row('SPIR', 'Spyre Biotech',                '17.63',  '5.890',  '+38.90%', '78.54',  'After: -2.87%'),
+    _week52Row('AEHR', 'Spire Technologies',           '58.74',  '1.234',  '+54.32%', '90.12',  'After: -6.45%'),
+    _week52Row('LWLG', 'Aehr Innovations',             '33.21',  '6.789',  '+63.78%', '23.45',  'After: -4.78%'),
+    _week52Row('SPIR', 'Lightwave Technologies Inc.',  '91.05',  '7.456',  '+49.99%', '67.89',  'After: -3.90%'),
+  ],
+  'Near High': [
+    _week52Row('AEHR', 'Spire Technologies',           '58.74',  '1.234',  '+54.32%', '90.12',  'After: -6.45%'),
+    _week52Row('ALLO', 'Allogene Therapeutics',        '3.567',  '4.678',  '+45.67%', '45.67',  'After: -3.25%'),
+    _week52Row('LWLG', 'Aehr Innovations',             '33.21',  '6.789',  '+63.78%', '23.45',  'After: -4.78%'),
+    _week52Row('SYRE', 'Avanos Health Solutions',      '42.89',  '2.345',  '+72.15%', '12.89',  'After: -5.12%'),
+    _week52Row('SPIR', 'Lightwave Technologies Inc.',  '91.05',  '7.456',  '+49.99%', '67.89',  'After: -3.90%'),
+    _week52Row('SPIR', 'Spyre Biotech',                '17.63',  '5.890',  '+38.90%', '78.54',  'After: -2.87%'),
+  ],
+  'New Low': [
+    _week52Row('SPIR', 'Spyre Biotech',                '17.63',  '5.890',  '-38.90%', '78.54',  'After: -2.87%'),
+    _week52Row('LWLG', 'Aehr Innovations',             '33.21',  '6.789',  '-63.78%', '23.45',  'After: -4.78%'),
+    _week52Row('ALLO', 'Allogene Therapeutics',        '3.567',  '4.678',  '-45.67%', '45.67',  'After: -3.25%'),
+    _week52Row('AEHR', 'Spire Technologies',           '58.74',  '1.234',  '-54.32%', '90.12',  'After: -6.45%'),
+    _week52Row('SYRE', 'Avanos Health Solutions',      '42.89',  '2.345',  '-72.15%', '12.89',  'After: -5.12%'),
+    _week52Row('SPIR', 'Lightwave Technologies Inc.',  '91.05',  '7.456',  '-49.99%', '67.89',  'After: -3.90%'),
+  ],
+  'Near Low': [
+    _week52Row('SYRE', 'Avanos Health Solutions',      '42.89',  '2.345',  '-72.15%', '12.89',  'After: -5.12%'),
+    _week52Row('SPIR', 'Spyre Biotech',                '17.63',  '5.890',  '-38.90%', '78.54',  'After: -2.87%'),
+    _week52Row('AEHR', 'Spire Technologies',           '58.74',  '1.234',  '-54.32%', '90.12',  'After: -6.45%'),
+    _week52Row('ALLO', 'Allogene Therapeutics',        '3.567',  '4.678',  '-45.67%', '45.67',  'After: -3.25%'),
+    _week52Row('LWLG', 'Aehr Innovations',             '33.21',  '6.789',  '-63.78%', '23.45',  'After: -4.78%'),
+    _week52Row('SPIR', 'Lightwave Technologies Inc.',  '91.05',  '7.456',  '-49.99%', '67.89',  'After: -3.90%'),
+  ],
+};
+
+// ── Popular Stocks Tab Data ──────────────────────────────────────────────────
+export const POPULAR_TABLE_COLUMNS = [
+  { id: 'symbol',     label: 'Symbol',    group: 'label', field: 'symbol',    pinned: true, defaultVisible: true },
+  { id: 'name',       label: 'Name',      group: 'label', field: 'name',      defaultVisible: true },
+  { id: 'sparkline',  label: 'Sparkline', group: 'label', field: null,        defaultVisible: true },
+  { id: 'div-yield',  label: 'Div Yield', group: 'label', field: 'divYield',  defaultVisible: true },
+  { id: 'dividend',   label: 'Divident',  group: 'label', field: 'dividend',  defaultVisible: true },
+  { id: 'ex-date',    label: 'Ex-date',   group: 'stock', field: 'exDate',    defaultVisible: true },
+  { id: 'market-cap', label: 'Arket cap', group: 'stock', field: 'marketCap', defaultVisible: true },
+];
+export const POPULAR_DEFAULT_VISIBLE_IDS = POPULAR_TABLE_COLUMNS.filter(c => c.defaultVisible).map(c => c.id);
+export const POPULAR_ALL_COLUMN_IDS      = POPULAR_TABLE_COLUMNS.map(c => c.id);
+export const POPULAR_COLUMN_LABELS       = Object.fromEntries(POPULAR_TABLE_COLUMNS.map(c => [c.id, c.label]));
+export const POPULAR_LABEL_COLS          = POPULAR_TABLE_COLUMNS.filter(c => c.group === 'label');
+export const POPULAR_STOCK_COLS          = POPULAR_TABLE_COLUMNS.filter(c => c.group === 'stock');
+
+const _popularRow = (symbol, name, divYield, dividend, exDate, marketCap) =>
+  ({ symbol, name, divYield, dividend, exDate, marketCap }); 
+
+export const popularData = {
+  'High Dividend Stocks': [
+    _popularRow('GMEX', 'GMEX ROBOTICS',              '4.123%', '4.678', '01/08/2026', '32.45M'),
+    _popularRow('CMCT', 'Creative Media &',            '2.789%', '2.345', '01/08/2026', '58.90M'),
+    _popularRow('ICON', 'Icon Energy Corp.',           '5.456%', '5.890', '01/08/2026', '73.12M'),
+    _popularRow('CMTG', 'Claros Mtf Tr Inc',           '1.234%', '1.234', '01/08/2026', '21.34M'),
+    _popularRow('MREC', 'Nova Innovations',            '6.890%', '6.789', '01/08/2026', '89.76M'),
+    _popularRow('ICMB', 'Radiant Wave Technologies',   '3.999%', '7.456', '01/08/2026', '47.89M'),
+  ],
+  'Earnings Beyond Exp.': [
+    _popularRow('ICON', 'Icon Energy Corp.',           '5.456%', '5.890', '01/08/2026', '73.12M'),
+    _popularRow('MREC', 'Nova Innovations',            '6.890%', '6.789', '01/08/2026', '89.76M'),
+    _popularRow('GMEX', 'GMEX ROBOTICS',              '4.123%', '4.678', '01/08/2026', '32.45M'),
+    _popularRow('ICMB', 'Radiant Wave Technologies',   '3.999%', '7.456', '01/08/2026', '47.89M'),
+    _popularRow('CMCT', 'Creative Media &',            '2.789%', '2.345', '01/08/2026', '58.90M'),
+    _popularRow('CMTG', 'Claros Mtf Tr Inc',           '1.234%', '1.234', '01/08/2026', '21.34M'),
+  ],
+  'Earnings Below Exp.': [
+    _popularRow('CMTG', 'Claros Mtf Tr Inc',           '1.234%', '1.234', '01/08/2026', '21.34M'),
+    _popularRow('CMCT', 'Creative Media &',            '2.789%', '2.345', '01/08/2026', '58.90M'),
+    _popularRow('ICMB', 'Radiant Wave Technologies',   '3.999%', '7.456', '01/08/2026', '47.89M'),
+    _popularRow('GMEX', 'GMEX ROBOTICS',              '4.123%', '4.678', '01/08/2026', '32.45M'),
+    _popularRow('MREC', 'Nova Innovations',            '6.890%', '6.789', '01/08/2026', '89.76M'),
+    _popularRow('ICON', 'Icon Energy Corp.',           '5.456%', '5.890', '01/08/2026', '73.12M'),
+  ],
+};
+
 // ── Crypto Tab Data ─────────────────────────────────────────────────────────
 export const CRYPTO_TABLE_COLUMNS = [
   { id: 'symbol',     label: 'Symbol',     group: 'label', field: 'symbol',    pinned: true, defaultVisible: true },
