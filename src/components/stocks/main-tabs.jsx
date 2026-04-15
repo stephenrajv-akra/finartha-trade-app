@@ -10,14 +10,14 @@ import Profile from './Profile';
 
 const TABS = [
     'Chart',
-    'Option',
-    'Related',
+    // 'Option',
+    // 'Related',
     'Note',
     'News',
-    'Comments',
+    // 'Comments',
     'Profile',
     'Analysis',
-    'Corp Actions',
+    // 'Corp Actions',
     'Releases',
     'Order Flow',
 ];
