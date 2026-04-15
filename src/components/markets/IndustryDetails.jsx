@@ -207,7 +207,7 @@ export default function IndustryDetails() {
     <div className="flex flex-col h-full overflow-hidden">
       {/* ── Main tabs ── */}
       <div className="flex items-center border-b border-[#E0E0E4] bg-[#f7f7f7] shrink-0">
-        {['Details', 'Related Stocks'].map((tab) => (
+        {['Details'].map((tab) => (
           <button
             key={tab}
             onClick={() => setMainTab(tab)}

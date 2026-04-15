@@ -31,9 +31,9 @@ function getLineColorFromStockId(stockId) {
     'dow': '#ef4444',      // red
     'sp500': '#10b981',    // green
     'nasdaq1': '#f59e0b',  // amber
-    'nasdaq2': '#ec4899',  // pink
-    'nasdaq3': '#8b5cf6',  // violet 
-    'nasdaq4': '#14b8a6',  // teal
+    // 'nasdaq2': '#ec4899',  // pink
+    // 'nasdaq3': '#8b5cf6',  // violet 
+    // 'nasdaq4': '#14b8a6',  // teal
   }; 
   return colorMap[stockId] || '#000000';
 }
@@ -44,9 +44,9 @@ function getSeriesIndexFromStockId(stockId) {
     'dow': 0,
     'sp500': 1,
     'nasdaq1': 2,
-    'nasdaq2': 3,
-    'nasdaq3': 4,
-    'nasdaq4': 5,
+    // 'nasdaq2': 3,
+    // 'nasdaq3': 4,
+    // 'nasdaq4': 5,
   };
   return indexMap[stockId] ?? -1;
 }
@@ -55,9 +55,9 @@ const seriesConfigs = [
   { color: '#ef4444', lineWidth: 2, data: generateData(0, 0.18) },        // red - Dow Jones
   { color: '#10b981', lineWidth: 2, data: generateData(-0.3, 0.16) },     // amber - NASDAQ 1
   { color: '#f59e0b', lineWidth: 2, data: generateData(0.1, 0.14) },      // green - S&P 500
-  { color: '#ec4899', lineWidth: 2, data: generateData(0.2, 0.15) },      // pink - NASDAQ 2
-  { color: '#8b5cf6', lineWidth: 2, data: generateData(-0.1, 0.17) },     // violet - NASDAQ 3
-  { color: '#14b8a6', lineWidth: 2, data: generateData(0.15, 0.13) },     // teal - NASDAQ 4
+  // { color: '#ec4899', lineWidth: 2, data: generateData(0.2, 0.15) },      // pink - NASDAQ 2
+  // { color: '#8b5cf6', lineWidth: 2, data: generateData(-0.1, 0.17) },     // violet - NASDAQ 3
+  // { color: '#14b8a6', lineWidth: 2, data: generateData(0.15, 0.13) },     // teal - NASDAQ 4
 ];
 
 export default function IndexChart() {

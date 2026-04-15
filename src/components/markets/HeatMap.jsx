@@ -87,7 +87,7 @@ const Dropdown = ({ label, value, options, onChange, open, onToggle }) => (
  *  MAIN COMPONENT
  * ══════════════════════════════════════════════════════════════════════════════ */
 export default function HeatMap() {
-  const mainTabs = ['Heat Map', 'Best-Performing Industries', 'Most Popular ETFs'];
+  const mainTabs = ['Heat Map'];
   const [mainTab, setMainTab] = useState('Heat Map');
 
   // Dropdown states

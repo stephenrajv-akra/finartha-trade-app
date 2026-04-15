@@ -18,8 +18,8 @@ const TurboTradeLadder = () => {
                 <div className="flex items-center">
                     {[
                         { key: 'trade', label: 'Trade' },
-                        { key: 'turbo', label: 'TurboTrader' },
-                        { key: 'ladder', label: 'Ladder' },
+                        // { key: 'turbo', label: 'TurboTrader' },
+                        // { key: 'ladder', label: 'Ladder' },
                     ].map(({ key, label }) => (
                         <button
                             key={key}

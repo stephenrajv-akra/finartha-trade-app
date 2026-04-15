@@ -5,6 +5,7 @@ import { GridComponent } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
 import { PORTFOLIO_HOLDINGS } from '../../utils/placeholder-data';
 import { TriangleUp, TriangleDown } from '../../utils/SvgCode';
+import { ArrowRight, ChevronRight } from 'lucide-react';
 
 echarts.use([LineChart, GridComponent, CanvasRenderer]);
 
@@ -79,7 +80,7 @@ export default function HoldingsTable() {
                   <div className="flex items-center gap-3 justify-between">
                     <div className="min-w-0">
                       <p className="text-[12px] font-semibold text-gray-900 leading-tight">{row.company}</p>
-                      <p className="text-[10px] text-gray-400 leading-tight mt-0.5">{row.index} &nbsp;·&nbsp; {row.timeAgo}</p>
+                      <p className="text-xxs text-gray-400 leading-tight mt-0.5">{row.index} &nbsp;·&nbsp; {row.timeAgo}</p>
                     </div>  
                     <Sparkline data={row.sparkline} color={row.sparklineColor} />
                   </div>
@@ -90,7 +91,7 @@ export default function HoldingsTable() {
                     <span>{row.marketPrice}</span>
                     {row.priceDirection === 'up' ? <TriangleUp color='#22c55e' /> : <TriangleDown color='#ef4444' />}
                   </div>
-                  <p className={`text-[10px] font-medium leading-tight mt-0.5 ${row.priceChangeColor === 'green' ? 'text-green-600' : 'text-red-600'}`}>{row.priceChange} {row.priceChangePct}</p>
+                  <p className={`text-xxs font-medium leading-tight mt-0.5 ${row.priceChangeColor === 'green' ? 'text-green-600' : 'text-red-600'}`}>{row.priceChange} {row.priceChangePct}</p>
                 </td>
                 {/* Returns */}
                 <td className="px-3 py-2.5 text-right whitespace-nowrap">
@@ -98,15 +99,20 @@ export default function HoldingsTable() {
                     <span>{row.returns}</span>
                     {row.returnsDirection === 'up' ? <TriangleUp color='#22c55e' /> : <TriangleDown color='#ef4444' />} 
                   </div>
-                  <p className={`text-[10px] font-medium leading-tight mt-0.5 ${row.returnsColor === 'green' ? 'text-green-600' : 'text-red-600'}`}>{row.returnsPct}</p>
-                </td>
+                  <p className={`text-xxs font-medium leading-tight mt-0.5 ${row.returnsColor === 'green' ? 'text-green-600' : 'text-red-600'}`}>{row.returnsPct}</p>
+                </td> 
                 {/* Current (Invested) */}
-                <td className="px-4 py-2.5 text-right whitespace-nowrap">
+                <td className="px-4 py-2.5 flex items-start gap-2 justify-end text-right">
+                  <div className="flex flex-col">
                   <div className={`text-[12px] font-semibold leading-tight flex items-center justify-end gap-1.5 ${row.currentDirection === 'up' ? 'text-black' : 'text-black'}`}>
                     <span>{row.current}</span>
-                    {row.currentDirection === 'up' ? <TriangleUp color='#9ca3af' /> : <TriangleDown color='#9ca3af' />}
+                    {row.currentDirection === 'up' ? <TriangleUp  /> : <TriangleDown />}
                   </div>
-                  <p className="text-[10px] text-gray-400 leading-tight mt-0.5">{row.invested}</p>
+                  <p className="text-xxs text-black font-medium leading-tight mt-0.5">{row.invested}</p>
+                  </div>
+                  <div>
+                    <ChevronRight size={20} color='#724A9A' />  
+                  </div>
                 </td>
               </tr>
             ))} 

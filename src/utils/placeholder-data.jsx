@@ -509,34 +509,7 @@ export const stocks = [
     pct: '+0.11%',
     positive: true,
     selected: false,
-  },
-  {
-    id: 'nasdaq2',
-    name: 'NASDAQ',
-    price: '6,582.69',
-    change: '+7.37',
-    pct: '+0.11%',
-    positive: true,
-    selected: false,
-  },
-  {
-    id: 'nasdaq3',
-    name: 'NASDAQ Composite',
-    price: '6,582.69',
-    change: '+7.37',
-    pct: '+0.11%',
-    positive: true,
-    selected: false,
-  },
-  {
-    id: 'nasdaq4',
-    name: 'NASDAQ 100',
-    price: '6,582.69',
-    change: '+7.37',
-    pct: '+0.11%',
-    positive: true,
-    selected: false,
-  },
+  }
 ];
 
 // ── Active Tab Data ───────────────────────────────────────────────────────────

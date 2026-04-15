@@ -21,7 +21,7 @@ const OrdersNOI = () => {
                         Order Book
                     </button>
                     <div className="w-px bg-gray-300"></div>  
-                    <button
+                    {/* <button
                         onClick={() => setActiveTab('noi')}
                         className={`px-4 py-2.5 text-sm font-semibold border-r border-[#C8B9D8] rounded-tr-lg transition-colors ${
                             activeTab === 'noi'
@@ -30,7 +30,7 @@ const OrdersNOI = () => {
                         }`}
                     >
                         NOII
-                    </button>
+                    </button> */}
                 </div>
                 <button className="text-gray-600 hover:text-gray-900">
                     <Menu size={18} />
