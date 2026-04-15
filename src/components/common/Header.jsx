@@ -1,7 +1,8 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { ChevronDown, Search, X, Loader2 } from 'lucide-react';
-import logo from "../../assets/logo.png";
+import { ChevronDown, Search, X, Loader2, EllipsisVertical } from 'lucide-react';
+import logo from "../../assets/logo.png"; 
 import { SEARCH_SUGGESTIONS } from '../../utils/placeholder-data';
+import { File, Folder, GridBlocks, Inbox, Bell } from '../../utils/SvgCode';
 
 const DEBOUNCE_MS = 300;
 
@@ -133,6 +134,28 @@ export default function Header() {
         {/* Left – Logo */}
         <div className="flex-none">
           <img className="h-7 w-auto" src={logo} alt="Finartha logo" />
+        </div>
+
+        {/* Header Icons */}
+        <div className="flex items-center gap-4 px-2 ml-3">
+          <button className="text-white/70 hover:text-[#c49de8] transition-colors duration-150 cursor-pointer" title="Files">
+            <Folder />  
+          </button>
+          <button className="text-white/70 hover:text-[#c49de8] transition-colors duration-150 cursor-pointer" title="Folders">
+            <Inbox />  
+          </button>
+          <button className="text-white/70 hover:text-[#c49de8] transition-colors duration-150 cursor-pointer" title="Messages">
+            <File />
+          </button>
+          <button className="text-white/70 hover:text-[#c49de8] transition-colors duration-150 cursor-pointer" title="Notifications">
+            <GridBlocks />
+          </button>
+          <button className="text-white/70 hover:text-[#c49de8] transition-colors duration-150 cursor-pointer" title="Menu">
+            <Bell />
+          </button>
+          <button className='text-white/70 hover:text-[#c49de8] transition-colors duration-150 cursor-pointer lg:hidden' title="More">
+            <EllipsisVertical color='#FFF'  />
+          </button>
         </div>
 
         {/* Center – Search */}
