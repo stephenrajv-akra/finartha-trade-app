@@ -56,7 +56,7 @@ const NewsQuotesTabs = () => {
 
 
 const CalenderIpo = () => {
-  const [mainActive, setMainActive] = useState('Calendar');
+  const [mainActive, setMainActive] = useState('IPO'); 
   const [subActive, setSubActive] = useState('Available');
   const subTabs = ['Available', 'Upcoming', 'Filed', 'Listed', 'Up'];
   
@@ -72,9 +72,9 @@ const CalenderIpo = () => {
   return (
     <div className="flex flex-col h-full overflow-hidden">
       {/* Main Tabs - Calendar & IPO */}
-      <TabBar tabs={['Calendar', 'IPO']} active={mainActive} onSelect={setMainActive} />
+      <TabBar tabs={['IPO']} active={mainActive} onSelect={setMainActive} />
       
-      {mainActive === 'Calendar' ? (
+      {mainActive === 'IPO' ? (
         <>
           {/* Sub Tabs with Slider Indicator */}
           <div className="left-sec relative border-b border-gray-200 bg-white">
@@ -149,9 +149,10 @@ const MarketsPage = () => {
   // Third row column widths
   const [thirdCol1Width, setThirdCol1Width] = useState(40);
   const [thirdCol2Width, setThirdCol2Width] = useState(29.5);
+  const [isPercentChangeMode, setIsPercentChangeMode] = useState(false);
 
   return (
-    <div className="w-full bg-white overflow-y-auto flex flex-col gap-1 p-1"> 
+    <div className="w-full max-w-full bg-white overflow-y-auto overflow-x-hidden flex flex-col gap-1 p-1"> 
 
       {/* ── TOP ROW ── */}
       <Resizable
@@ -165,7 +166,7 @@ const MarketsPage = () => {
         onResizeStop={(e, direction, ref) => {
           setTopHeight(ref.clientHeight);
         }}
-        className="flex gap-1 overflow-hidden shrink-0"
+        className="flex gap-1 overflow-hidden shrink-0 min-w-0 max-w-full"
       >
         {/* Top Col 1 – 4/10 */}
         <Resizable
@@ -224,7 +225,7 @@ const MarketsPage = () => {
         onResizeStop={(e, direction, ref) => {
           setMidHeight(ref.clientHeight);
         }}
-        className="flex gap-1 overflow-hidden shrink-0"
+        className="flex gap-1 overflow-hidden shrink-0 min-w-0 max-w-full"
       >
         {/* Middle Col 1 – 7/10 */}
         <Resizable
@@ -252,7 +253,7 @@ const MarketsPage = () => {
       </Resizable>
 
       {/* ── THIRD ROW ── */}
-      <div className="h-[400px] shrink-0 flex gap-1 overflow-hidden">
+      <div className="h-[400px] shrink-0 flex gap-1 overflow-hidden min-w-0 max-w-full w-full"> 
         {/* Third Col 1 – 1/3 */}
         <Resizable
           size={{ width: `${thirdCol1Width}%`, height: '100%' }}
@@ -272,29 +273,37 @@ const MarketsPage = () => {
           <HeatMap />
         </Resizable>
 
-        {/* Third Col 2 – 1/3 , third row */} 
-        <Resizable
-          size={{ width: `${thirdCol2Width}%`, height: '100%' }}
-          minWidth="15%"
-          maxWidth="70%"
-          enable={{
-            top: false, right: true, bottom: false, left: false,
-            topRight: false, bottomRight: false, bottomLeft: false, topLeft: false,
-          }}
-          onResizeStop={(e, direction, ref) => {
-            const containerWidth = ref.parentElement.clientWidth;
-            const pct = (ref.clientWidth / containerWidth) * 100;
-            setThirdCol2Width(Math.max(15, Math.min(70, pct)));
-          }}
-          className="border-2 border-[#EDE8F2] rounded-lg overflow-hidden flex flex-col"
-        >
-          <IndustryChart />
-        </Resizable>
+        {/* Third Col 2 – 1/3 , third row (expands when % Change) */} 
+        {isPercentChangeMode ? (
+          <div className="flex-1 min-w-0 border-2 border-[#EDE8F2] rounded-lg overflow-hidden flex flex-col">
+            <IndustryChart initialMetric="% Change" onMetricChange={(m) => setIsPercentChangeMode(m === '% Change')} />
+          </div>
+        ) : (
+          <Resizable
+            size={{ width: `${thirdCol2Width}%`, height: '100%' }}
+            minWidth="15%"
+            maxWidth="70%"
+            enable={{ 
+              top: false, right: true, bottom: false, left: false,
+              topRight: false, bottomRight: false, bottomLeft: false, topLeft: false,
+            }}
+            onResizeStop={(e, direction, ref) => {
+              const containerWidth = ref.parentElement.clientWidth;
+              const pct = (ref.clientWidth / containerWidth) * 100;
+              setThirdCol2Width(Math.max(15, Math.min(70, pct)));
+            }}
+            className="border-2 border-[#EDE8F2] rounded-lg overflow-hidden flex flex-col"
+          >
+            <IndustryChart onMetricChange={(m) => setIsPercentChangeMode(m === '% Change')} />
+          </Resizable>
+        )}
 
-        {/* Third Col 3 – fills remaining */}
-        <div className="flex-1 border-2 border-[#EDE8F2] rounded-lg overflow-hidden flex flex-col min-w-[15%]">
-          <IndustryDetails />
-        </div>
+        {/* Third Col 3 – fills remaining (hidden when % Change) */}
+        {!isPercentChangeMode && (
+          <div className="flex-1 border-2 border-[#EDE8F2] rounded-lg overflow-hidden flex flex-col min-w-[15%]">
+            <IndustryDetails />
+          </div>
+        )}
       </div>
 
     </div>

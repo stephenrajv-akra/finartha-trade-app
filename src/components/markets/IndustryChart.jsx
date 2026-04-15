@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import * as echarts from 'echarts';
-import { BUBBLE_DATA } from '../../utils/placeholder-data';
+import { BUBBLE_DATA, INDUSTRY_CHANGE_DATA } from '../../utils/placeholder-data';
 import { ChartNoAxesColumnDecreasing, ChartNoAxesGantt , ChevronDown } from 'lucide-react';
 
 /* ──────────────────────────────────────────────────────────────────────────────
@@ -24,17 +24,24 @@ import { ChartNoAxesColumnDecreasing, ChartNoAxesGantt , ChevronDown } from 'luc
  *      fetch(`/api/industry-chart?metric=${metric}&tf=${timeframe}`)
  * ────────────────────────────────────────────────────────────────────────────── */
 
-const METRIC_OPTIONS = Object.keys(BUBBLE_DATA);
-const TIMEFRAME_OPTIONS = ['1Y', '5Y', '10Y']; 
+const METRIC_OPTIONS = [...Object.keys(BUBBLE_DATA), '% Change'];
+const TIMEFRAME_OPTIONS = ['1Y', '5Y', '10Y'];
+const CHANGE_PERIOD_OPTIONS = ['1 Day', '5 Days', '1 Mon', '2 Mon']; 
 
 /* ══════════════════════════════════════════════════════════════════════════════
  *  MAIN COMPONENT
  * ══════════════════════════════════════════════════════════════════════════════ */
-export default function IndustryChart() {
-  const [metric, setMetric] = useState('PE/PB');
+export default function IndustryChart({ onMetricChange, initialMetric = 'PE/PB' }) {
+  const [metric, setMetric] = useState(initialMetric);
   const [timeframe, setTimeframe] = useState('1Y');
   const [viewMode, setViewMode] = useState('chart'); // 'chart' | 'list'
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [changePeriod, setChangePeriod] = useState('1 Day');
+
+  const handleMetricChange = (newMetric) => {
+    setMetric(newMetric);
+    onMetricChange?.(newMetric);
+  };
 
   const chartContainerRef = useRef(null);
   const chartInstance = useRef(null);
@@ -179,7 +186,7 @@ export default function IndustryChart() {
   }, [viewMode]);
 
   return (
-    <div className="flex flex-col h-full overflow-hidden">
+    <div className="flex flex-col h-full w-full min-w-0 overflow-hidden">
       {/* ── Tab header ── */}
       <div className="flex items-center border-b border-[#E0E0E4] bg-[#f7f7f7] shrink-0">
         <div className="px-4 py-2 text-xs font-medium bg-white text-black border-r border-[#E0E0E4] rounded-tr-lg">
@@ -203,7 +210,7 @@ export default function IndustryChart() {
               {METRIC_OPTIONS.map((opt) => (
                 <div
                   key={opt}
-                  onClick={() => { setMetric(opt); setDropdownOpen(false); }}
+                  onClick={() => { handleMetricChange(opt); setDropdownOpen(false); }}
                   className={`px-3 py-1.5 text-xs cursor-pointer transition-colors ${metric === opt
                       ? 'bg-[#EDE8F2] text-[#724A9A] font-medium'
                       : 'text-gray-600 hover:bg-gray-50'
@@ -217,6 +224,7 @@ export default function IndustryChart() {
         </div>
 
         {/* Timeframe buttons */}
+        {metric !== '% Change' && (
         <div className="tab-wrapper border border-[#EDE8F2] rounded m-0 p-0">  
         {TIMEFRAME_OPTIONS.map((t) => (
           <button
@@ -231,8 +239,10 @@ export default function IndustryChart() {
           </button>
         ))}
         </div>
+        )}
 
         {/* View mode toggles */}
+        {metric !== '% Change' && (
         <div className="ml-auto flex items-center gap-1.5">
           <button
             onClick={() => setViewMode('list')}
@@ -247,12 +257,13 @@ export default function IndustryChart() {
             <ChartNoAxesColumnDecreasing size={14} /> 
           </button>
         </div>
+        )}
       </div>
 
       {/* ── Chart / List view — chart container always mounted ── */}
-      <div className="flex-1 min-h-0 min-w-0 overflow-hidden" ref={chartContainerRef} style={{ display: viewMode === 'chart' ? 'block' : 'none' }} />
+      <div className="flex-1 min-h-0 min-w-0 overflow-hidden" ref={chartContainerRef} style={{ display: viewMode === 'chart' && metric !== '% Change' ? 'block' : 'none' }} />
 
-      {viewMode === 'list' && (
+      {viewMode === 'list' && metric !== '% Change' && (
         <div className="flex-1 overflow-y-auto">
           <table className="w-full text-xs">
             <thead className="bg-[#EDE8F2] sticky top-0">
@@ -280,6 +291,58 @@ export default function IndustryChart() {
               ))} 
             </tbody> 
           </table>
+        </div>
+      )}
+
+      {/* ── % Change view: left period sidebar + scrolling cards ── */}
+      {metric === '% Change' && (
+        <div className="flex-1 flex min-h-0 min-w-0 overflow-hidden bg-white">
+          {/* Left – period selector */}
+          <div className="left-sec shrink-0 w-[100px] border-r border-gray-100 py-2 flex flex-col">
+            {CHANGE_PERIOD_OPTIONS.map((p) => (
+              <button
+                key={p} 
+                onClick={() => setChangePeriod(p)}
+                className={`px-3 py-2 mx-2 text-xs text-center transition-colors ${
+                  changePeriod === p
+                    ? 'text-[#38155C] font-medium rounded bg-[#EDE8F2]'
+                    : 'text-[#616161] font-normal'
+                }`}
+              >
+                {p}
+              </button>
+            ))}
+          </div>
+          {/* Right – scrolling cards */}
+          <div className="flex-1 min-w-0 overflow-x-auto  overflow-y-hidden p-3">
+            <div className="flex gap-3 h-full"> 
+              {INDUSTRY_CHANGE_DATA.map((item, idx) => (
+                <div key={idx} className="min-w-[180px] w-[180px] bg-white rounded-lg p-4 flex flex-col gap-2 shrink-0" style={{boxShadow: '0 8px 12px 0 rgba(72, 26, 117, 0.12)'}}>
+                  <h3 className="text-sm text-black font-normal">{item.industry}</h3>
+                  <span className={`text-sm font-medium ${item.change >= 0 ? 'text-[#37E790]' : 'text-[#EC4D5C]'}`}>
+                    {item.change >= 0 ? '+' : ''}{item.change.toFixed(2)}%
+                  </span> 
+                  {/* Progress bar */}
+                  <div className="flex h-[3px] rounded-full overflow-hidden">
+                    <div className="rounded-l-full" style={{ width: '35%', background: 'linear-gradient(90deg, #EC4D5C 64.6%, #FFF 100%)' }} />
+                    <div style={{ width: '10%', background: '#9EA1A8' }} />
+                    <div className="rounded-r-full" style={{ width: '55%', background: 'linear-gradient(90deg, #FFF 0%, #37E790 35.4%)' }} />
+                  </div>
+                  {/* Stocks */}  
+                  <div className="flex flex-col gap-1.5 mt-1">
+                    {item.stocks.map((stock) => (
+                      <div key={stock.symbol} className="flex items-center justify-between text-xs">
+                        <span className="text-gray-600 font-normal">{stock.symbol}</span>
+                        <span className={`font-normal ${stock.change >= 0 ? 'text-[#37E790]' : 'text-[#EC4D5C]'}`}>
+                          {stock.change >= 0 ? '+' : ''}{stock.change.toFixed(2)}%
+                        </span> 
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       )}
 

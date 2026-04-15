@@ -323,32 +323,6 @@ export const BUBBLE_DATA = {
       { name: 'Utilities', pe: 88, pb: 72, size: 18, highlighted: false },
     ],
   },
-  'EV/EBITDA': {
-    '1Y': [
-      { name: 'Healthcare', pe: 22, pb: 30, size: 18, highlighted: false },
-      { name: 'Financials', pe: 35, pb: 20, size: 16, highlighted: false },
-      { name: 'Technology', pe: 70, pb: 65, size: 28, highlighted: true },
-      { name: 'Energy', pe: 45, pb: 50, size: 20, highlighted: true },
-      { name: 'Industrials', pe: 58, pb: 42, size: 16, highlighted: false },
-      { name: 'Materials', pe: 80, pb: 55, size: 14, highlighted: false },
-      { name: 'Utilities', pe: 90, pb: 70, size: 12, highlighted: false },
-    ],
-    '5Y': [
-      { name: 'Healthcare', pe: 25, pb: 35, size: 20, highlighted: false },
-      { name: 'Technology', pe: 72, pb: 60, size: 30, highlighted: true },
-      { name: 'Energy', pe: 50, pb: 48, size: 22, highlighted: false },
-      { name: 'Financials', pe: 38, pb: 28, size: 18, highlighted: false },
-      { name: 'Industrials', pe: 60, pb: 45, size: 18, highlighted: true },
-      { name: 'Materials', pe: 82, pb: 58, size: 16, highlighted: false },
-    ],
-    '10Y': [
-      { name: 'Healthcare', pe: 28, pb: 32, size: 22, highlighted: false },
-      { name: 'Technology', pe: 75, pb: 58, size: 32, highlighted: true },
-      { name: 'Energy', pe: 55, pb: 52, size: 24, highlighted: true },
-      { name: 'Financials', pe: 40, pb: 25, size: 20, highlighted: false },
-      { name: 'Industrials', pe: 62, pb: 48, size: 20, highlighted: false },
-    ],
-  },
 };
 
 
@@ -898,3 +872,67 @@ export const colorMap = {
   "52 Wk Low": "text-[#616161]",
   "Market Cap": "text-[#616161]",
 };
+
+
+export const INDUSTRY_CHANGE_DATA = [
+  {
+    industry: 'Diversified Retail',
+    change: 4.11,
+    stocks: [
+      { symbol: 'AMZN', change: 3.87 },
+      { symbol: 'M', change: 5.29 },
+      { symbol: 'RVLV', change: 2.46 },
+      { symbol: 'PSMT', change: 6.03 },
+    ],
+  },
+  {
+    industry: 'Water & Related Utilities',
+    change: 4.11,
+    stocks: [
+      { symbol: 'AMZN', change: 3.87 },
+      { symbol: 'M', change: 5.29 },
+      { symbol: 'RVLV', change: 2.46 },
+      { symbol: 'PSMT', change: 6.03 },
+    ], 
+  },
+  {
+    industry: 'Beverages',
+    change: 4.11,
+    stocks: [
+      { symbol: 'AMZN', change: 3.87 },
+      { symbol: 'M', change: 5.29 },
+      { symbol: 'RVLV', change: 2.46 },
+      { symbol: 'PSMT', change: 6.03 },
+    ],
+  },
+  {
+    industry: 'Beverages',
+    change: 4.11,
+    stocks: [
+      { symbol: 'AMZN', change: 3.87 },
+      { symbol: 'M', change: 5.29 },
+      { symbol: 'RVLV', change: 2.46 },
+      { symbol: 'PSMT', change: 6.03 },
+    ],
+  },
+  {
+    industry: 'Biotechnology',
+    change: 3.52,
+    stocks: [
+      { symbol: 'MRNA', change: 4.10 },
+      { symbol: 'BNTX', change: 2.85 },
+      { symbol: 'REGN', change: 3.42 },
+      { symbol: 'VRTX', change: 3.71 },
+    ],
+  },
+  {
+    industry: 'Semiconductors',
+    change: 5.22,
+    stocks: [
+      { symbol: 'NVDA', change: 6.15 },
+      { symbol: 'AMD', change: 4.87 },
+      { symbol: 'INTC', change: 3.92 },
+      { symbol: 'TSM', change: 5.94 },
+    ],
+  },
+];

@@ -93,7 +93,7 @@ const POPUP_HEIGHT = 430;
 const MarketDataTabs = () => {   
   const [active, setActive] = useState('Tops');
   const [subActive, setSubActive] = useState('Top Gainers');
-  const mainTabs = ['Tops', 'Active', 'ETFs', 'Top Options', 'Bonds', 'Futures', 'Crypto', 'Events', '52 Week', 'Popular Stocks', 'Marginable', 'OTC', '24H Market'];
+  const mainTabs = ['Tops', 'Active', 'ETFs','Crypto']; 
 
   const tableData = subActive === 'Top Gainers' ? gainersData : losersData;
   const isGainers = subActive === 'Top Gainers';

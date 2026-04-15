@@ -7,8 +7,8 @@ export default function MainLayout({ children }) {
       <Header /> 
       <div className="flex pt-[52px]">
         <Navbar /> 
-        <main className="flex-1 ml-20"> 
-          <div className='w-full'>
+        <main className="flex-1 ml-20 min-w-0 overflow-x-hidden"> 
+          <div className='w-full max-w-full'>
             {children}
           </div>
         </main>
