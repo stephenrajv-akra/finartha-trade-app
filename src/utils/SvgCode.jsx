@@ -460,3 +460,16 @@ export const Bell = () => {
         </svg>
     )
 }   
+
+
+export const TriangleUp = ({ color = '#17B667' }) => (
+  <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+    <path d="M5 0L10 10H0L5 0Z" fill={color} />
+  </svg>
+);
+
+export const TriangleDown = ({ color = '#EF4444' }) => (
+  <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+    <path d="M0 0L10 0L5 10L0 0Z" fill={color} />
+  </svg>
+); 

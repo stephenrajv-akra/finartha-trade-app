@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { timeAndSalesData, volAnalysisData } from '../../utils/placeholder-obj';
+import { timeAndSalesData, volAnalysisData } from '../../utils/placeholder-data';
 
 const TimeAnalysis = () => {
     const [activeTimeSalesTab, setActiveTimeSalesTab] = useState('timeSales');

@@ -491,7 +491,7 @@ const MarketDataTabs = () => {
                 }}
               />
               <div className="flex relative z-10">
-                {['Top Gainers', 'Tab Losers'].map((tab) => (
+                {['Top Gainers', 'Tab Losers'].map((tab) => ( 
                   <button
                     key={tab}
                     onClick={() => setSubActive(tab)}

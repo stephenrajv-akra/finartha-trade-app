@@ -4,6 +4,7 @@ import { LineChart } from 'echarts/charts';
 import { GridComponent } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
 import { PORTFOLIO_HOLDINGS } from '../../utils/placeholder-data';
+import { TriangleUp, TriangleDown } from '../../utils/SvgCode';
 
 echarts.use([LineChart, GridComponent, CanvasRenderer]);
 
@@ -13,8 +14,12 @@ const ChevronDown = () => (
   </svg>
 );
 
-const Sparkline = ({ data }) => {
+const Sparkline = ({ data, color = 'green' }) => {
   const ref = useRef(null);
+  const lineColor = color === 'red' ? '#EF4444' : '#17B667';
+  const gradientStart = color === 'red' ? 'rgba(239, 68, 68, 0.25)' : 'rgba(23, 182, 103, 0.25)';
+  const gradientEnd = color === 'red' ? 'rgba(239, 68, 68, 0)' : 'rgba(23, 182, 103, 0)';
+  
   useEffect(() => {
     if (!ref.current) return;
     const chart = echarts.init(ref.current);
@@ -27,11 +32,11 @@ const Sparkline = ({ data }) => {
         data,
         smooth: 0.6,
         symbol: 'none',
-        lineStyle: { color: '#17B667', width: 1.5 },
+        lineStyle: { color: lineColor, width: 1.5 },
         areaStyle: {
           color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-            { offset: 0, color: 'rgba(23, 182, 103, 0.25)' },
-            { offset: 1, color: 'rgba(23, 182, 103, 0)' },
+            { offset: 0, color: gradientStart },
+            { offset: 1, color: gradientEnd },
           ]),
         },
       }],
@@ -76,22 +81,31 @@ export default function HoldingsTable() {
                       <p className="text-[12px] font-semibold text-gray-900 leading-tight">{row.company}</p>
                       <p className="text-[10px] text-gray-400 leading-tight mt-0.5">{row.index} &nbsp;·&nbsp; {row.timeAgo}</p>
                     </div>  
-                    <Sparkline data={row.sparkline} />
+                    <Sparkline data={row.sparkline} color={row.sparklineColor} />
                   </div>
                 </td>
                 {/* Market Price */}
                 <td className="px-3 py-2.5 text-right whitespace-nowrap">
-                  <p className="text-[12px] font-semibold text-gray-900 leading-tight">{row.marketPrice}</p>
-                  <p className="text-[10px] text-gray-400 leading-tight mt-0.5">{row.priceChange}</p>
+                  <div className={`text-[12px] font-semibold leading-tight flex items-center justify-end gap-1.5 ${row.priceChangeColor === 'green' ? 'text-green-600' : 'text-red-600'}`}>
+                    <span>{row.marketPrice}</span>
+                    {row.priceDirection === 'up' ? <TriangleUp color='#22c55e' /> : <TriangleDown color='#ef4444' />}
+                  </div>
+                  <p className={`text-[10px] font-medium leading-tight mt-0.5 ${row.priceChangeColor === 'green' ? 'text-green-600' : 'text-red-600'}`}>{row.priceChange} {row.priceChangePct}</p>
                 </td>
                 {/* Returns */}
                 <td className="px-3 py-2.5 text-right whitespace-nowrap">
-                  <p className="text-[12px] font-semibold text-gray-900 leading-tight">{row.returns}</p>
-                  <p className="text-[10px] font-medium text-[#17B667] leading-tight mt-0.5">{row.returnsPct}</p>
+                  <div className={`text-[12px] font-semibold leading-tight flex items-center justify-end gap-1.5 ${row.returnsColor === 'green' ? 'text-green-600' : 'text-red-600'}`}>
+                    <span>{row.returns}</span>
+                    {row.returnsDirection === 'up' ? <TriangleUp color='#22c55e' /> : <TriangleDown color='#ef4444' />} 
+                  </div>
+                  <p className={`text-[10px] font-medium leading-tight mt-0.5 ${row.returnsColor === 'green' ? 'text-green-600' : 'text-red-600'}`}>{row.returnsPct}</p>
                 </td>
                 {/* Current (Invested) */}
                 <td className="px-4 py-2.5 text-right whitespace-nowrap">
-                  <p className="text-[12px] font-semibold text-gray-900 leading-tight">{row.current}</p>
+                  <div className={`text-[12px] font-semibold leading-tight flex items-center justify-end gap-1.5 ${row.currentDirection === 'up' ? 'text-black' : 'text-black'}`}>
+                    <span>{row.current}</span>
+                    {row.currentDirection === 'up' ? <TriangleUp color='#9ca3af' /> : <TriangleDown color='#9ca3af' />}
+                  </div>
                   <p className="text-[10px] text-gray-400 leading-tight mt-0.5">{row.invested}</p>
                 </td>
               </tr>

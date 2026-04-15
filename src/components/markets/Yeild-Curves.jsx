@@ -1,7 +1,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import * as echarts from 'echarts';
-import { yieldCurvesData } from '../../utils/placeholder-obj';
+import { yieldCurvesData } from '../../utils/placeholder-data';
 
 /*
  * YeildCurves — Multi-series line chart

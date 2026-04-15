@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
 import SlidingTabBar from '../common/SlidingTabBar';
-import { marketOverviewData } from '../../utils/placeholder-obj';
+import { marketOverviewData } from '../../utils/placeholder-data';
 
 /*
  * MarketOverviewChart — Bar chart showing Adv/Dec distribution

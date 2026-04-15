@@ -482,7 +482,7 @@ export const losersData = [
   { symbol: 'Beta Wave', name: 'Granite Peak...', price: '2323', change: '-142.30%', volume: '240.00%', marketCap: '28.45M', bps: '2.89', dividend: '0.95', eps: '1.85', exDate: '2026-04-22', freeFloatMktCap: '23.1M', nextEarnings: '2026-05-12', freeFloat: '80.1%', pb: '2.98' },
 ];
 
-export const stocks = [ 
+export const stocks = [
   {
     id: 'dow',
     name: 'Dow Jones',
@@ -541,58 +541,58 @@ export const stocks = [
 
 // ── Active Tab Data ───────────────────────────────────────────────────────────
 export const ACTIVE_TABLE_COLUMNS = [
-  { id: 'symbol',     label: 'Symbol',    group: 'label', field: 'symbol',    pinned: true, defaultVisible: true },
-  { id: 'name',       label: 'Name',      group: 'label', field: 'name',      defaultVisible: true },
-  { id: 'sparkline',  label: 'Sparkline', group: 'label', field: null,        defaultVisible: true },
-  { id: 'volume',     label: 'Volume',    group: 'label', field: 'volume',    defaultVisible: true },
-  { id: 'price',      label: 'Price',     group: 'label', field: 'price',     defaultVisible: true },
-  { id: 'pct-change', label: '% Change',  group: 'label', field: 'change',    defaultVisible: true },
-  { id: 'market-cap', label: 'Market Cap',group: 'stock', field: 'marketCap', defaultVisible: true },
-  { id: 'rvol',       label: 'RVol(10D)', group: 'stock', field: 'rvol',      defaultVisible: false },
-  { id: 'turnover',   label: '% Turnover',group: 'stock', field: 'turnover',  defaultVisible: false },
-  { id: 'range',      label: '% Range',   group: 'stock', field: 'range',     defaultVisible: false },
+  { id: 'symbol', label: 'Symbol', group: 'label', field: 'symbol', pinned: true, defaultVisible: true },
+  { id: 'name', label: 'Name', group: 'label', field: 'name', defaultVisible: true },
+  { id: 'sparkline', label: 'Sparkline', group: 'label', field: null, defaultVisible: true },
+  { id: 'volume', label: 'Volume', group: 'label', field: 'volume', defaultVisible: true },
+  { id: 'price', label: 'Price', group: 'label', field: 'price', defaultVisible: true },
+  { id: 'pct-change', label: '% Change', group: 'label', field: 'change', defaultVisible: true },
+  { id: 'market-cap', label: 'Market Cap', group: 'stock', field: 'marketCap', defaultVisible: true },
+  { id: 'rvol', label: 'RVol(10D)', group: 'stock', field: 'rvol', defaultVisible: false },
+  { id: 'turnover', label: '% Turnover', group: 'stock', field: 'turnover', defaultVisible: false },
+  { id: 'range', label: '% Range', group: 'stock', field: 'range', defaultVisible: false },
 ];
 export const ACTIVE_DEFAULT_VISIBLE_IDS = ACTIVE_TABLE_COLUMNS.filter(c => c.defaultVisible).map(c => c.id);
-export const ACTIVE_ALL_COLUMN_IDS      = ACTIVE_TABLE_COLUMNS.map(c => c.id);
-export const ACTIVE_COLUMN_LABELS       = Object.fromEntries(ACTIVE_TABLE_COLUMNS.map(c => [c.id, c.label]));
-export const ACTIVE_LABEL_COLS          = ACTIVE_TABLE_COLUMNS.filter(c => c.group === 'label');
-export const ACTIVE_STOCK_COLS          = ACTIVE_TABLE_COLUMNS.filter(c => c.group === 'stock');
+export const ACTIVE_ALL_COLUMN_IDS = ACTIVE_TABLE_COLUMNS.map(c => c.id);
+export const ACTIVE_COLUMN_LABELS = Object.fromEntries(ACTIVE_TABLE_COLUMNS.map(c => [c.id, c.label]));
+export const ACTIVE_LABEL_COLS = ACTIVE_TABLE_COLUMNS.filter(c => c.group === 'label');
+export const ACTIVE_STOCK_COLS = ACTIVE_TABLE_COLUMNS.filter(c => c.group === 'stock');
 
 const _activeRow = (symbol, name, price, change, volume, marketCap, rvol, turnover, range) =>
   ({ symbol, name, price, change, volume, marketCap, rvol, turnover, range });
 
 export const activeData = {
   Volume: [
-    _activeRow('SNAL',  'Snail, INC.',            '2.345', '+19.16%', '845.67M', '67.25M', '12.4x', '8.5%',  '45.2%'),
-    _activeRow('PMNT',  'Perfect Moment LTD',     '3.678', '+19.16%', '530.12M', '67.25M', '9.8x',  '6.2%',  '38.7%'),
-    _activeRow('MIMI',  'Mint Incorporation Li.',  '4.910', '+19.16%', '412.89M', '67.25M', '8.3x',  '5.4%',  '32.1%'),
-    _activeRow('HUBC',  'Hub Cyber Security Is.', '5.234', '+19.16%', '278.45M', '67.25M', '7.1x',  '4.8%',  '28.5%'),
-    _activeRow('WGRX',  'Sky Quarry Innovations', '5.234', '-19.16%', '964.33M', '67.25M', '15.2x', '10.1%', '52.3%'),
-    _activeRow('MIMI',  'Granite Peak Solutions', '7.012', '+19.16%', '753.21M', '67.25M', '11.7x', '7.9%',  '41.8%'),
+    _activeRow('SNAL', 'Snail, INC.', '2.345', '+19.16%', '845.67M', '67.25M', '12.4x', '8.5%', '45.2%'),
+    _activeRow('PMNT', 'Perfect Moment LTD', '3.678', '+19.16%', '530.12M', '67.25M', '9.8x', '6.2%', '38.7%'),
+    _activeRow('MIMI', 'Mint Incorporation Li.', '4.910', '+19.16%', '412.89M', '67.25M', '8.3x', '5.4%', '32.1%'),
+    _activeRow('HUBC', 'Hub Cyber Security Is.', '5.234', '+19.16%', '278.45M', '67.25M', '7.1x', '4.8%', '28.5%'),
+    _activeRow('WGRX', 'Sky Quarry Innovations', '5.234', '-19.16%', '964.33M', '67.25M', '15.2x', '10.1%', '52.3%'),
+    _activeRow('MIMI', 'Granite Peak Solutions', '7.012', '+19.16%', '753.21M', '67.25M', '11.7x', '7.9%', '41.8%'),
   ],
   'RVol(10D)': [
-    _activeRow('WGRX',  'Sky Quarry Innovations', '5.234', '-19.16%', '964.33M', '67.25M', '15.2x', '10.1%', '52.3%'),
-    _activeRow('SNAL',  'Snail, INC.',            '2.345', '+19.16%', '845.67M', '67.25M', '12.4x', '8.5%',  '45.2%'),
-    _activeRow('MIMI',  'Granite Peak Solutions', '7.012', '+19.16%', '753.21M', '67.25M', '11.7x', '7.9%',  '41.8%'),
-    _activeRow('PMNT',  'Perfect Moment LTD',     '3.678', '+19.16%', '530.12M', '67.25M', '9.8x',  '6.2%',  '38.7%'),
-    _activeRow('MIMI',  'Mint Incorporation Li.',  '4.910', '+19.16%', '412.89M', '67.25M', '8.3x',  '5.4%',  '32.1%'),
-    _activeRow('HUBC',  'Hub Cyber Security Is.', '5.234', '+19.16%', '278.45M', '67.25M', '7.1x',  '4.8%',  '28.5%'),
+    _activeRow('WGRX', 'Sky Quarry Innovations', '5.234', '-19.16%', '964.33M', '67.25M', '15.2x', '10.1%', '52.3%'),
+    _activeRow('SNAL', 'Snail, INC.', '2.345', '+19.16%', '845.67M', '67.25M', '12.4x', '8.5%', '45.2%'),
+    _activeRow('MIMI', 'Granite Peak Solutions', '7.012', '+19.16%', '753.21M', '67.25M', '11.7x', '7.9%', '41.8%'),
+    _activeRow('PMNT', 'Perfect Moment LTD', '3.678', '+19.16%', '530.12M', '67.25M', '9.8x', '6.2%', '38.7%'),
+    _activeRow('MIMI', 'Mint Incorporation Li.', '4.910', '+19.16%', '412.89M', '67.25M', '8.3x', '5.4%', '32.1%'),
+    _activeRow('HUBC', 'Hub Cyber Security Is.', '5.234', '+19.16%', '278.45M', '67.25M', '7.1x', '4.8%', '28.5%'),
   ],
   '% Turnover': [
-    _activeRow('MIMI',  'Mint Incorporation Li.',  '4.910', '+19.16%', '412.89M', '67.25M', '8.3x',  '10.1%', '32.1%'),
-    _activeRow('WGRX',  'Sky Quarry Innovations', '5.234', '-19.16%', '964.33M', '67.25M', '15.2x', '9.8%',  '52.3%'),
-    _activeRow('SNAL',  'Snail, INC.',            '2.345', '+19.16%', '845.67M', '67.25M', '12.4x', '8.5%',  '45.2%'),
-    _activeRow('MIMI',  'Granite Peak Solutions', '7.012', '+19.16%', '753.21M', '67.25M', '11.7x', '7.9%',  '41.8%'),
-    _activeRow('PMNT',  'Perfect Moment LTD',     '3.678', '+19.16%', '530.12M', '67.25M', '9.8x',  '6.2%',  '38.7%'),
-    _activeRow('HUBC',  'Hub Cyber Security Is.', '5.234', '+19.16%', '278.45M', '67.25M', '7.1x',  '4.8%',  '28.5%'),
+    _activeRow('MIMI', 'Mint Incorporation Li.', '4.910', '+19.16%', '412.89M', '67.25M', '8.3x', '10.1%', '32.1%'),
+    _activeRow('WGRX', 'Sky Quarry Innovations', '5.234', '-19.16%', '964.33M', '67.25M', '15.2x', '9.8%', '52.3%'),
+    _activeRow('SNAL', 'Snail, INC.', '2.345', '+19.16%', '845.67M', '67.25M', '12.4x', '8.5%', '45.2%'),
+    _activeRow('MIMI', 'Granite Peak Solutions', '7.012', '+19.16%', '753.21M', '67.25M', '11.7x', '7.9%', '41.8%'),
+    _activeRow('PMNT', 'Perfect Moment LTD', '3.678', '+19.16%', '530.12M', '67.25M', '9.8x', '6.2%', '38.7%'),
+    _activeRow('HUBC', 'Hub Cyber Security Is.', '5.234', '+19.16%', '278.45M', '67.25M', '7.1x', '4.8%', '28.5%'),
   ],
   '% Range': [
-    _activeRow('WGRX',  'Sky Quarry Innovations', '5.234', '-19.16%', '964.33M', '67.25M', '15.2x', '10.1%', '52.3%'),
-    _activeRow('MIMI',  'Granite Peak Solutions', '7.012', '+19.16%', '753.21M', '67.25M', '11.7x', '7.9%',  '41.8%'),
-    _activeRow('SNAL',  'Snail, INC.',            '2.345', '+19.16%', '845.67M', '67.25M', '12.4x', '8.5%',  '45.2%'),
-    _activeRow('PMNT',  'Perfect Moment LTD',     '3.678', '+19.16%', '530.12M', '67.25M', '9.8x',  '6.2%',  '38.7%'),
-    _activeRow('MIMI',  'Mint Incorporation Li.',  '4.910', '+19.16%', '412.89M', '67.25M', '8.3x',  '5.4%',  '32.1%'),
-    _activeRow('HUBC',  'Hub Cyber Security Is.', '5.234', '+19.16%', '278.45M', '67.25M', '7.1x',  '4.8%',  '28.5%'),
+    _activeRow('WGRX', 'Sky Quarry Innovations', '5.234', '-19.16%', '964.33M', '67.25M', '15.2x', '10.1%', '52.3%'),
+    _activeRow('MIMI', 'Granite Peak Solutions', '7.012', '+19.16%', '753.21M', '67.25M', '11.7x', '7.9%', '41.8%'),
+    _activeRow('SNAL', 'Snail, INC.', '2.345', '+19.16%', '845.67M', '67.25M', '12.4x', '8.5%', '45.2%'),
+    _activeRow('PMNT', 'Perfect Moment LTD', '3.678', '+19.16%', '530.12M', '67.25M', '9.8x', '6.2%', '38.7%'),
+    _activeRow('MIMI', 'Mint Incorporation Li.', '4.910', '+19.16%', '412.89M', '67.25M', '8.3x', '5.4%', '32.1%'),
+    _activeRow('HUBC', 'Hub Cyber Security Is.', '5.234', '+19.16%', '278.45M', '67.25M', '7.1x', '4.8%', '28.5%'),
   ],
 };
 
@@ -621,174 +621,174 @@ export const SEED = [
 
 // ── ETF Tab Data ──────────────────────────────────────────────────────────────
 export const ETF_TABLE_COLUMNS = [
-  { id: 'symbol',     label: 'Symbol',    group: 'label', field: 'symbol',    pinned: true, defaultVisible: true },
-  { id: 'name',       label: 'Name',      group: 'label', field: 'name',      defaultVisible: true },
-  { id: 'sparkline',  label: 'Sparkline', group: 'label', field: null,        defaultVisible: true },
-  { id: 'price',      label: 'Price',     group: 'label', field: 'price',     defaultVisible: true },
-  { id: 'pct-change', label: '% Change',  group: 'label', field: 'change',    defaultVisible: true },
-  { id: 'market-cap', label: 'Market Cap',group: 'stock', field: 'marketCap', defaultVisible: false },
-  { id: 'volume',     label: 'Volume',    group: 'stock', field: 'volume',    defaultVisible: false },
+  { id: 'symbol', label: 'Symbol', group: 'label', field: 'symbol', pinned: true, defaultVisible: true },
+  { id: 'name', label: 'Name', group: 'label', field: 'name', defaultVisible: true },
+  { id: 'sparkline', label: 'Sparkline', group: 'label', field: null, defaultVisible: true },
+  { id: 'price', label: 'Price', group: 'label', field: 'price', defaultVisible: true },
+  { id: 'pct-change', label: '% Change', group: 'label', field: 'change', defaultVisible: true },
+  { id: 'market-cap', label: 'Market Cap', group: 'stock', field: 'marketCap', defaultVisible: false },
+  { id: 'volume', label: 'Volume', group: 'stock', field: 'volume', defaultVisible: false },
 ];
 export const ETF_DEFAULT_VISIBLE_IDS = ETF_TABLE_COLUMNS.filter(c => c.defaultVisible).map(c => c.id);
-export const ETF_ALL_COLUMN_IDS      = ETF_TABLE_COLUMNS.map(c => c.id);
-export const ETF_COLUMN_LABELS       = Object.fromEntries(ETF_TABLE_COLUMNS.map(c => [c.id, c.label]));
-export const ETF_LABEL_COLS          = ETF_TABLE_COLUMNS.filter(c => c.group === 'label');
-export const ETF_STOCK_COLS          = ETF_TABLE_COLUMNS.filter(c => c.group === 'stock');
+export const ETF_ALL_COLUMN_IDS = ETF_TABLE_COLUMNS.map(c => c.id);
+export const ETF_COLUMN_LABELS = Object.fromEntries(ETF_TABLE_COLUMNS.map(c => [c.id, c.label]));
+export const ETF_LABEL_COLS = ETF_TABLE_COLUMNS.filter(c => c.group === 'label');
+export const ETF_STOCK_COLS = ETF_TABLE_COLUMNS.filter(c => c.group === 'stock');
 
 const _etfRow = (symbol, name, price, change, volume, marketCap) =>
   ({ symbol, name, price, change, volume, marketCap });
 
 export const etfData = {
   'Dow Jones': [
-    _etfRow('SNAL', 'Snail, INC.',            '2.345', '+19.16M', '845.67M', '67.25M'),
-    _etfRow('PMNT', 'Perfect Moment LTD',     '3.678', '+19.16M', '530.12M', '67.25M'),
-    _etfRow('MIMI', 'Mint Incorporation Li.',  '4.910', '+19.16M', '412.89M', '67.25M'),
+    _etfRow('SNAL', 'Snail, INC.', '2.345', '+19.16M', '845.67M', '67.25M'),
+    _etfRow('PMNT', 'Perfect Moment LTD', '3.678', '+19.16M', '530.12M', '67.25M'),
+    _etfRow('MIMI', 'Mint Incorporation Li.', '4.910', '+19.16M', '412.89M', '67.25M'),
     _etfRow('HUBC', 'Hub Cyber Security Is.', '5.234', '+19.16M', '278.45M', '67.25M'),
     _etfRow('WGRX', 'Sky Quarry Innovations', '5.234', '-19.16M', '964.33M', '67.25M'),
     _etfRow('MIMI', 'Granite Peak Solutions', '7.012', '+19.16M', '753.21M', '67.25M'),
   ],
   'VIX': [
     _etfRow('HUBC', 'Hub Cyber Security Is.', '5.234', '+19.16M', '278.45M', '67.25M'),
-    _etfRow('SNAL', 'Snail, INC.',            '2.345', '+19.16M', '845.67M', '67.25M'),
+    _etfRow('SNAL', 'Snail, INC.', '2.345', '+19.16M', '845.67M', '67.25M'),
     _etfRow('WGRX', 'Sky Quarry Innovations', '5.234', '-19.16M', '964.33M', '67.25M'),
     _etfRow('MIMI', 'Granite Peak Solutions', '7.012', '+19.16M', '753.21M', '67.25M'),
-    _etfRow('PMNT', 'Perfect Moment LTD',     '3.678', '+19.16M', '530.12M', '67.25M'),
-    _etfRow('MIMI', 'Mint Incorporation Li.',  '4.910', '+19.16M', '412.89M', '67.25M'),
+    _etfRow('PMNT', 'Perfect Moment LTD', '3.678', '+19.16M', '530.12M', '67.25M'),
+    _etfRow('MIMI', 'Mint Incorporation Li.', '4.910', '+19.16M', '412.89M', '67.25M'),
   ],
   'Industrials': [
     _etfRow('MIMI', 'Granite Peak Solutions', '7.012', '+19.16M', '753.21M', '67.25M'),
     _etfRow('WGRX', 'Sky Quarry Innovations', '5.234', '-19.16M', '964.33M', '67.25M'),
-    _etfRow('MIMI', 'Mint Incorporation Li.',  '4.910', '+19.16M', '412.89M', '67.25M'),
-    _etfRow('SNAL', 'Snail, INC.',            '2.345', '+19.16M', '845.67M', '67.25M'),
+    _etfRow('MIMI', 'Mint Incorporation Li.', '4.910', '+19.16M', '412.89M', '67.25M'),
+    _etfRow('SNAL', 'Snail, INC.', '2.345', '+19.16M', '845.67M', '67.25M'),
     _etfRow('HUBC', 'Hub Cyber Security Is.', '5.234', '+19.16M', '278.45M', '67.25M'),
-    _etfRow('PMNT', 'Perfect Moment LTD',     '3.678', '+19.16M', '530.12M', '67.25M'),
+    _etfRow('PMNT', 'Perfect Moment LTD', '3.678', '+19.16M', '530.12M', '67.25M'),
   ],
 };
 
 // ── 52 Week Tab Data ────────────────────────────────────────────────────────
 export const WEEK52_TABLE_COLUMNS = [
-  { id: 'symbol',       label: 'Symbol',         group: 'label', field: 'symbol',       pinned: true, defaultVisible: true },
-  { id: 'name',         label: 'Name',           group: 'label', field: 'name',         defaultVisible: true },
-  { id: 'sparkline',    label: 'Sparkline',      group: 'label', field: null,           defaultVisible: true },
-  { id: 'week-high',    label: 'his Week High',  group: 'label', field: 'weekHigh',     defaultVisible: true },
-  { id: '52w-last-high',label: '52W Last High',  group: 'label', field: 'w52LastHigh',  defaultVisible: true },
-  { id: 'last-high',    label: 'Last High',      group: 'stock', field: 'lastHigh',     defaultVisible: true },
-  { id: 'last-price',   label: 'Last Price',     group: 'stock', field: 'lastPrice',    defaultVisible: true },
-  { id: 'pct-change',   label: '% Change',       group: 'stock', field: 'change',       defaultVisible: true },
+  { id: 'symbol', label: 'Symbol', group: 'label', field: 'symbol', pinned: true, defaultVisible: true },
+  { id: 'name', label: 'Name', group: 'label', field: 'name', defaultVisible: true },
+  { id: 'sparkline', label: 'Sparkline', group: 'label', field: null, defaultVisible: true },
+  { id: 'week-high', label: 'his Week High', group: 'label', field: 'weekHigh', defaultVisible: true },
+  { id: '52w-last-high', label: '52W Last High', group: 'label', field: 'w52LastHigh', defaultVisible: true },
+  { id: 'last-high', label: 'Last High', group: 'stock', field: 'lastHigh', defaultVisible: true },
+  { id: 'last-price', label: 'Last Price', group: 'stock', field: 'lastPrice', defaultVisible: true },
+  { id: 'pct-change', label: '% Change', group: 'stock', field: 'change', defaultVisible: true },
 ];
 export const WEEK52_DEFAULT_VISIBLE_IDS = WEEK52_TABLE_COLUMNS.filter(c => c.defaultVisible).map(c => c.id);
-export const WEEK52_ALL_COLUMN_IDS      = WEEK52_TABLE_COLUMNS.map(c => c.id);
-export const WEEK52_COLUMN_LABELS       = Object.fromEntries(WEEK52_TABLE_COLUMNS.map(c => [c.id, c.label]));
-export const WEEK52_LABEL_COLS          = WEEK52_TABLE_COLUMNS.filter(c => c.group === 'label');
-export const WEEK52_STOCK_COLS          = WEEK52_TABLE_COLUMNS.filter(c => c.group === 'stock');
+export const WEEK52_ALL_COLUMN_IDS = WEEK52_TABLE_COLUMNS.map(c => c.id);
+export const WEEK52_COLUMN_LABELS = Object.fromEntries(WEEK52_TABLE_COLUMNS.map(c => [c.id, c.label]));
+export const WEEK52_LABEL_COLS = WEEK52_TABLE_COLUMNS.filter(c => c.group === 'label');
+export const WEEK52_STOCK_COLS = WEEK52_TABLE_COLUMNS.filter(c => c.group === 'stock');
 
 const _week52Row = (symbol, name, weekHigh, w52LastHigh, lastHigh, lastPrice, change) =>
   ({ symbol, name, weekHigh, w52LastHigh, lastHigh, lastPrice, change });
 
 export const week52Data = {
   'New High': [
-    _week52Row('ALLO', 'Allogene Therapeutics',       '3.567',  '4.678',  '+45.67%', '45.67',  'After: -3.25%'),
-    _week52Row('SYRE', 'Avanos Health Solutions',      '42.89',  '2.345',  '+72.15%', '12.89',  'After: -5.12%'),
-    _week52Row('SPIR', 'Spyre Biotech',                '17.63',  '5.890',  '+38.90%', '78.54',  'After: -2.87%'),
-    _week52Row('AEHR', 'Spire Technologies',           '58.74',  '1.234',  '+54.32%', '90.12',  'After: -6.45%'),
-    _week52Row('LWLG', 'Aehr Innovations',             '33.21',  '6.789',  '+63.78%', '23.45',  'After: -4.78%'),
-    _week52Row('SPIR', 'Lightwave Technologies Inc.',  '91.05',  '7.456',  '+49.99%', '67.89',  'After: -3.90%'),
+    _week52Row('ALLO', 'Allogene Therapeutics', '3.567', '4.678', '+45.67%', '45.67', 'After: -3.25%'),
+    _week52Row('SYRE', 'Avanos Health Solutions', '42.89', '2.345', '+72.15%', '12.89', 'After: -5.12%'),
+    _week52Row('SPIR', 'Spyre Biotech', '17.63', '5.890', '+38.90%', '78.54', 'After: -2.87%'),
+    _week52Row('AEHR', 'Spire Technologies', '58.74', '1.234', '+54.32%', '90.12', 'After: -6.45%'),
+    _week52Row('LWLG', 'Aehr Innovations', '33.21', '6.789', '+63.78%', '23.45', 'After: -4.78%'),
+    _week52Row('SPIR', 'Lightwave Technologies Inc.', '91.05', '7.456', '+49.99%', '67.89', 'After: -3.90%'),
   ],
   'Near High': [
-    _week52Row('AEHR', 'Spire Technologies',           '58.74',  '1.234',  '+54.32%', '90.12',  'After: -6.45%'),
-    _week52Row('ALLO', 'Allogene Therapeutics',        '3.567',  '4.678',  '+45.67%', '45.67',  'After: -3.25%'),
-    _week52Row('LWLG', 'Aehr Innovations',             '33.21',  '6.789',  '+63.78%', '23.45',  'After: -4.78%'),
-    _week52Row('SYRE', 'Avanos Health Solutions',      '42.89',  '2.345',  '+72.15%', '12.89',  'After: -5.12%'),
-    _week52Row('SPIR', 'Lightwave Technologies Inc.',  '91.05',  '7.456',  '+49.99%', '67.89',  'After: -3.90%'),
-    _week52Row('SPIR', 'Spyre Biotech',                '17.63',  '5.890',  '+38.90%', '78.54',  'After: -2.87%'),
+    _week52Row('AEHR', 'Spire Technologies', '58.74', '1.234', '+54.32%', '90.12', 'After: -6.45%'),
+    _week52Row('ALLO', 'Allogene Therapeutics', '3.567', '4.678', '+45.67%', '45.67', 'After: -3.25%'),
+    _week52Row('LWLG', 'Aehr Innovations', '33.21', '6.789', '+63.78%', '23.45', 'After: -4.78%'),
+    _week52Row('SYRE', 'Avanos Health Solutions', '42.89', '2.345', '+72.15%', '12.89', 'After: -5.12%'),
+    _week52Row('SPIR', 'Lightwave Technologies Inc.', '91.05', '7.456', '+49.99%', '67.89', 'After: -3.90%'),
+    _week52Row('SPIR', 'Spyre Biotech', '17.63', '5.890', '+38.90%', '78.54', 'After: -2.87%'),
   ],
   'New Low': [
-    _week52Row('SPIR', 'Spyre Biotech',                '17.63',  '5.890',  '-38.90%', '78.54',  'After: -2.87%'),
-    _week52Row('LWLG', 'Aehr Innovations',             '33.21',  '6.789',  '-63.78%', '23.45',  'After: -4.78%'),
-    _week52Row('ALLO', 'Allogene Therapeutics',        '3.567',  '4.678',  '-45.67%', '45.67',  'After: -3.25%'),
-    _week52Row('AEHR', 'Spire Technologies',           '58.74',  '1.234',  '-54.32%', '90.12',  'After: -6.45%'),
-    _week52Row('SYRE', 'Avanos Health Solutions',      '42.89',  '2.345',  '-72.15%', '12.89',  'After: -5.12%'),
-    _week52Row('SPIR', 'Lightwave Technologies Inc.',  '91.05',  '7.456',  '-49.99%', '67.89',  'After: -3.90%'),
+    _week52Row('SPIR', 'Spyre Biotech', '17.63', '5.890', '-38.90%', '78.54', 'After: -2.87%'),
+    _week52Row('LWLG', 'Aehr Innovations', '33.21', '6.789', '-63.78%', '23.45', 'After: -4.78%'),
+    _week52Row('ALLO', 'Allogene Therapeutics', '3.567', '4.678', '-45.67%', '45.67', 'After: -3.25%'),
+    _week52Row('AEHR', 'Spire Technologies', '58.74', '1.234', '-54.32%', '90.12', 'After: -6.45%'),
+    _week52Row('SYRE', 'Avanos Health Solutions', '42.89', '2.345', '-72.15%', '12.89', 'After: -5.12%'),
+    _week52Row('SPIR', 'Lightwave Technologies Inc.', '91.05', '7.456', '-49.99%', '67.89', 'After: -3.90%'),
   ],
   'Near Low': [
-    _week52Row('SYRE', 'Avanos Health Solutions',      '42.89',  '2.345',  '-72.15%', '12.89',  'After: -5.12%'),
-    _week52Row('SPIR', 'Spyre Biotech',                '17.63',  '5.890',  '-38.90%', '78.54',  'After: -2.87%'),
-    _week52Row('AEHR', 'Spire Technologies',           '58.74',  '1.234',  '-54.32%', '90.12',  'After: -6.45%'),
-    _week52Row('ALLO', 'Allogene Therapeutics',        '3.567',  '4.678',  '-45.67%', '45.67',  'After: -3.25%'),
-    _week52Row('LWLG', 'Aehr Innovations',             '33.21',  '6.789',  '-63.78%', '23.45',  'After: -4.78%'),
-    _week52Row('SPIR', 'Lightwave Technologies Inc.',  '91.05',  '7.456',  '-49.99%', '67.89',  'After: -3.90%'),
+    _week52Row('SYRE', 'Avanos Health Solutions', '42.89', '2.345', '-72.15%', '12.89', 'After: -5.12%'),
+    _week52Row('SPIR', 'Spyre Biotech', '17.63', '5.890', '-38.90%', '78.54', 'After: -2.87%'),
+    _week52Row('AEHR', 'Spire Technologies', '58.74', '1.234', '-54.32%', '90.12', 'After: -6.45%'),
+    _week52Row('ALLO', 'Allogene Therapeutics', '3.567', '4.678', '-45.67%', '45.67', 'After: -3.25%'),
+    _week52Row('LWLG', 'Aehr Innovations', '33.21', '6.789', '-63.78%', '23.45', 'After: -4.78%'),
+    _week52Row('SPIR', 'Lightwave Technologies Inc.', '91.05', '7.456', '-49.99%', '67.89', 'After: -3.90%'),
   ],
 };
 
 // ── Popular Stocks Tab Data ──────────────────────────────────────────────────
 export const POPULAR_TABLE_COLUMNS = [
-  { id: 'symbol',     label: 'Symbol',    group: 'label', field: 'symbol',    pinned: true, defaultVisible: true },
-  { id: 'name',       label: 'Name',      group: 'label', field: 'name',      defaultVisible: true },
-  { id: 'sparkline',  label: 'Sparkline', group: 'label', field: null,        defaultVisible: true },
-  { id: 'div-yield',  label: 'Div Yield', group: 'label', field: 'divYield',  defaultVisible: true },
-  { id: 'dividend',   label: 'Divident',  group: 'label', field: 'dividend',  defaultVisible: true },
-  { id: 'ex-date',    label: 'Ex-date',   group: 'stock', field: 'exDate',    defaultVisible: true },
+  { id: 'symbol', label: 'Symbol', group: 'label', field: 'symbol', pinned: true, defaultVisible: true },
+  { id: 'name', label: 'Name', group: 'label', field: 'name', defaultVisible: true },
+  { id: 'sparkline', label: 'Sparkline', group: 'label', field: null, defaultVisible: true },
+  { id: 'div-yield', label: 'Div Yield', group: 'label', field: 'divYield', defaultVisible: true },
+  { id: 'dividend', label: 'Divident', group: 'label', field: 'dividend', defaultVisible: true },
+  { id: 'ex-date', label: 'Ex-date', group: 'stock', field: 'exDate', defaultVisible: true },
   { id: 'market-cap', label: 'Arket cap', group: 'stock', field: 'marketCap', defaultVisible: true },
 ];
 export const POPULAR_DEFAULT_VISIBLE_IDS = POPULAR_TABLE_COLUMNS.filter(c => c.defaultVisible).map(c => c.id);
-export const POPULAR_ALL_COLUMN_IDS      = POPULAR_TABLE_COLUMNS.map(c => c.id);
-export const POPULAR_COLUMN_LABELS       = Object.fromEntries(POPULAR_TABLE_COLUMNS.map(c => [c.id, c.label]));
-export const POPULAR_LABEL_COLS          = POPULAR_TABLE_COLUMNS.filter(c => c.group === 'label');
-export const POPULAR_STOCK_COLS          = POPULAR_TABLE_COLUMNS.filter(c => c.group === 'stock');
+export const POPULAR_ALL_COLUMN_IDS = POPULAR_TABLE_COLUMNS.map(c => c.id);
+export const POPULAR_COLUMN_LABELS = Object.fromEntries(POPULAR_TABLE_COLUMNS.map(c => [c.id, c.label]));
+export const POPULAR_LABEL_COLS = POPULAR_TABLE_COLUMNS.filter(c => c.group === 'label');
+export const POPULAR_STOCK_COLS = POPULAR_TABLE_COLUMNS.filter(c => c.group === 'stock');
 
 const _popularRow = (symbol, name, divYield, dividend, exDate, marketCap) =>
-  ({ symbol, name, divYield, dividend, exDate, marketCap }); 
+  ({ symbol, name, divYield, dividend, exDate, marketCap });
 
 export const popularData = {
   'High Dividend Stocks': [
-    _popularRow('GMEX', 'GMEX ROBOTICS',              '4.123%', '4.678', '01/08/2026', '32.45M'),
-    _popularRow('CMCT', 'Creative Media &',            '2.789%', '2.345', '01/08/2026', '58.90M'),
-    _popularRow('ICON', 'Icon Energy Corp.',           '5.456%', '5.890', '01/08/2026', '73.12M'),
-    _popularRow('CMTG', 'Claros Mtf Tr Inc',           '1.234%', '1.234', '01/08/2026', '21.34M'),
-    _popularRow('MREC', 'Nova Innovations',            '6.890%', '6.789', '01/08/2026', '89.76M'),
-    _popularRow('ICMB', 'Radiant Wave Technologies',   '3.999%', '7.456', '01/08/2026', '47.89M'),
+    _popularRow('GMEX', 'GMEX ROBOTICS', '4.123%', '4.678', '01/08/2026', '32.45M'),
+    _popularRow('CMCT', 'Creative Media &', '2.789%', '2.345', '01/08/2026', '58.90M'),
+    _popularRow('ICON', 'Icon Energy Corp.', '5.456%', '5.890', '01/08/2026', '73.12M'),
+    _popularRow('CMTG', 'Claros Mtf Tr Inc', '1.234%', '1.234', '01/08/2026', '21.34M'),
+    _popularRow('MREC', 'Nova Innovations', '6.890%', '6.789', '01/08/2026', '89.76M'),
+    _popularRow('ICMB', 'Radiant Wave Technologies', '3.999%', '7.456', '01/08/2026', '47.89M'),
   ],
   'Earnings Beyond Exp.': [
-    _popularRow('ICON', 'Icon Energy Corp.',           '5.456%', '5.890', '01/08/2026', '73.12M'),
-    _popularRow('MREC', 'Nova Innovations',            '6.890%', '6.789', '01/08/2026', '89.76M'),
-    _popularRow('GMEX', 'GMEX ROBOTICS',              '4.123%', '4.678', '01/08/2026', '32.45M'),
-    _popularRow('ICMB', 'Radiant Wave Technologies',   '3.999%', '7.456', '01/08/2026', '47.89M'),
-    _popularRow('CMCT', 'Creative Media &',            '2.789%', '2.345', '01/08/2026', '58.90M'),
-    _popularRow('CMTG', 'Claros Mtf Tr Inc',           '1.234%', '1.234', '01/08/2026', '21.34M'),
+    _popularRow('ICON', 'Icon Energy Corp.', '5.456%', '5.890', '01/08/2026', '73.12M'),
+    _popularRow('MREC', 'Nova Innovations', '6.890%', '6.789', '01/08/2026', '89.76M'),
+    _popularRow('GMEX', 'GMEX ROBOTICS', '4.123%', '4.678', '01/08/2026', '32.45M'),
+    _popularRow('ICMB', 'Radiant Wave Technologies', '3.999%', '7.456', '01/08/2026', '47.89M'),
+    _popularRow('CMCT', 'Creative Media &', '2.789%', '2.345', '01/08/2026', '58.90M'),
+    _popularRow('CMTG', 'Claros Mtf Tr Inc', '1.234%', '1.234', '01/08/2026', '21.34M'),
   ],
   'Earnings Below Exp.': [
-    _popularRow('CMTG', 'Claros Mtf Tr Inc',           '1.234%', '1.234', '01/08/2026', '21.34M'),
-    _popularRow('CMCT', 'Creative Media &',            '2.789%', '2.345', '01/08/2026', '58.90M'),
-    _popularRow('ICMB', 'Radiant Wave Technologies',   '3.999%', '7.456', '01/08/2026', '47.89M'),
-    _popularRow('GMEX', 'GMEX ROBOTICS',              '4.123%', '4.678', '01/08/2026', '32.45M'),
-    _popularRow('MREC', 'Nova Innovations',            '6.890%', '6.789', '01/08/2026', '89.76M'),
-    _popularRow('ICON', 'Icon Energy Corp.',           '5.456%', '5.890', '01/08/2026', '73.12M'),
+    _popularRow('CMTG', 'Claros Mtf Tr Inc', '1.234%', '1.234', '01/08/2026', '21.34M'),
+    _popularRow('CMCT', 'Creative Media &', '2.789%', '2.345', '01/08/2026', '58.90M'),
+    _popularRow('ICMB', 'Radiant Wave Technologies', '3.999%', '7.456', '01/08/2026', '47.89M'),
+    _popularRow('GMEX', 'GMEX ROBOTICS', '4.123%', '4.678', '01/08/2026', '32.45M'),
+    _popularRow('MREC', 'Nova Innovations', '6.890%', '6.789', '01/08/2026', '89.76M'),
+    _popularRow('ICON', 'Icon Energy Corp.', '5.456%', '5.890', '01/08/2026', '73.12M'),
   ],
 };
 
 // ── Crypto Tab Data ─────────────────────────────────────────────────────────
 export const CRYPTO_TABLE_COLUMNS = [
-  { id: 'symbol',     label: 'Symbol',     group: 'label', field: 'symbol',    pinned: true, defaultVisible: true },
-  { id: 'name',       label: 'Name',       group: 'label', field: 'name',      defaultVisible: true },
-  { id: 'price',      label: 'Price',      group: 'label', field: 'price',     defaultVisible: true },
-  { id: 'pct-change', label: '% Change',   group: 'label', field: 'change',    defaultVisible: true },
-  { id: 'volume24h',  label: '24H Volume', group: 'label', field: 'volume24h', defaultVisible: true },
+  { id: 'symbol', label: 'Symbol', group: 'label', field: 'symbol', pinned: true, defaultVisible: true },
+  { id: 'name', label: 'Name', group: 'label', field: 'name', defaultVisible: true },
+  { id: 'price', label: 'Price', group: 'label', field: 'price', defaultVisible: true },
+  { id: 'pct-change', label: '% Change', group: 'label', field: 'change', defaultVisible: true },
+  { id: 'volume24h', label: '24H Volume', group: 'label', field: 'volume24h', defaultVisible: true },
   { id: 'market-cap', label: 'Market Cap', group: 'stock', field: 'marketCap', defaultVisible: true },
 ];
 export const CRYPTO_DEFAULT_VISIBLE_IDS = CRYPTO_TABLE_COLUMNS.filter(c => c.defaultVisible).map(c => c.id);
-export const CRYPTO_ALL_COLUMN_IDS      = CRYPTO_TABLE_COLUMNS.map(c => c.id);
-export const CRYPTO_COLUMN_LABELS       = Object.fromEntries(CRYPTO_TABLE_COLUMNS.map(c => [c.id, c.label]));
-export const CRYPTO_LABEL_COLS          = CRYPTO_TABLE_COLUMNS.filter(c => c.group === 'label');
-export const CRYPTO_STOCK_COLS          = CRYPTO_TABLE_COLUMNS.filter(c => c.group === 'stock');
+export const CRYPTO_ALL_COLUMN_IDS = CRYPTO_TABLE_COLUMNS.map(c => c.id);
+export const CRYPTO_COLUMN_LABELS = Object.fromEntries(CRYPTO_TABLE_COLUMNS.map(c => [c.id, c.label]));
+export const CRYPTO_LABEL_COLS = CRYPTO_TABLE_COLUMNS.filter(c => c.group === 'label');
+export const CRYPTO_STOCK_COLS = CRYPTO_TABLE_COLUMNS.filter(c => c.group === 'stock');
 
 const _cryptoRow = (symbol, name, price, change, volume24h, marketCap) =>
   ({ symbol, name, price, change, volume24h, marketCap });
 
 export const cryptoData = {
   'Tradable': [
-    _cryptoRow('SNAL', 'Snail, INC.',            '2.345', '+19.16M', '845.67M', '67.25M'),
-    _cryptoRow('PMNT', 'Perfect Moment LTD',     '3.678', '+19.16M', '530.12M', '67.25M'),
-    _cryptoRow('MIMI', 'Mint Incorporation Li.',  '4.910', '+19.16M', '412.89M', '67.25M'),
+    _cryptoRow('SNAL', 'Snail, INC.', '2.345', '+19.16M', '845.67M', '67.25M'),
+    _cryptoRow('PMNT', 'Perfect Moment LTD', '3.678', '+19.16M', '530.12M', '67.25M'),
+    _cryptoRow('MIMI', 'Mint Incorporation Li.', '4.910', '+19.16M', '412.89M', '67.25M'),
     _cryptoRow('HUBC', 'Hub Cyber Security Is.', '5.234', '+19.16M', '278.45M', '67.25M'),
     _cryptoRow('WGRX', 'Sky Quarry Innovations', '5.234', '-19.16M', '964.33M', '67.25M'),
     _cryptoRow('MIMI', 'Granite Peak Solutions', '7.012', '+19.16M', '753.21M', '67.25M'),
@@ -796,10 +796,10 @@ export const cryptoData = {
   'Non-tradable': [
     _cryptoRow('HUBC', 'Hub Cyber Security Is.', '5.234', '+19.16M', '278.45M', '67.25M'),
     _cryptoRow('WGRX', 'Sky Quarry Innovations', '5.234', '-19.16M', '964.33M', '67.25M'),
-    _cryptoRow('SNAL', 'Snail, INC.',            '2.345', '+19.16M', '845.67M', '67.25M'),
+    _cryptoRow('SNAL', 'Snail, INC.', '2.345', '+19.16M', '845.67M', '67.25M'),
     _cryptoRow('MIMI', 'Granite Peak Solutions', '7.012', '+19.16M', '753.21M', '67.25M'),
-    _cryptoRow('MIMI', 'Mint Incorporation Li.',  '4.910', '+19.16M', '412.89M', '67.25M'),
-    _cryptoRow('PMNT', 'Perfect Moment LTD',     '3.678', '+19.16M', '530.12M', '67.25M'),
+    _cryptoRow('MIMI', 'Mint Incorporation Li.', '4.910', '+19.16M', '412.89M', '67.25M'),
+    _cryptoRow('PMNT', 'Perfect Moment LTD', '3.678', '+19.16M', '530.12M', '67.25M'),
   ],
 };
 
@@ -1125,24 +1125,30 @@ export const PORTFOLIO_SUMMARY = {
   currentValue: '$1,000,00.00',
   investedValue: '$5,000,00.00',
   currentValueChange: '-$4,000,00.00',
+  currentValueChangeDirection: 'down', // 'up' = green, 'down' = red
+  currentValueChangeColor: 'red', // 'green' | 'red'
   currentReturn: '-$1,000,00.00',
-  inflation: '56.48%'
-};
+  currentReturnDirection: 'down', // 'up' = green, 'down' = red
+  currentReturnColor: 'red', // 'green' | 'red'
+  inflation: '56.48%',
+  inflationDirection: 'up', // 'up' = green/TriangleUp, 'down' = red/TriangleDown
+  inflationColor: 'green' // 'green' | 'red'
+}; 
 
 export const PORTFOLIO_HOLDINGS = [
-  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [12, 14, 11, 15, 13, 16, 14, 17, 15, 18, 16, 14, 13, 15, 17, 16, 18, 15, 14, 16], marketPrice: '$14.24', priceChange: '0.00 (0.01%)', returns: '+$15.42', returnsPct: '56.48%', current: '$142.72', invested: '$27.30' },
-  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [10, 12, 11, 13, 12, 14, 13, 15, 14, 16, 15, 13, 12, 14, 16, 15, 17, 14, 13, 15], marketPrice: '$14.24', priceChange: '0.00 (0.01%)', returns: '+$15.42', returnsPct: '56.48%', current: '$142.72', invested: '$27.30' },
-  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [14, 13, 15, 12, 14, 11, 13, 15, 14, 16, 13, 15, 14, 12, 16, 15, 13, 14, 16, 15], marketPrice: '$14.24', priceChange: '0.00 (0.01%)', returns: '+$15.42', returnsPct: '56.48%', current: '$142.72', invested: '$27.30' },
-  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [11, 13, 12, 14, 13, 15, 14, 16, 15, 17, 16, 14, 13, 15, 17, 16, 18, 15, 14, 16], marketPrice: '$14.24', priceChange: '0.00 (0.01%)', returns: '+$15.42', returnsPct: '56.48%', current: '$142.72', invested: '$27.30' },
-  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [13, 15, 14, 16, 15, 17, 16, 18, 17, 19, 18, 16, 15, 17, 19, 18, 20, 17, 16, 18], marketPrice: '$14.24', priceChange: '0.00 (0.01%)', returns: '+$15.42', returnsPct: '56.48%', current: '$142.72', invested: '$27.30' },
-  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [15, 14, 16, 13, 15, 12, 14, 16, 15, 17, 14, 16, 15, 13, 17, 16, 14, 15, 17, 16], marketPrice: '$14.24', priceChange: '0.00 (0.01%)', returns: '+$15.42', returnsPct: '56.48%', current: '$142.72', invested: '$27.30' },
-  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [12, 14, 13, 15, 14, 16, 15, 17, 16, 18, 17, 15, 14, 16, 18, 17, 19, 16, 15, 17], marketPrice: '$14.24', priceChange: '0.00 (0.01%)', returns: '+$15.42', returnsPct: '56.48%', current: '$142.72', invested: '$27.30' },
-  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [10, 12, 11, 13, 12, 14, 13, 15, 14, 16, 15, 13, 12, 14, 16, 15, 17, 14, 13, 15], marketPrice: '$14.24', priceChange: '0.00 (0.01%)', returns: '+$15.42', returnsPct: '56.48%', current: '$142.72', invested: '$27.30' },
-  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [14, 13, 15, 12, 14, 11, 13, 15, 14, 16, 13, 15, 14, 12, 16, 15, 13, 14, 16, 15], marketPrice: '$14.24', priceChange: '0.00 (0.01%)', returns: '+$15.42', returnsPct: '56.48%', current: '$142.72', invested: '$27.30' },
-  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [11, 13, 12, 14, 13, 15, 14, 16, 15, 17, 16, 14, 13, 15, 17, 16, 18, 15, 14, 16], marketPrice: '$14.24', priceChange: '0.00 (0.01%)', returns: '+$15.42', returnsPct: '56.48%', current: '$142.72', invested: '$27.30' },
-  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [14, 13, 15, 12, 14, 11, 13, 15, 14, 16, 13, 15, 14, 12, 16, 15, 13, 14, 16, 15], marketPrice: '$14.24', priceChange: '0.00 (0.01%)', returns: '+$15.42', returnsPct: '56.48%', current: '$142.72', invested: '$27.30' },
-  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [11, 13, 12, 14, 13, 15, 14, 16, 15, 17, 16, 14, 13, 15, 17, 16, 18, 15, 14, 16], marketPrice: '$14.24', priceChange: '0.00 (0.01%)', returns: '+$15.42', returnsPct: '56.48%', current: '$142.72', invested: '$27.30' },
-]; 
+  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [12, 14, 11, 15, 13, 16, 14, 17, 15, 18, 16, 14, 13, 15, 17, 16, 18, 15, 14, 16], sparklineColor: 'green', marketPrice: '$14.24', priceDirection: 'up', priceChange: '+$4.00', priceChangePct: '+5.00 (0.90%)', priceChangeColor: 'green', returns: '+$114.72', returnsDirection: 'up', returnsPct: '40.48%', returnsColor: 'green', current: '$142.72', currentDirection: 'up', invested: '$100.00' },
+  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [10, 12, 11, 13, 12, 14, 13, 15, 14, 16, 15, 13, 12, 14, 16, 15, 17, 14, 13, 15], sparklineColor: 'red', marketPrice: '$14.24', priceDirection: 'down', priceChange: '-$4.00', priceChangePct: '-5.00 (0.90%)', priceChangeColor: 'red', returns: '-$110.72', returnsDirection: 'down', returnsPct: '-40.48%', returnsColor: 'red', current: '$110.72', currentDirection: 'down', invested: '$100.00' },
+  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [14, 13, 15, 12, 14, 11, 13, 15, 14, 16, 13, 15, 14, 12, 16, 15, 13, 14, 16, 15], sparklineColor: 'green', marketPrice: '$14.24', priceDirection: 'up', priceChange: '+$4.00', priceChangePct: '+5.00 (0.90%)', priceChangeColor: 'green', returns: '+$114.72', returnsDirection: 'up', returnsPct: '40.48%', returnsColor: 'green', current: '$114.72', currentDirection: 'up', invested: '$100.00' },
+  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [11, 13, 12, 14, 13, 15, 14, 16, 15, 17, 16, 14, 13, 15, 17, 16, 18, 15, 14, 16], sparklineColor: 'green', marketPrice: '$14.24', priceDirection: 'up', priceChange: '+$4.00', priceChangePct: '+5.00 (0.90%)', priceChangeColor: 'green', returns: '+$114.72', returnsDirection: 'up', returnsPct: '40.48%', returnsColor: 'green', current: '$114.72', currentDirection: 'up', invested: '$100.00' },
+  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [13, 15, 14, 16, 15, 17, 16, 18, 17, 19, 18, 16, 15, 17, 19, 18, 20, 17, 16, 18], sparklineColor: 'green', marketPrice: '$14.24', priceDirection: 'up', priceChange: '+$4.00', priceChangePct: '+5.00 (0.90%)', priceChangeColor: 'green', returns: '+$114.72', returnsDirection: 'up', returnsPct: '40.48%', returnsColor: 'green', current: '$114.72', currentDirection: 'up', invested: '$100.00' },
+  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [15, 14, 16, 13, 15, 12, 14, 16, 15, 17, 14, 16, 15, 13, 17, 16, 14, 15, 17, 16], sparklineColor: 'green', marketPrice: '$14.24', priceDirection: 'up', priceChange: '+$4.00', priceChangePct: '+5.00 (0.90%)', priceChangeColor: 'green', returns: '+$114.72', returnsDirection: 'up', returnsPct: '40.48%', returnsColor: 'green', current: '$114.72', currentDirection: 'up', invested: '$100.00' },
+  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [12, 14, 13, 15, 14, 16, 15, 17, 16, 18, 17, 15, 14, 16, 18, 17, 19, 16, 15, 17], sparklineColor: 'green', marketPrice: '$14.24', priceDirection: 'up', priceChange: '+$4.00', priceChangePct: '+5.00 (0.90%)', priceChangeColor: 'green', returns: '+$114.72', returnsDirection: 'up', returnsPct: '40.48%', returnsColor: 'green', current: '$114.72', currentDirection: 'up', invested: '$100.00' },
+  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [10, 12, 11, 13, 12, 14, 13, 15, 14, 16, 15, 13, 12, 14, 16, 15, 17, 14, 13, 15], sparklineColor: 'green', marketPrice: '$14.24', priceDirection: 'up', priceChange: '+$4.00', priceChangePct: '+5.00 (0.90%)', priceChangeColor: 'green', returns: '+$114.72', returnsDirection: 'up', returnsPct: '40.48%', returnsColor: 'green', current: '$114.72', currentDirection: 'up', invested: '$100.00' },
+  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [14, 13, 15, 12, 14, 11, 13, 15, 14, 16, 13, 15, 14, 12, 16, 15, 13, 14, 16, 15], sparklineColor: 'green', marketPrice: '$14.24', priceDirection: 'up', priceChange: '+$4.00', priceChangePct: '+5.00 (0.90%)', priceChangeColor: 'green', returns: '+$114.72', returnsDirection: 'up', returnsPct: '40.48%', returnsColor: 'green', current: '$114.72', currentDirection: 'up', invested: '$100.00' },
+  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [11, 13, 12, 14, 13, 15, 14, 16, 15, 17, 16, 14, 13, 15, 17, 16, 18, 15, 14, 16], sparklineColor: 'green', marketPrice: '$14.24', priceDirection: 'up', priceChange: '+$4.00', priceChangePct: '+5.00 (0.90%)', priceChangeColor: 'green', returns: '+$114.72', returnsDirection: 'up', returnsPct: '40.48%', returnsColor: 'green', current: '$114.72', currentDirection: 'up', invested: '$100.00' },
+  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [14, 13, 15, 12, 14, 11, 13, 15, 14, 16, 13, 15, 14, 12, 16, 15, 13, 14, 16, 15], sparklineColor: 'green', marketPrice: '$14.24', priceDirection: 'up', priceChange: '+$4.00', priceChangePct: '+5.00 (0.90%)', priceChangeColor: 'green', returns: '+$114.72', returnsDirection: 'up', returnsPct: '40.48%', returnsColor: 'green', current: '$114.72', currentDirection: 'up', invested: '$100.00' },
+  { company: 'Apple', index: 'Dow Jones', timeAgo: '5h ago', sparkline: [11, 13, 12, 14, 13, 15, 14, 16, 15, 17, 16, 14, 13, 15, 17, 16, 18, 15, 14, 16], sparklineColor: 'green', marketPrice: '$14.24', priceDirection: 'up', priceChange: '+$4.00', priceChangePct: '+5.00 (0.90%)', priceChangeColor: 'green', returns: '+$114.72', returnsDirection: 'up', returnsPct: '40.48%', returnsColor: 'green', current: '$114.72', currentDirection: 'up', invested: '$100.00' },
+];
 
 export const MARKET_CAP_DATA = [
   { name: 'Large Cap', count: '7 Stocks', allocation: '$111.88', allocationPct: '5.30%', returns: '+$15.42', returnsPct: '56.48%', color: '#3B82F6' },
@@ -1191,7 +1197,7 @@ export const INDUSTRY_CHANGE_DATA = [
       { symbol: 'M', change: 5.29 },
       { symbol: 'RVLV', change: 2.46 },
       { symbol: 'PSMT', change: 6.03 },
-    ], 
+    ],
   },
   {
     industry: 'Beverages',
@@ -1234,3 +1240,195 @@ export const INDUSTRY_CHANGE_DATA = [
     ],
   },
 ];
+
+
+// Placeholder data for Time&Sales and Vol Analysis
+
+// ── Yield Curves ──────────────────────────────────────────────────────────────
+// Expected API shape:
+// {
+//   xAxis: string[],          // Maturity labels: ["6M","1Y","2Y","5Y","10Y","30Y"]
+//   series: [
+//     { id: string, label: string, color: string, data: number[] }
+//   ]
+// }
+
+
+export const yieldCurvesData = {
+  xAxis: ['6M', '1Y', '2Y', '5Y', '10Y', '30Y'],
+  series: [
+    {
+      id: 'treasury',
+      label: 'Treasury',
+      color: '#724A9A',
+      bgColor: '#EDE8F280', 
+      data: [5.02, 5.48, 6.05, 7.12, 7.40, 7.72],
+    },
+    {
+      id: 'ig_corp',
+      label: 'IG Corp',
+      color: '#9E5190',
+      bgColor: '#F3E9F1',
+      data: [5.20, 5.90, 6.80, 9.20, 9.35, 8.42],
+    },
+    {
+      id: 'hy_corp',
+      label: 'HY Corp',
+      color: '#D7A564',
+      bgColor: '#F4EFEA',
+      data: [4.32, 4.60, 4.85, 5.42, 5.82, 6.38],
+    },
+  ],
+};
+// ─────────────────────────────────────────────────────────────────────────────
+
+export const timeAndSalesData = [
+  { time: '00:47:12', price: 260.12, volume: 3, symbol: 'OCEA' },
+  { time: '00:48:15', price: 261.15, volume: 553, symbol: 'OCEA' },
+  { time: '00:49:20', price: 262.18, volume: 4, symbol: 'BOSS' },
+  { time: '00:50:25', price: 263.21, volume: 13, symbol: 'OCEA' },
+  { time: '00:51:30', price: 264.24, volume: 3, symbol: 'OCEA' },
+  { time: '00:52:35', price: 265.27, volume: 13, symbol: 'BOSS' },
+  { time: '00:53:40', price: 266.30, volume: 23, symbol: 'OCEA' },
+  { time: '00:54:45', price: 267.33, volume: 13, symbol: 'BOSS' },
+  { time: '00:55:50', price: 268.36, volume: 321, symbol: 'BOSS' },
+  { time: '00:56:55', price: 269.39, volume: 13, symbol: 'OCEA' },
+  { time: '00:57:00', price: 270.42, volume: 13, symbol: 'OCEA' },
+  { time: '00:58:05', price: 271.45, volume: 13, symbol: 'OCEA' },
+  { time: '00:59:10', price: 272.48, volume: 23, symbol: 'BOSS' },
+  { time: '01:00:15', price: 273.51, volume: 13, symbol: 'BOSS' },
+  { time: '01:01:20', price: 274.54, volume: 12, symbol: 'OCEA' },
+  { time: '01:02:25', price: 275.57, volume: 12, symbol: 'OCEA' },
+  { time: '01:03:30', price: 276.60, volume: 13, symbol: 'OCEA' },
+  { time: '01:04:35', price: 277.63, volume: 234, symbol: 'BOSS' },
+  { time: '01:05:40', price: 278.66, volume: 13, symbol: 'OCEA' },
+  { time: '01:06:45', price: 279.69, volume: 23, symbol: 'OCEA' },
+  { time: '01:07:50', price: 280.72, volume: 13, symbol: 'OCEA' },
+  { time: '01:08:55', price: 281.75, volume: 13, symbol: 'OCEA' },
+  { time: '01:09:00', price: 282.78, volume: 100, symbol: 'OCEA' },
+];
+
+// ── Net Flow Chart ───────────────────────────────────────────────────────────
+// Expected API shape:
+// {
+//   times: string[],          // Time labels: ["09:30", "10:00", ...]
+//   series: [
+//     { id: string, label: string, color: string, data: number[] }
+//   ]
+// }
+// To integrate: replace netFlowChartData with an API response of the same shape.
+export const netFlowChartData = {
+  // Dense time ticks from 09:30 to 16:00 for ECG/heart-rate style resolution
+  times: [
+    '09:30','09:35','09:40','09:45','09:50','09:55',
+    '10:00','10:05','10:10','10:15','10:20','10:25','10:30',
+    '10:35','10:40','10:45','10:50','10:55',
+    '11:00','11:05','11:10','11:15','11:20','11:25','11:30',
+    '11:35','11:40','11:45','11:50','11:55',
+    '12:00','12:05','12:10','12:15','12:20','12:25','12:30',
+    '12:35','12:40','12:45','12:50','12:55',
+    '13:00','13:05','13:10','13:15','13:20','13:25','13:30',
+    '13:35','13:40','13:45','13:50','13:55',
+    '14:00','14:05','14:10','14:15','14:20','14:25','14:30',
+    '14:35','14:40','14:45','14:50','14:55',
+    '15:00','15:05','15:10','15:15','15:20','15:25','15:30',
+    '15:35','15:40','15:45','15:50','15:55','16:00',
+  ],
+  series: [
+    {
+      id: 'nasdaq',
+      label: 'NASDAQ',
+      color: '#F7B84B',
+      // Upper band: ~160-210
+      data: [
+        178,162,188,148,195,170,  // 09:30-09:55
+        172,185,155,200,165,180,168, // 10:00-10:30
+        192,152,205,162,176,170,   // 10:35-10:55
+        182,158,196,172,148,188,165, // 11:00-11:30
+        180,154,202,166,184,172,   // 11:35-11:55
+        188,162,174,198,156,182,170, // 12:00-12:30
+        194,152,186,172,162,178,184, // 12:35-13:00
+        158,202,166,190,148,176,172, // 13:05-13:30
+        194,162,184,150,198,172,   // 13:35-13:55
+        182,160,196,168,154,186,174, // 14:00-14:30
+        162,198,172,188,158,182,192, // 14:35-15:00
+        150,204,166,194,162,184,172, // 15:05-15:30
+        156,202,170,192,166,182,148,172, // 15:35-16:00
+      ],
+    },
+    {
+      id: 'nyse',
+      label: 'NYSE',
+      color: '#8668B9',
+      // Lower band: ~60-110
+      data: [
+        78,62,88,52,92,72,   // 09:30-09:55
+        68,84,55,96,70,80,65,  // 10:00-10:30
+        88,52,100,63,76,70,   // 10:35-10:55
+        82,58,94,72,50,86,65,  // 11:00-11:30
+        80,55,98,66,85,74,   // 11:35-11:55
+        90,62,75,100,55,84,70, // 12:00-12:30
+        96,52,82,68,60,78,86,  // 12:35-13:00
+        58,102,68,90,50,76,72, // 13:05-13:30
+        96,63,84,52,100,72,   // 13:35-13:55
+        82,60,95,68,55,88,75,  // 14:00-14:30
+        62,100,72,90,58,82,92, // 14:35-15:00
+        50,105,68,94,62,84,72, // 15:05-15:30
+        55,102,70,92,65,82,48,72, // 15:35-16:00
+      ],
+    },
+  ],
+};
+// ─────────────────────────────────────────────────────────────────────────────
+
+export const volAnalysisData = [
+  { price: 250, buy: 33220, sell: 45670, volume: 53880, ratio: 12.85 },
+  { price: 250, buy: 47230, sell: 28910, volume: 53880, ratio: 22.15 },
+  { price: 250, buy: 36500, sell: 52340, volume: 53880, ratio: 78.60 },
+  { price: 250, buy: 54780, sell: 37880, volume: 53880, ratio: 89.10 },
+  { price: 250, buy: 82110, sell: 29450, volume: 53880, ratio: 91.30 },
+  { price: 250, buy: 27880, sell: 39990, volume: 53880, ratio: 60.00 },
+  { price: 250, buy: 29990, sell: 22330, volume: 53880, ratio: 73.45 },
+  { price: 250, buy: 49560, sell: 50290, volume: 53880, ratio: 49.55 },
+  { price: 250, buy: 55890, sell: 39110, volume: 53880, ratio: 66.75 },
+  { price: 250, buy: 60030, sell: 44990, volume: 53880, ratio: 27.40 },
+  { price: 250, buy: 71340, sell: 53880, volume: 53880, ratio: 33.10 },
+  { price: 250, buy: 40150, sell: 19760, volume: 53880, ratio: 82.25 },
+  { price: 250, buy: 58770, sell: 41230, volume: 53880, ratio: 92.80 },
+  { price: 250, buy: 39990, sell: 54120, volume: 53880, ratio: 45.25 },
+  { price: 250, buy: 75900, sell: 60050, volume: 53880, ratio: 67.90 },
+  { price: 250, buy: 31440, sell: 48770, volume: 53880, ratio: 53.40 },
+  { price: 250, buy: 48140, sell: 31840, volume: 53880, ratio: 34.75 },
+  { price: 250, buy: 52880, sell: 26680, volume: 53880, ratio: 5.50 },
+  { price: 250, buy: 42670, sell: 35670, volume: 53880, ratio: 14.20 },
+  { price: 250, buy: 38120, sell: 25750, volume: 53880, ratio: 37.80 },
+  { price: 250, buy: 63450, sell: 46780, volume: 53880, ratio: 18.90 },
+];
+
+// ── Market Overview (Adv/Dec) ────────────────────────────────────────────────
+// Expected API shape:
+// {
+//   total: number,
+//   decliners: number,
+//   advancers: number,
+//   bars: [{ label: string, value: number, type: 'decline'|'neutral'|'advance' }]
+// }
+// To integrate: replace marketOverviewData with an API response of the same shape.
+export const marketOverviewData = {
+  total: 6469,
+  decliners: 1914,
+  advancers: 3857, 
+  bars: [
+    { label: '<-10%', value: 72, type: 'decline' },
+    { label: '-5~-2%', value: 102, type: 'decline' },
+    { label: '-5~-2%', value: 102, type: 'decline' },
+    { label: '', value: 335, type: 'decline' },
+    { label: '0', value: 295, type: 'neutral' },
+    { label: '', value: 2563, type: 'advance' },
+    { label: '2~5%', value: 932, type: 'advance' },
+    { label: '', value: 324, type: 'advance' },
+    { label: '>10%', value: 111, type: 'advance' },
+  ],
+};
+// ─────────────────────────────────────────────────────────────────────────────
+

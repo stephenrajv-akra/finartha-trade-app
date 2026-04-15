@@ -1,7 +1,8 @@
 import { PORTFOLIO_SUMMARY } from '../../utils/placeholder-data';
 import { useState } from 'react';
-import {IndianRupee, DollarSign, ChevronUp} from 'lucide-react';
+import {IndianRupee, DollarSign} from 'lucide-react';
 
+import { TriangleUp, TriangleDown } from '../../utils/SvgCode';
 export default function PortfolioSummary() {
     const [active, setActive] = useState("INR");
     return (
@@ -11,13 +12,13 @@ export default function PortfolioSummary() {
             <div className="flex items-center justify-between px-5 pt-4 pb-3 border-b border-[#EDE8F2] shrink-0">
                 <div>
                     <p className="text-[#616161] text-base font-normal">Current value</p>
-                    <div className='flex items-end gap-1'>  
+                    <div className='flex items-end gap-2'>  
                         <p className="text-[#862574] text-xl font-bold">{PORTFOLIO_SUMMARY.currentValue}</p>
-                        <div className='flex items-end'>
-                        <ChevronUp color='#079E53' />   
-                        <p className='text-[#079E53] text-base font-medium'>{PORTFOLIO_SUMMARY.inflation}</p>
+                        <div className='flex items-center gap-1'>
+                          {PORTFOLIO_SUMMARY.inflationDirection === 'up' ? <TriangleUp color='#079E53' /> : <TriangleDown color='#EC4D5C' />}
+                          <p className={`text-base font-medium ${PORTFOLIO_SUMMARY.inflationColor === 'green' ? 'text-[#079E53]' : 'text-[#EC4D5C]'}`}>{PORTFOLIO_SUMMARY.inflation}</p>
                         </div>
-                    </div>
+                    </div> 
                 </div>
                 <div className="flex items-center gap-4">
                     <div className="relative inline-flex bg-[#6E3A9C] rounded-full p-[8px] w-[120px]">

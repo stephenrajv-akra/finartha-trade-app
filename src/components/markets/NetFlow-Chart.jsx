@@ -1,7 +1,7 @@
 
 import { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
-import { netFlowChartData } from '../../utils/placeholder-obj';
+import { netFlowChartData } from '../../utils/placeholder-data';
 
 /*
  * NetFlowChart — Multi-line chart (NASDAQ vs NYSE)
