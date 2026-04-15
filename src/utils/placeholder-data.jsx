@@ -619,6 +619,89 @@ export const SEED = [
   { "country": "Italy", "currency": "EUR", "data_source": "simulated", "flag": "🇮🇹", "id": "IT_30Y", "instrument": "BTP", "mat_yr": 30, "maturity": "30Y", "name": "BTP", "price": 99.36, "price_change": 0.141, "rating": "BBB+", "region": "Europe", "session": "open", "volume_bn": 8.2, "yield": 4.238, "yield_change": -0.008 }
 ];
 
+// ── ETF Tab Data ──────────────────────────────────────────────────────────────
+export const ETF_TABLE_COLUMNS = [
+  { id: 'symbol',     label: 'Symbol',    group: 'label', field: 'symbol',    pinned: true, defaultVisible: true },
+  { id: 'name',       label: 'Name',      group: 'label', field: 'name',      defaultVisible: true },
+  { id: 'sparkline',  label: 'Sparkline', group: 'label', field: null,        defaultVisible: true },
+  { id: 'price',      label: 'Price',     group: 'label', field: 'price',     defaultVisible: true },
+  { id: 'pct-change', label: '% Change',  group: 'label', field: 'change',    defaultVisible: true },
+  { id: 'market-cap', label: 'Market Cap',group: 'stock', field: 'marketCap', defaultVisible: false },
+  { id: 'volume',     label: 'Volume',    group: 'stock', field: 'volume',    defaultVisible: false },
+];
+export const ETF_DEFAULT_VISIBLE_IDS = ETF_TABLE_COLUMNS.filter(c => c.defaultVisible).map(c => c.id);
+export const ETF_ALL_COLUMN_IDS      = ETF_TABLE_COLUMNS.map(c => c.id);
+export const ETF_COLUMN_LABELS       = Object.fromEntries(ETF_TABLE_COLUMNS.map(c => [c.id, c.label]));
+export const ETF_LABEL_COLS          = ETF_TABLE_COLUMNS.filter(c => c.group === 'label');
+export const ETF_STOCK_COLS          = ETF_TABLE_COLUMNS.filter(c => c.group === 'stock');
+
+const _etfRow = (symbol, name, price, change, volume, marketCap) =>
+  ({ symbol, name, price, change, volume, marketCap });
+
+export const etfData = {
+  'Dow Jones': [
+    _etfRow('SNAL', 'Snail, INC.',            '2.345', '+19.16M', '845.67M', '67.25M'),
+    _etfRow('PMNT', 'Perfect Moment LTD',     '3.678', '+19.16M', '530.12M', '67.25M'),
+    _etfRow('MIMI', 'Mint Incorporation Li.',  '4.910', '+19.16M', '412.89M', '67.25M'),
+    _etfRow('HUBC', 'Hub Cyber Security Is.', '5.234', '+19.16M', '278.45M', '67.25M'),
+    _etfRow('WGRX', 'Sky Quarry Innovations', '5.234', '-19.16M', '964.33M', '67.25M'),
+    _etfRow('MIMI', 'Granite Peak Solutions', '7.012', '+19.16M', '753.21M', '67.25M'),
+  ],
+  'VIX': [
+    _etfRow('HUBC', 'Hub Cyber Security Is.', '5.234', '+19.16M', '278.45M', '67.25M'),
+    _etfRow('SNAL', 'Snail, INC.',            '2.345', '+19.16M', '845.67M', '67.25M'),
+    _etfRow('WGRX', 'Sky Quarry Innovations', '5.234', '-19.16M', '964.33M', '67.25M'),
+    _etfRow('MIMI', 'Granite Peak Solutions', '7.012', '+19.16M', '753.21M', '67.25M'),
+    _etfRow('PMNT', 'Perfect Moment LTD',     '3.678', '+19.16M', '530.12M', '67.25M'),
+    _etfRow('MIMI', 'Mint Incorporation Li.',  '4.910', '+19.16M', '412.89M', '67.25M'),
+  ],
+  'Industrials': [
+    _etfRow('MIMI', 'Granite Peak Solutions', '7.012', '+19.16M', '753.21M', '67.25M'),
+    _etfRow('WGRX', 'Sky Quarry Innovations', '5.234', '-19.16M', '964.33M', '67.25M'),
+    _etfRow('MIMI', 'Mint Incorporation Li.',  '4.910', '+19.16M', '412.89M', '67.25M'),
+    _etfRow('SNAL', 'Snail, INC.',            '2.345', '+19.16M', '845.67M', '67.25M'),
+    _etfRow('HUBC', 'Hub Cyber Security Is.', '5.234', '+19.16M', '278.45M', '67.25M'),
+    _etfRow('PMNT', 'Perfect Moment LTD',     '3.678', '+19.16M', '530.12M', '67.25M'),
+  ],
+};
+
+// ── Crypto Tab Data ─────────────────────────────────────────────────────────
+export const CRYPTO_TABLE_COLUMNS = [
+  { id: 'symbol',     label: 'Symbol',     group: 'label', field: 'symbol',    pinned: true, defaultVisible: true },
+  { id: 'name',       label: 'Name',       group: 'label', field: 'name',      defaultVisible: true },
+  { id: 'price',      label: 'Price',      group: 'label', field: 'price',     defaultVisible: true },
+  { id: 'pct-change', label: '% Change',   group: 'label', field: 'change',    defaultVisible: true },
+  { id: 'volume24h',  label: '24H Volume', group: 'label', field: 'volume24h', defaultVisible: true },
+  { id: 'market-cap', label: 'Market Cap', group: 'stock', field: 'marketCap', defaultVisible: true },
+];
+export const CRYPTO_DEFAULT_VISIBLE_IDS = CRYPTO_TABLE_COLUMNS.filter(c => c.defaultVisible).map(c => c.id);
+export const CRYPTO_ALL_COLUMN_IDS      = CRYPTO_TABLE_COLUMNS.map(c => c.id);
+export const CRYPTO_COLUMN_LABELS       = Object.fromEntries(CRYPTO_TABLE_COLUMNS.map(c => [c.id, c.label]));
+export const CRYPTO_LABEL_COLS          = CRYPTO_TABLE_COLUMNS.filter(c => c.group === 'label');
+export const CRYPTO_STOCK_COLS          = CRYPTO_TABLE_COLUMNS.filter(c => c.group === 'stock');
+
+const _cryptoRow = (symbol, name, price, change, volume24h, marketCap) =>
+  ({ symbol, name, price, change, volume24h, marketCap });
+
+export const cryptoData = {
+  'Tradable': [
+    _cryptoRow('SNAL', 'Snail, INC.',            '2.345', '+19.16M', '845.67M', '67.25M'),
+    _cryptoRow('PMNT', 'Perfect Moment LTD',     '3.678', '+19.16M', '530.12M', '67.25M'),
+    _cryptoRow('MIMI', 'Mint Incorporation Li.',  '4.910', '+19.16M', '412.89M', '67.25M'),
+    _cryptoRow('HUBC', 'Hub Cyber Security Is.', '5.234', '+19.16M', '278.45M', '67.25M'),
+    _cryptoRow('WGRX', 'Sky Quarry Innovations', '5.234', '-19.16M', '964.33M', '67.25M'),
+    _cryptoRow('MIMI', 'Granite Peak Solutions', '7.012', '+19.16M', '753.21M', '67.25M'),
+  ],
+  'Non-tradable': [
+    _cryptoRow('HUBC', 'Hub Cyber Security Is.', '5.234', '+19.16M', '278.45M', '67.25M'),
+    _cryptoRow('WGRX', 'Sky Quarry Innovations', '5.234', '-19.16M', '964.33M', '67.25M'),
+    _cryptoRow('SNAL', 'Snail, INC.',            '2.345', '+19.16M', '845.67M', '67.25M'),
+    _cryptoRow('MIMI', 'Granite Peak Solutions', '7.012', '+19.16M', '753.21M', '67.25M'),
+    _cryptoRow('MIMI', 'Mint Incorporation Li.',  '4.910', '+19.16M', '412.89M', '67.25M'),
+    _cryptoRow('PMNT', 'Perfect Moment LTD',     '3.678', '+19.16M', '530.12M', '67.25M'),
+  ],
+};
+
 export const REGION_LABELS = { '': 'All', Americas: 'Americas', Europe: 'Europe', 'Asia-Pacific': 'Asia-Pac' };
 
 export const COLUMNS = [

@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { SquareCheckBig } from 'lucide-react';
 import { ArrowDown, HamburgerIcon } from "../../utils/SvgCode";
-import { gainersData, losersData, DEFAULT_VISIBLE_IDS, ALL_COLUMN_IDS, COLUMN_LABELS, MARKET_TABLE_COLUMNS, activeData, ACTIVE_TABLE_COLUMNS, ACTIVE_DEFAULT_VISIBLE_IDS, ACTIVE_ALL_COLUMN_IDS, ACTIVE_COLUMN_LABELS, ACTIVE_LABEL_COLS, ACTIVE_STOCK_COLS } from '../../utils/placeholder-data'; 
+import { gainersData, losersData, DEFAULT_VISIBLE_IDS, ALL_COLUMN_IDS, COLUMN_LABELS, MARKET_TABLE_COLUMNS, activeData, ACTIVE_TABLE_COLUMNS, ACTIVE_DEFAULT_VISIBLE_IDS, ACTIVE_ALL_COLUMN_IDS, ACTIVE_COLUMN_LABELS, ACTIVE_LABEL_COLS, ACTIVE_STOCK_COLS, etfData, ETF_TABLE_COLUMNS, ETF_DEFAULT_VISIBLE_IDS, ETF_ALL_COLUMN_IDS, ETF_COLUMN_LABELS, ETF_LABEL_COLS, ETF_STOCK_COLS, cryptoData, CRYPTO_TABLE_COLUMNS, CRYPTO_DEFAULT_VISIBLE_IDS, CRYPTO_ALL_COLUMN_IDS, CRYPTO_COLUMN_LABELS, CRYPTO_LABEL_COLS, CRYPTO_STOCK_COLS } from '../../utils/placeholder-data'; 
 import { MenuIcon } from '../../utils/SvgCode'; 
 import TableControls from './Table-Controls-Popup';
 import * as echarts from 'echarts/core';
@@ -105,6 +105,18 @@ const MarketDataTabs = () => {
   const [activeVisibleColumns, setActiveVisibleColumns] = useState(() => new Set(ACTIVE_DEFAULT_VISIBLE_IDS));
   const isActivePage = active === 'Active';
 
+  // ETFs tab state
+  const ETF_SUB_TABS = ['Dow Jones', 'VIX', 'Industrials'];
+  const [etfSubTab, setEtfSubTab] = useState('Dow Jones');
+  const [etfVisibleColumns, setEtfVisibleColumns] = useState(() => new Set(ETF_DEFAULT_VISIBLE_IDS));
+  const isEtfPage = active === 'ETFs';
+
+  // Crypto tab state
+  const CRYPTO_SUB_TABS = ['Tradable', 'Non-tradable'];
+  const [cryptoSubTab, setCryptoSubTab] = useState('Tradable');
+  const [cryptoVisibleColumns, setCryptoVisibleColumns] = useState(() => new Set(CRYPTO_DEFAULT_VISIBLE_IDS));
+  const isCryptoPage = active === 'Crypto';
+
   // Visible columns (controlled by table-controls dropdown)
   const [visibleColumns, setVisibleColumns] = useState(() => new Set(DEFAULT_VISIBLE_IDS));
 
@@ -172,7 +184,9 @@ const MarketDataTabs = () => {
   // Use column configuration from placeholder-data
   const visibleCols = ALL_COLUMN_IDS.filter(id => visibleColumns.has(id));
   const activeVisibleCols = ACTIVE_ALL_COLUMN_IDS.filter(id => activeVisibleColumns.has(id));
-  const currentVisibleCols = isActivePage ? activeVisibleCols : visibleCols;
+  const etfVisibleCols = ETF_ALL_COLUMN_IDS.filter(id => etfVisibleColumns.has(id));
+  const cryptoVisibleCols = CRYPTO_ALL_COLUMN_IDS.filter(id => cryptoVisibleColumns.has(id));
+  const currentVisibleCols = isCryptoPage ? cryptoVisibleCols : isEtfPage ? etfVisibleCols : isActivePage ? activeVisibleCols : visibleCols;
   const lastColId = currentVisibleCols[currentVisibleCols.length - 1];
   const thBase = "px-4 py-2 text-xs text-left font-medium text-black relative after:content-[''] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:h-[16px] after:w-[1.5px] after:bg-[#AE97C5]";
   const thLast = 'px-4 py-2 text-xs text-left font-medium text-black relative';
@@ -197,6 +211,47 @@ const MarketDataTabs = () => {
       );
       default: {
         const col = ACTIVE_TABLE_COLUMNS.find(c => c.id === colId);
+        return <td key={colId} className="px-4 py-2 text-gray-700">{row[col?.field ?? colId] ?? '-'}</td>;
+      }
+    }
+  };
+
+  const renderCryptoTd = (colId, row, idx) => {
+    const isPositive = !row.change?.startsWith('-');
+    switch (colId) {
+      case 'symbol':    return <td key="symbol"    className="px-4 py-2 text-[#616161] font-normal">{row.symbol}</td>;
+      case 'name':      return <td key="name"      className="px-4 py-2 text-[#616161] font-normal">{row.name}</td>;
+      case 'price':     return <td key="price"     className={`px-4 py-2 font-normal ${isPositive ? 'text-[#17B667]' : 'text-red-500'}`}>{row.price}</td>;
+      case 'pct-change':return <td key="pct-change"className={`px-4 py-2 font-medium ${isPositive ? 'text-green-500' : 'text-red-500'}`}>{row.change}</td>;
+      case 'volume24h': return <td key="volume24h" className="px-4 py-2 text-gray-700">{row.volume24h}</td>;
+      case 'market-cap':return <td key="market-cap"className="px-4 py-2 text-gray-700">{row.marketCap}</td>;
+      default: {
+        const col = CRYPTO_TABLE_COLUMNS.find(c => c.id === colId);
+        return <td key={colId} className="px-4 py-2 text-gray-700">{row[col?.field ?? colId] ?? '-'}</td>;
+      }
+    }
+  };
+
+  const renderEtfTd = (colId, row, idx) => {
+    const isPositive = !row.change?.startsWith('-');
+    switch (colId) {
+      case 'symbol':    return <td key="symbol"    className="px-4 py-2 text-[#616161] font-normal">{row.symbol}</td>;
+      case 'name':      return <td key="name"      className="px-4 py-2 text-[#616161] font-normal">{row.name}</td>;
+      case 'price':     return <td key="price"     className={`px-4 py-2 font-normal ${isPositive ? 'text-[#17B667]' : 'text-red-500'}`}>{row.price}</td>;
+      case 'volume':    return <td key="volume"    className="px-4 py-2 text-gray-700">{row.volume}</td>;
+      case 'market-cap':return <td key="market-cap"className="px-4 py-2 text-gray-700">{row.marketCap}</td>;
+      case 'pct-change':return <td key="pct-change"className={`px-4 py-2 font-medium ${isPositive ? 'text-green-500' : 'text-red-500'}`}>{row.change}</td>;
+      case 'sparkline': return (
+        <td key="sparkline" className="px-4 py-2"
+          onMouseEnter={(e) => handleSparklineEnter(e, row)}
+          onMouseLeave={handleSparklineLeave}
+          style={{ background: isPositive ? 'linear-gradient(180deg, #23fc3523 0%, rgba(35,252,46,0) 95.55%)' : 'linear-gradient(180deg, #ef44442f 0%, rgba(35,252,46,0) 95.55%)' }}
+        >
+          <SparklineChart dataKey={`ETF-${etfSubTab}-${idx}`} isGainers={isPositive} />
+        </td>
+      );
+      default: {
+        const col = ETF_TABLE_COLUMNS.find(c => c.id === colId);
         return <td key={colId} className="px-4 py-2 text-gray-700">{row[col?.field ?? colId] ?? '-'}</td>;
       }
     }
@@ -261,6 +316,52 @@ const MarketDataTabs = () => {
                     onClick={() => setActiveSubTab(tab)}
                     className={`px-3 py-2 text-xs font-medium transition-colors whitespace-nowrap ${
                       activeSubTab === tab ? 'text-[#724A9A]' : 'text-[#7F7F7F]'
+                    }`}
+                  >
+                    {tab}
+                  </button>
+                ))}
+              </div>
+            </>
+          ) : isEtfPage ? (
+            <>
+              <div
+                className="absolute bottom-0 left-0 h-px bg-[#724A9A] transition-all duration-300 ease-out"
+                style={{
+                  width: `calc(${100 / ETF_SUB_TABS.length}%)`,
+                  transform: `translateX(${ETF_SUB_TABS.indexOf(etfSubTab) * 100}%)`
+                }}
+              />
+              <div className="flex relative z-10">
+                {ETF_SUB_TABS.map((tab) => (
+                  <button
+                    key={tab}
+                    onClick={() => setEtfSubTab(tab)}
+                    className={`px-3 py-2 text-xs font-medium transition-colors whitespace-nowrap ${
+                      etfSubTab === tab ? 'text-[#724A9A]' : 'text-[#7F7F7F]'
+                    }`}
+                  >
+                    {tab}
+                  </button>
+                ))}
+              </div>
+            </>
+          ) : isCryptoPage ? (
+            <>
+              <div
+                className="absolute bottom-0 left-0 h-px bg-[#724A9A] transition-all duration-300 ease-out"
+                style={{
+                  width: `calc(${100 / CRYPTO_SUB_TABS.length}%)`,
+                  transform: `translateX(${CRYPTO_SUB_TABS.indexOf(cryptoSubTab) * 100}%)`
+                }}
+              />
+              <div className="flex relative z-10">
+                {CRYPTO_SUB_TABS.map((tab) => (
+                  <button
+                    key={tab}
+                    onClick={() => setCryptoSubTab(tab)}
+                    className={`px-3 py-2 text-xs font-medium transition-colors whitespace-nowrap ${
+                      cryptoSubTab === tab ? 'text-[#724A9A]' : 'text-[#7F7F7F]'
                     }`}
                   >
                     {tab}
@@ -352,15 +453,15 @@ const MarketDataTabs = () => {
                 <tr>
                   {currentVisibleCols.map(colId => (
                     <th key={colId} className={colId === lastColId ? thLast : thBase}>
-                      {isActivePage ? ACTIVE_COLUMN_LABELS[colId] : COLUMN_LABELS[colId]}
+                      {isCryptoPage ? CRYPTO_COLUMN_LABELS[colId] : isEtfPage ? ETF_COLUMN_LABELS[colId] : isActivePage ? ACTIVE_COLUMN_LABELS[colId] : COLUMN_LABELS[colId]}
                     </th>
                   ))}
                 </tr> 
               </thead>
               <tbody className="divide-y divide-gray-200">
-                {(isActivePage ? (activeData[activeSubTab] ?? []) : tableData).map((row, idx) => (
+                {(isCryptoPage ? (cryptoData[cryptoSubTab] ?? []) : isEtfPage ? (etfData[etfSubTab] ?? []) : isActivePage ? (activeData[activeSubTab] ?? []) : tableData).map((row, idx) => (
                   <tr key={idx} className="hover:bg-gray-50 transition-colors cursor-pointer">
-                    {currentVisibleCols.map(colId => isActivePage ? renderActiveTd(colId, row, idx) : renderTd(colId, row, idx))}
+                    {currentVisibleCols.map(colId => isCryptoPage ? renderCryptoTd(colId, row, idx) : isEtfPage ? renderEtfTd(colId, row, idx) : isActivePage ? renderActiveTd(colId, row, idx) : renderTd(colId, row, idx))}
                   </tr>
                 ))}
               </tbody>
@@ -397,16 +498,16 @@ const MarketDataTabs = () => {
           >
             <TableControls
               tabName={active}
-              initialVisible={isActivePage ? activeVisibleColumns : visibleColumns}
+              initialVisible={isCryptoPage ? cryptoVisibleColumns : isEtfPage ? etfVisibleColumns : isActivePage ? activeVisibleColumns : visibleColumns}
               onClose={closeControls}
-              onApply={(newVis) => isActivePage ? setActiveVisibleColumns(newVis) : setVisibleColumns(newVis)}
-              labelCols={isActivePage ? ACTIVE_LABEL_COLS : undefined}
-              stockCols={isActivePage ? ACTIVE_STOCK_COLS : undefined}
-              defaultVisibleIds={isActivePage ? ACTIVE_DEFAULT_VISIBLE_IDS : undefined}
+              onApply={(newVis) => isCryptoPage ? setCryptoVisibleColumns(newVis) : isEtfPage ? setEtfVisibleColumns(newVis) : isActivePage ? setActiveVisibleColumns(newVis) : setVisibleColumns(newVis)}
+              labelCols={isCryptoPage ? CRYPTO_LABEL_COLS : isEtfPage ? ETF_LABEL_COLS : isActivePage ? ACTIVE_LABEL_COLS : undefined}
+              stockCols={isCryptoPage ? CRYPTO_STOCK_COLS : isEtfPage ? ETF_STOCK_COLS : isActivePage ? ACTIVE_STOCK_COLS : undefined}
+              defaultVisibleIds={isCryptoPage ? CRYPTO_DEFAULT_VISIBLE_IDS : isEtfPage ? ETF_DEFAULT_VISIBLE_IDS : isActivePage ? ACTIVE_DEFAULT_VISIBLE_IDS : undefined}
             />
           </div>
         </div>
-      )}
+      )}  
     </div>
   );
 };
