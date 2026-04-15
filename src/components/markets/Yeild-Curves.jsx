@@ -23,7 +23,7 @@ const YeildCurves = () => {
     // Track which button is highlighted (does NOT hide any line)
     const [activeId, setActiveId] = useState(yieldCurvesData.series[0].id);
 
-    // Build ECharts option — always renders all series
+    // Build ECharts option — dynamically adjust line width based on activeId
     const buildOption = () => {
         return {
             backgroundColor: 'transparent',
@@ -90,7 +90,7 @@ const YeildCurves = () => {
                 smooth: true,
                 symbol: 'circle',
                 symbolSize: 7,
-                lineStyle: { color: s.color, width: 2 },
+                lineStyle: { color: s.color, width: activeId === s.id ? 2 : 0.5 }, 
                 itemStyle: { color: s.color },
                 emphasis: { scale: 1.4 },
             })),
@@ -111,11 +111,11 @@ const YeildCurves = () => {
         };
     }, []);
 
-    // Init chart option once on mount (series never change, only active highlight)
+    // Update chart option when activeId changes (for line width highlighting)
     useEffect(() => {
         if (!chartInstance.current) return;
         chartInstance.current.setOption(buildOption(), { notMerge: true });
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    }, [activeId]);
 
     return (
         <div className="w-full h-full flex flex-col">
@@ -133,7 +133,8 @@ const YeildCurves = () => {
                                     alignItems: 'center',
                                     gap: 8,
                                     background: s.bgColor,
-                                    border: active ? '1.5px solid #AE6DA2' : '1.5px solid transparent',
+                                    borderWidth: 1, 
+                                    borderColor: `${active ? s.color : 'transparent'}`,
                                     borderRadius: 10,
                                     padding: '6px 14px 6px 10px',
                                     cursor: 'pointer',
@@ -161,7 +162,15 @@ const YeildCurves = () => {
                 </div>
 
                 {/* Chart */}
-                <div ref={chartRef} style={{ flex: 1, minHeight: 220, minWidth: 0 }} />
+                <div 
+                    ref={chartRef} 
+                    style={{ 
+                        flex: 1, 
+                        minHeight: 220, 
+                        minWidth: 0,
+                        filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.08))'
+                    }} 
+                />
             </div>
         </div>
     );

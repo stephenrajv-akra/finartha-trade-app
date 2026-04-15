@@ -6,7 +6,7 @@ import GlobalMap from '../../components/markets/GlobalMap';
 import HeatMap from '../../components/markets/HeatMap'; 
 import IndustryChart from '../../components/markets/IndustryChart'; 
 import IndustryDetails from '../../components/markets/IndustryDetails'; 
-import MarketDataTabs from '../../components/markets/Market-Table';
+import Tops from '../../components/markets/Tops';
 import TabBar from '../../components/common/TabBar';
 
 const NewsQuotesTabs = () => {
@@ -243,7 +243,7 @@ const MarketsPage = () => {
           }}
           className="border-2 border-[#EDE8F2] rounded-lg overflow-hidden flex flex-col"
         >
-          <MarketDataTabs />
+          <Tops /> 
         </Resizable>
 
         {/* Middle Col 2 – fills remaining */}

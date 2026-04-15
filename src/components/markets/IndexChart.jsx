@@ -3,64 +3,8 @@ import { createChart, LineSeries, ColorType } from 'lightweight-charts';
 import YeildCurves from './Yeild-Curves';
 import NewFlowChart from './NetFlow-Chart';
 import MarketOverviewChart from './Market-Overview-Chart';
+import { stocks } from '../../utils/placeholder-data';
 const TABS = ['Index Chart', 'Yield Curves', 'Net Inflow', 'Market Overview'];
-
-const stocks = [
-  {
-    id: 'dow',
-    name: 'Dow Jones',
-    price: '46,504.67',
-    change: '-61.07',
-    pct: '-3.13%',
-    positive: false,
-    selected: true,
-  },
-  {
-    id: 'sp500',
-    name: 'S&P 500 Index',
-    price: '6,582.69',
-    change: '+7.37',
-    pct: '+0.11%',
-    positive: true,
-    selected: false,
-  },
-  {
-    id: 'nasdaq1',
-    name: 'NASDAQ',
-    price: '6,582.69',
-    change: '+7.37',
-    pct: '+0.11%',
-    positive: true,
-    selected: false,
-  },
-  {
-    id: 'nasdaq2',
-    name: 'NASDAQ',
-    price: '6,582.69',
-    change: '+7.37',
-    pct: '+0.11%',
-    positive: true,
-    selected: false,
-  },
-  {
-    id: 'nasdaq3',
-    name: 'NASDAQ Composite',
-    price: '6,582.69',
-    change: '+7.37',
-    pct: '+0.11%',
-    positive: true,
-    selected: false,
-  },
-  {
-    id: 'nasdaq4',
-    name: 'NASDAQ 100',
-    price: '6,582.69',
-    change: '+7.37',
-    pct: '+0.11%',
-    positive: true,
-    selected: false,
-  },
-];
 
 // Generate realistic intraday percentage-change data for each series
 function generateData(baseOffset, volatility, points = 80) {
@@ -81,10 +25,39 @@ function generateData(baseOffset, volatility, points = 80) {
   return data;
 }
 
+// Get line color for a stock ID
+function getLineColorFromStockId(stockId) { 
+  const colorMap = {
+    'dow': '#ef4444',      // red
+    'sp500': '#10b981',    // green
+    'nasdaq1': '#f59e0b',  // amber
+    'nasdaq2': '#ec4899',  // pink
+    'nasdaq3': '#8b5cf6',  // violet 
+    'nasdaq4': '#14b8a6',  // teal
+  }; 
+  return colorMap[stockId] || '#000000';
+}
+
+// Map stock ID to series index
+function getSeriesIndexFromStockId(stockId) {
+  const indexMap = {
+    'dow': 0,
+    'sp500': 1,
+    'nasdaq1': 2,
+    'nasdaq2': 3,
+    'nasdaq3': 4,
+    'nasdaq4': 5,
+  };
+  return indexMap[stockId] ?? -1;
+}
+
 const seriesConfigs = [
-  { color: '#6366f1', lineWidth: 2, data: generateData(0, 0.18) },    // indigo
-  { color: '#3b82f6', lineWidth: 2, data: generateData(0.1, 0.14) },  // blue
-  { color: '#f59e0b', lineWidth: 2, data: generateData(-0.3, 0.16) }, // amber
+  { color: '#ef4444', lineWidth: 2, data: generateData(0, 0.18) },        // red - Dow Jones
+  { color: '#10b981', lineWidth: 2, data: generateData(-0.3, 0.16) },     // amber - NASDAQ 1
+  { color: '#f59e0b', lineWidth: 2, data: generateData(0.1, 0.14) },      // green - S&P 500
+  { color: '#ec4899', lineWidth: 2, data: generateData(0.2, 0.15) },      // pink - NASDAQ 2
+  { color: '#8b5cf6', lineWidth: 2, data: generateData(-0.1, 0.17) },     // violet - NASDAQ 3
+  { color: '#14b8a6', lineWidth: 2, data: generateData(0.15, 0.13) },     // teal - NASDAQ 4
 ];
 
 export default function IndexChart() {
@@ -165,7 +138,7 @@ export default function IndexChart() {
         return { color: seriesConfigs[i].color, value: d?.value ?? null };
       });
 
-      const labels = ['Dow Jones', 'S&P 500', 'NASDAQ'];
+      const labels = ['Dow Jones', 'S&P 500', 'NASDAQ', 'NASDAQ', 'NASDAQ Composite', 'NASDAQ 100'];
       const date = typeof param.time === 'string'
         ? param.time
         : new Date(param.time * 1000).toISOString().split('T')[0];
@@ -213,6 +186,17 @@ export default function IndexChart() {
     };
   }, [activeTab]);
 
+  // Update selected stock's line highlighting
+  useEffect(() => {
+    if (!chartRef.current || !seriesRefs.current.length) return;
+    const selectedIndex = getSeriesIndexFromStockId(selectedStock);
+    seriesRefs.current.forEach((series, idx) => {
+      series.applyOptions({
+        lineWidth: idx === selectedIndex ? 2 : 0.5,
+      });
+    });
+  }, [selectedStock, activeTab]); 
+
   return (
     <div className="flex flex-col h-full overflow-hidden">
 
@@ -223,8 +207,8 @@ export default function IndexChart() {
             key={tab}
             onClick={() => setActiveTab(tab)}
             className={`px-4 py-2 text-xs lg:text-sm font-medium border-r border-[#C8B9D8] rounded-tr-lg transition-all whitespace-nowrap ${activeTab === tab
-                ? 'bg-white text-black'
-                : 'text-gray-600 border-b-transparent hover:text-gray-900'
+              ? 'bg-white text-black'
+              : 'text-gray-600 border-b-transparent hover:text-gray-900'
               }`}
           >
             {tab}
@@ -240,72 +224,79 @@ export default function IndexChart() {
         </div>
       </div>
 
-        {activeTab === 'Index Chart' && (
-          <div className="flex flex-1 overflow-hidden">
-            {/* Left – stock list */}
-            <div className="w-full max-w-[170px] max-h-[350px] hide-scrollbar shrink-0 flex flex-col gap-2 overflow-y-auto border-r border-gray-100 p-2">
-              {stocks.map((s) => {
-                const isSelected = selectedStock === s.id;
-                return (
-                  <button
-                    key={s.id}
-                    onClick={() => setSelectedStock(s.id)}
-                    className={`w-full text-left px-3 py-3 border bg-[rgba(237,232,242,0.50)] rounded-lg transition-all ${isSelected
-                        ? 'border-[#AE6DA2]'
-                        : 'border-transparent'
-                      }`}
-                  >
-                    <div className="flex items-center gap-1 mb-0.5">
-                      <span className={`w-1 h-1 rounded-full shrink-0 ${isSelected ? 'bg-[#AE6DA2]' : 'bg-black'}`} />
-                      <span className="text-xs font-medium text-black">{s.name}</span>
-                    </div>
-                    <div className={`text-sm font-bold pl-3 text-black`}>
-                      {s.price}
-                    </div>
-                    <div className={`text-xs pl-3 font-medium mt-0.5 ${s.positive ? 'text-[#17B667]' : 'text-[#EC4D5C]'}`}>
-                      {s.change} &nbsp; {s.pct}
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
+      {activeTab === 'Index Chart' && (
+        <div className="flex flex-1 overflow-hidden">
+          {/* Left – stock list */}
+          <div className="w-full max-w-[170px] max-h-[350px] hide-scrollbar shrink-0 flex flex-col gap-2 overflow-y-auto border-r border-gray-100 p-2">
+            {stocks.map((s) => {
+              const isSelected = selectedStock === s.id;
+              return (
+                <button
+                  key={s.id}
+                  onClick={() => setSelectedStock(s.id)}
+                  className={`w-full text-left px-3 py-3 border bg-[#EDE8F280] rounded-lg transition-all ${isSelected
+                    ? 'border-[#AE6DA2]'
+                    : 'border-transparent'
+                    }`}
+                  style={{ borderColor: `${isSelected ? getLineColorFromStockId(s.id) : 'transparent'}` }}
+                >
+                  <div className="flex items-center gap-1 mb-0.5">
+                    <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: getLineColorFromStockId(s.id) }} />
+                    <span className="text-xs font-medium text-black">{s.name}</span>
+                  </div>
+                  <div className={`text-sm font-bold pl-3 text-black`}>
+                    {s.price}
+                  </div>
+                  <div className={`text-xs pl-3 font-medium mt-0.5 ${s.positive ? 'text-[#17B667]' : 'text-[#EC4D5C]'}`}>
+                    {s.change} &nbsp; {s.pct}
+                  </div>
+                </button>
+              );
+            })}
+          </div>
 
-            {/* Right – chart */}
-            <div className="flex-1 overflow-hidden relative" ref={chartContainerRef}>
-              {/* Custom tooltip */}
-              <div
-                ref={tooltipRef}
-                style={{
-                  display: 'none',
-                  position: 'absolute',
-                  zIndex: 10,
-                  pointerEvents: 'none',
-                  background: '#fff',
-                  border: '1px solid #E0E0E4',
-                  borderRadius: '6px',
-                  padding: '8px 10px',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
-                  minWidth: '160px',
-                }}
-              />
-            </div>
+          {/* Right – chart */}
+          <div
+            className="flex-1 overflow-hidden relative"
+            ref={chartContainerRef}
+            style={{
+              filter: 'drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.08))'
+            }}
+          >
+            {/* Custom tooltip */}
+            <div
+              ref={tooltipRef}
+              style={{
+                display: 'none',
+                position: 'absolute',
+                zIndex: 10,
+                pointerEvents: 'none',
+                background: '#fff',
+                border: '1px solid #E0E0E4',
+                borderRadius: '6px',
+                padding: '8px 10px',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+                minWidth: '160px',
+              }}
+            />
           </div>
-        )}
-        {activeTab === 'Yield Curves' && (
-          <div className="flex flex-1 overflow-hidden">
-              <YeildCurves />  
-          </div>
-        )}
-        {activeTab === 'Net Inflow' && (
-          <div className="flex flex-1 overflow-hidden">
-            <NewFlowChart /> 
-          </div>
-        )}
-        {activeTab === 'Market Overview' && (
-          <div className="flex flex-1 overflow-hidden">
-            <MarketOverviewChart /> 
-          </div>
-        )} 
-      </div> 
+        </div>
+      )}
+      {activeTab === 'Yield Curves' && (
+        <div className="flex flex-1 overflow-hidden">
+          <YeildCurves />
+        </div>
+      )}
+      {activeTab === 'Net Inflow' && (
+        <div className="flex flex-1 overflow-hidden">
+          <NewFlowChart />
+        </div>
+      )}
+      {activeTab === 'Market Overview' && (
+        <div className="flex flex-1 overflow-hidden">
+          <MarketOverviewChart />
+        </div>
+      )}
+    </div>
   );
 }

@@ -482,6 +482,120 @@ export const losersData = [
   { symbol: 'Beta Wave', name: 'Granite Peak...', price: '2323', change: '-142.30%', volume: '240.00%', marketCap: '28.45M', bps: '2.89', dividend: '0.95', eps: '1.85', exDate: '2026-04-22', freeFloatMktCap: '23.1M', nextEarnings: '2026-05-12', freeFloat: '80.1%', pb: '2.98' },
 ];
 
+export const stocks = [ 
+  {
+    id: 'dow',
+    name: 'Dow Jones',
+    price: '46,504.67',
+    change: '-61.07',
+    pct: '-3.13%',
+    positive: false,
+    selected: true,
+  },
+  {
+    id: 'sp500',
+    name: 'S&P 500 Index',
+    price: '6,582.69',
+    change: '+7.37',
+    pct: '+0.11%',
+    positive: true,
+    selected: false,
+  },
+  {
+    id: 'nasdaq1',
+    name: 'NASDAQ',
+    price: '6,582.69',
+    change: '+7.37',
+    pct: '+0.11%',
+    positive: true,
+    selected: false,
+  },
+  {
+    id: 'nasdaq2',
+    name: 'NASDAQ',
+    price: '6,582.69',
+    change: '+7.37',
+    pct: '+0.11%',
+    positive: true,
+    selected: false,
+  },
+  {
+    id: 'nasdaq3',
+    name: 'NASDAQ Composite',
+    price: '6,582.69',
+    change: '+7.37',
+    pct: '+0.11%',
+    positive: true,
+    selected: false,
+  },
+  {
+    id: 'nasdaq4',
+    name: 'NASDAQ 100',
+    price: '6,582.69',
+    change: '+7.37',
+    pct: '+0.11%',
+    positive: true,
+    selected: false,
+  },
+];
+
+// ── Active Tab Data ───────────────────────────────────────────────────────────
+export const ACTIVE_TABLE_COLUMNS = [
+  { id: 'symbol',     label: 'Symbol',    group: 'label', field: 'symbol',    pinned: true, defaultVisible: true },
+  { id: 'name',       label: 'Name',      group: 'label', field: 'name',      defaultVisible: true },
+  { id: 'sparkline',  label: 'Sparkline', group: 'label', field: null,        defaultVisible: true },
+  { id: 'volume',     label: 'Volume',    group: 'label', field: 'volume',    defaultVisible: true },
+  { id: 'price',      label: 'Price',     group: 'label', field: 'price',     defaultVisible: true },
+  { id: 'pct-change', label: '% Change',  group: 'label', field: 'change',    defaultVisible: true },
+  { id: 'market-cap', label: 'Market Cap',group: 'stock', field: 'marketCap', defaultVisible: true },
+  { id: 'rvol',       label: 'RVol(10D)', group: 'stock', field: 'rvol',      defaultVisible: false },
+  { id: 'turnover',   label: '% Turnover',group: 'stock', field: 'turnover',  defaultVisible: false },
+  { id: 'range',      label: '% Range',   group: 'stock', field: 'range',     defaultVisible: false },
+];
+export const ACTIVE_DEFAULT_VISIBLE_IDS = ACTIVE_TABLE_COLUMNS.filter(c => c.defaultVisible).map(c => c.id);
+export const ACTIVE_ALL_COLUMN_IDS      = ACTIVE_TABLE_COLUMNS.map(c => c.id);
+export const ACTIVE_COLUMN_LABELS       = Object.fromEntries(ACTIVE_TABLE_COLUMNS.map(c => [c.id, c.label]));
+export const ACTIVE_LABEL_COLS          = ACTIVE_TABLE_COLUMNS.filter(c => c.group === 'label');
+export const ACTIVE_STOCK_COLS          = ACTIVE_TABLE_COLUMNS.filter(c => c.group === 'stock');
+
+const _activeRow = (symbol, name, price, change, volume, marketCap, rvol, turnover, range) =>
+  ({ symbol, name, price, change, volume, marketCap, rvol, turnover, range });
+
+export const activeData = {
+  Volume: [
+    _activeRow('SNAL',  'Snail, INC.',            '2.345', '+19.16%', '845.67M', '67.25M', '12.4x', '8.5%',  '45.2%'),
+    _activeRow('PMNT',  'Perfect Moment LTD',     '3.678', '+19.16%', '530.12M', '67.25M', '9.8x',  '6.2%',  '38.7%'),
+    _activeRow('MIMI',  'Mint Incorporation Li.',  '4.910', '+19.16%', '412.89M', '67.25M', '8.3x',  '5.4%',  '32.1%'),
+    _activeRow('HUBC',  'Hub Cyber Security Is.', '5.234', '+19.16%', '278.45M', '67.25M', '7.1x',  '4.8%',  '28.5%'),
+    _activeRow('WGRX',  'Sky Quarry Innovations', '5.234', '-19.16%', '964.33M', '67.25M', '15.2x', '10.1%', '52.3%'),
+    _activeRow('MIMI',  'Granite Peak Solutions', '7.012', '+19.16%', '753.21M', '67.25M', '11.7x', '7.9%',  '41.8%'),
+  ],
+  'RVol(10D)': [
+    _activeRow('WGRX',  'Sky Quarry Innovations', '5.234', '-19.16%', '964.33M', '67.25M', '15.2x', '10.1%', '52.3%'),
+    _activeRow('SNAL',  'Snail, INC.',            '2.345', '+19.16%', '845.67M', '67.25M', '12.4x', '8.5%',  '45.2%'),
+    _activeRow('MIMI',  'Granite Peak Solutions', '7.012', '+19.16%', '753.21M', '67.25M', '11.7x', '7.9%',  '41.8%'),
+    _activeRow('PMNT',  'Perfect Moment LTD',     '3.678', '+19.16%', '530.12M', '67.25M', '9.8x',  '6.2%',  '38.7%'),
+    _activeRow('MIMI',  'Mint Incorporation Li.',  '4.910', '+19.16%', '412.89M', '67.25M', '8.3x',  '5.4%',  '32.1%'),
+    _activeRow('HUBC',  'Hub Cyber Security Is.', '5.234', '+19.16%', '278.45M', '67.25M', '7.1x',  '4.8%',  '28.5%'),
+  ],
+  '% Turnover': [
+    _activeRow('MIMI',  'Mint Incorporation Li.',  '4.910', '+19.16%', '412.89M', '67.25M', '8.3x',  '10.1%', '32.1%'),
+    _activeRow('WGRX',  'Sky Quarry Innovations', '5.234', '-19.16%', '964.33M', '67.25M', '15.2x', '9.8%',  '52.3%'),
+    _activeRow('SNAL',  'Snail, INC.',            '2.345', '+19.16%', '845.67M', '67.25M', '12.4x', '8.5%',  '45.2%'),
+    _activeRow('MIMI',  'Granite Peak Solutions', '7.012', '+19.16%', '753.21M', '67.25M', '11.7x', '7.9%',  '41.8%'),
+    _activeRow('PMNT',  'Perfect Moment LTD',     '3.678', '+19.16%', '530.12M', '67.25M', '9.8x',  '6.2%',  '38.7%'),
+    _activeRow('HUBC',  'Hub Cyber Security Is.', '5.234', '+19.16%', '278.45M', '67.25M', '7.1x',  '4.8%',  '28.5%'),
+  ],
+  '% Range': [
+    _activeRow('WGRX',  'Sky Quarry Innovations', '5.234', '-19.16%', '964.33M', '67.25M', '15.2x', '10.1%', '52.3%'),
+    _activeRow('MIMI',  'Granite Peak Solutions', '7.012', '+19.16%', '753.21M', '67.25M', '11.7x', '7.9%',  '41.8%'),
+    _activeRow('SNAL',  'Snail, INC.',            '2.345', '+19.16%', '845.67M', '67.25M', '12.4x', '8.5%',  '45.2%'),
+    _activeRow('PMNT',  'Perfect Moment LTD',     '3.678', '+19.16%', '530.12M', '67.25M', '9.8x',  '6.2%',  '38.7%'),
+    _activeRow('MIMI',  'Mint Incorporation Li.',  '4.910', '+19.16%', '412.89M', '67.25M', '8.3x',  '5.4%',  '32.1%'),
+    _activeRow('HUBC',  'Hub Cyber Security Is.', '5.234', '+19.16%', '278.45M', '67.25M', '7.1x',  '4.8%',  '28.5%'),
+  ],
+};
+
 //  Bonds data placeholder
 
 export const SEED = [

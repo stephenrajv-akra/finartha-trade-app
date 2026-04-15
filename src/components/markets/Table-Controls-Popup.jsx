@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { X, ChevronDown, ChevronUp } from 'lucide-react';
 import { DEFAULT_VISIBLE_IDS, LABEL_COLS, STOCK_COLS } from '../../utils/placeholder-data';
 
-const initLabelItems = (vis) => LABEL_COLS.map(c => ({ ...c, selected: c.pinned || vis.has(c.id) }));
-const initStockItems = (vis) => STOCK_COLS.map(c => ({ ...c, selected: vis.has(c.id) }));
+const initLabelItems = (vis, cols) => cols.map(c => ({ ...c, selected: c.pinned || vis.has(c.id) }));
+const initStockItems = (vis, cols) => cols.map(c => ({ ...c, selected: vis.has(c.id) }));
 
 const CheckboxIcon = ({ checked, indeterminate, disabled, readonly, onChange }) => {
     const checkmark = (
@@ -37,14 +37,18 @@ const CheckboxIcon = ({ checked, indeterminate, disabled, readonly, onChange }) 
     );
 };
 
-const TableControls = ({ tabName = 'Tops', initialVisible, onClose, onApply }) => {
-    const defaultVis = new Set(DEFAULT_VISIBLE_IDS);
+const TableControls = ({ tabName = 'Tops', initialVisible, onClose, onApply, labelCols: labelColsProp, stockCols: stockColsProp, defaultVisibleIds: defaultVisibleIdsProp }) => {
+    const resolvedLabelCols = labelColsProp ?? LABEL_COLS;
+    const resolvedStockCols = stockColsProp ?? STOCK_COLS;
+    const resolvedDefaultIds = defaultVisibleIdsProp ?? DEFAULT_VISIBLE_IDS;
+
+    const defaultVis = new Set(resolvedDefaultIds);
     const vis = initialVisible ?? defaultVis;
 
     const [labelExpanded, setLabelExpanded] = useState(true);
     const [stockExpanded, setStockExpanded] = useState(true);
-    const [labelItems, setLabelItems] = useState(() => initLabelItems(vis));
-    const [stockItems, setStockItems] = useState(() => initStockItems(vis));
+    const [labelItems, setLabelItems] = useState(() => initLabelItems(vis, resolvedLabelCols));
+    const [stockItems, setStockItems] = useState(() => initStockItems(vis, resolvedStockCols));
 
     const toggleLabelItem = (id) =>
         setLabelItems(items => items.map(i => (i.id === id && !i.pinned ? { ...i, selected: !i.selected } : i)));
@@ -77,9 +81,9 @@ const TableControls = ({ tabName = 'Tops', initialVisible, onClose, onApply }) =
     };
 
     const resetToDefaults = () => {
-        const dv = new Set(DEFAULT_VISIBLE_IDS);
-        setLabelItems(initLabelItems(dv));
-        setStockItems(initStockItems(dv));
+        const dv = new Set(resolvedDefaultIds);
+        setLabelItems(initLabelItems(dv, resolvedLabelCols));
+        setStockItems(initStockItems(dv, resolvedStockCols));
     };
 
     const handleDone = () => {

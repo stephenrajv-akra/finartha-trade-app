@@ -16,7 +16,9 @@ import { marketOverviewData } from '../../utils/placeholder-obj';
  * }
  */
 
-const TABS = ['Adv Dec', 'Market Setiment'];
+const TABS = ['Adv Dec', 
+    // 'Market Setiment' 
+];
 
 const BAR_COLORS = {
     decline: '#EC4D5C',
@@ -165,11 +167,11 @@ const MarketOverviewChart = () => {
                     </>
                 )}
 
-                {activeTab === 'Market Setiment' && (
+                {/* {activeTab === 'Market Setiment' && (
                     <div className="flex-1 flex items-center justify-center">
                         <p className="text-sm text-gray-400">Market Sentiment coming soon</p>
                     </div>
-                )}
+                )} */}
             </div>
         </div>
     );

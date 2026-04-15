@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { SquareCheckBig } from 'lucide-react';
 import { ArrowDown, HamburgerIcon } from "../../utils/SvgCode";
-import { gainersData, losersData, DEFAULT_VISIBLE_IDS, ALL_COLUMN_IDS, COLUMN_LABELS, MARKET_TABLE_COLUMNS } from '../../utils/placeholder-data'; 
+import { gainersData, losersData, DEFAULT_VISIBLE_IDS, ALL_COLUMN_IDS, COLUMN_LABELS, MARKET_TABLE_COLUMNS, activeData, ACTIVE_TABLE_COLUMNS, ACTIVE_DEFAULT_VISIBLE_IDS, ACTIVE_ALL_COLUMN_IDS, ACTIVE_COLUMN_LABELS, ACTIVE_LABEL_COLS, ACTIVE_STOCK_COLS } from '../../utils/placeholder-data'; 
 import { MenuIcon } from '../../utils/SvgCode'; 
 import TableControls from './Table-Controls-Popup';
 import * as echarts from 'echarts/core';
@@ -99,6 +99,12 @@ const MarketDataTabs = () => {
   const isGainers = subActive === 'Top Gainers';
   const changeColor = isGainers ? 'text-green-500' : 'text-red-500';
 
+  // Active tab state
+  const ACTIVE_SUB_TABS = ['Volume', 'RVol(10D)', '% Turnover', '% Range'];
+  const [activeSubTab, setActiveSubTab] = useState('Volume');
+  const [activeVisibleColumns, setActiveVisibleColumns] = useState(() => new Set(ACTIVE_DEFAULT_VISIBLE_IDS));
+  const isActivePage = active === 'Active';
+
   // Visible columns (controlled by table-controls dropdown)
   const [visibleColumns, setVisibleColumns] = useState(() => new Set(DEFAULT_VISIBLE_IDS));
 
@@ -165,15 +171,42 @@ const MarketDataTabs = () => {
 
   // Use column configuration from placeholder-data
   const visibleCols = ALL_COLUMN_IDS.filter(id => visibleColumns.has(id));
-  const lastColId = visibleCols[visibleCols.length - 1];
+  const activeVisibleCols = ACTIVE_ALL_COLUMN_IDS.filter(id => activeVisibleColumns.has(id));
+  const currentVisibleCols = isActivePage ? activeVisibleCols : visibleCols;
+  const lastColId = currentVisibleCols[currentVisibleCols.length - 1];
   const thBase = "px-4 py-2 text-xs text-left font-medium text-black relative after:content-[''] after:absolute after:right-0 after:top-1/2 after:-translate-y-1/2 after:h-[16px] after:w-[1.5px] after:bg-[#AE97C5]";
   const thLast = 'px-4 py-2 text-xs text-left font-medium text-black relative';
+
+  const renderActiveTd = (colId, row, idx) => {
+    const isPositive = !row.change?.startsWith('-');
+    switch (colId) {
+      case 'symbol':    return <td key="symbol"    className="px-4 py-2 text-[#616161] font-normal">{row.symbol}</td>;
+      case 'name':      return <td key="name"      className="px-4 py-2 text-[#616161] font-normal">{row.name}</td>;
+      case 'price':     return <td key="price"     className={`px-4 py-2 font-normal ${isPositive ? 'text-[#17B667]' : 'text-red-500'}`}>{row.price}</td>;
+      case 'volume':    return <td key="volume"    className="px-4 py-2 text-gray-700">{row.volume}</td>;
+      case 'market-cap':return <td key="market-cap"className="px-4 py-2 text-gray-700">{row.marketCap}</td>;
+      case 'pct-change':return <td key="pct-change"className={`px-4 py-2 font-medium ${isPositive ? 'text-green-500' : 'text-red-500'}`}>{row.change}</td>;
+      case 'sparkline': return (
+        <td key="sparkline" className="px-4 py-2"
+          onMouseEnter={(e) => handleSparklineEnter(e, row)}
+          onMouseLeave={handleSparklineLeave}
+          style={{ background: isPositive ? 'linear-gradient(180deg, #23fc3523 0%, rgba(35,252,46,0) 95.55%)' : 'linear-gradient(180deg, #ef44442f 0%, rgba(35,252,46,0) 95.55%)' }}
+        >
+          <SparklineChart dataKey={`Active-${activeSubTab}-${idx}`} isGainers={isPositive} />
+        </td>
+      );
+      default: {
+        const col = ACTIVE_TABLE_COLUMNS.find(c => c.id === colId);
+        return <td key={colId} className="px-4 py-2 text-gray-700">{row[col?.field ?? colId] ?? '-'}</td>;
+      }
+    }
+  };
 
   const renderTd = (colId, row, idx) => {
     switch (colId) {
       case 'symbol':    return <td key="symbol"    className="px-4 py-2 text-[#616161] font-normal">{row.symbol}</td>;
       case 'name':      return <td key="name"      className="px-4 py-2 text-[#616161] font-normal">{row.name}</td>;
-      case 'pm-price':  return <td key="pm-price"  className="px-4 py-2 text-[#17B667] font-normal">{row.price}</td>;
+      case 'pm-price':  return <td key="pm-price"  className={`px-4 py-2 font-normal ${isGainers ? 'text-[#17B667]' : 'text-red-500'}`}>{row.price}</td>;
       case 'sparkline': return (
         <td key="sparkline" className="px-4 py-2" 
           onMouseEnter={(e) => handleSparklineEnter(e, row)}
@@ -212,28 +245,54 @@ const MarketDataTabs = () => {
       </div>
       <div className="flex items-center justify-between shrink-0 bg-white p-1">
         <div className="left-sec relative border-b border-gray-200">
-          {/* Sliding Indicator */}
-          <div
-            className={`absolute bottom-0 left-0 h-px bg-[#724A9A] transition-all duration-300 ease-out`}
-            style={{
-              width: `calc(50% - 0px)`,
-              transform: `translateX(${['Top Gainers', 'Tab Losers'].indexOf(subActive) * 100}%)`
-            }}
-          />
-          <div className="flex relative z-10">
-            {['Top Gainers', 'Tab Losers'].map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setSubActive(tab)}
-                className={`px-3 py-2 text-xs font-medium transition-colors whitespace-nowrap ${subActive === tab
-                    ? 'text-[#724A9A]'
-                    : 'text-[#7F7F7F]'
-                  }`}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
+          {isActivePage ? (
+            <>
+              <div
+                className="absolute bottom-0 left-0 h-px bg-[#724A9A] transition-all duration-300 ease-out"
+                style={{
+                  width: `calc(${100 / ACTIVE_SUB_TABS.length}%)`,
+                  transform: `translateX(${ACTIVE_SUB_TABS.indexOf(activeSubTab) * 100}%)`
+                }}
+              />
+              <div className="flex relative z-10">
+                {ACTIVE_SUB_TABS.map((tab) => (
+                  <button
+                    key={tab}
+                    onClick={() => setActiveSubTab(tab)}
+                    className={`px-3 py-2 text-xs font-medium transition-colors whitespace-nowrap ${
+                      activeSubTab === tab ? 'text-[#724A9A]' : 'text-[#7F7F7F]'
+                    }`}
+                  >
+                    {tab}
+                  </button>
+                ))}
+              </div>
+            </>
+          ) : (
+            <>
+              {/* Sliding Indicator */}
+              <div
+                className={`absolute bottom-0 left-0 h-px bg-[#724A9A] transition-all duration-300 ease-out`}
+                style={{
+                  width: `calc(50% - 0px)`,
+                  transform: `translateX(${['Top Gainers', 'Tab Losers'].indexOf(subActive) * 100}%)`
+                }}
+              />
+              <div className="flex relative z-10">
+                {['Top Gainers', 'Tab Losers'].map((tab) => (
+                  <button
+                    key={tab}
+                    onClick={() => setSubActive(tab)}
+                    className={`px-3 py-2 text-xs font-medium transition-colors whitespace-nowrap ${
+                      subActive === tab ? 'text-[#724A9A]' : 'text-[#7F7F7F]'
+                    }`}
+                  >
+                    {tab}
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
         </div> 
         <div className="right-sec flex items-center gap-2 w-fit cursor-pointer"> 
             <div className="icon-container"> 
@@ -291,17 +350,17 @@ const MarketDataTabs = () => {
             <table className="market-main-table w-full text-xs">
               <thead className="bg-[#EDE8F2] sticky top-0">
                 <tr>
-                  {visibleCols.map(colId => (
+                  {currentVisibleCols.map(colId => (
                     <th key={colId} className={colId === lastColId ? thLast : thBase}>
-                      {COLUMN_LABELS[colId]}
+                      {isActivePage ? ACTIVE_COLUMN_LABELS[colId] : COLUMN_LABELS[colId]}
                     </th>
                   ))}
                 </tr> 
               </thead>
               <tbody className="divide-y divide-gray-200">
-                {tableData.map((row, idx) => (
+                {(isActivePage ? (activeData[activeSubTab] ?? []) : tableData).map((row, idx) => (
                   <tr key={idx} className="hover:bg-gray-50 transition-colors cursor-pointer">
-                    {visibleCols.map(colId => renderTd(colId, row, idx))}
+                    {currentVisibleCols.map(colId => isActivePage ? renderActiveTd(colId, row, idx) : renderTd(colId, row, idx))}
                   </tr>
                 ))}
               </tbody>
@@ -338,9 +397,12 @@ const MarketDataTabs = () => {
           >
             <TableControls
               tabName={active}
-              initialVisible={visibleColumns}
+              initialVisible={isActivePage ? activeVisibleColumns : visibleColumns}
               onClose={closeControls}
-              onApply={(newVis) => setVisibleColumns(newVis)}
+              onApply={(newVis) => isActivePage ? setActiveVisibleColumns(newVis) : setVisibleColumns(newVis)}
+              labelCols={isActivePage ? ACTIVE_LABEL_COLS : undefined}
+              stockCols={isActivePage ? ACTIVE_STOCK_COLS : undefined}
+              defaultVisibleIds={isActivePage ? ACTIVE_DEFAULT_VISIBLE_IDS : undefined}
             />
           </div>
         </div>
